@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :projects, :revenues, :tokens
+  has_many :products, :revenues, :tokens
 end
