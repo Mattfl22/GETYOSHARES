@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
+  get 'products/show'
+  get 'products/new'
+  get 'products/edit'
+  get 'products/update'
+  get 'products/create'
+  # get 'projects/index'
+  # get 'projects/new'
+  # get 'projects/edit'
+  # get 'projects/create'
+  # get 'projects/update'
+  # get 'projects/show'
   devise_for :users
   root to: 'pages#home'
+  resources :projects, only: [:index, :show, :edit, :new] do 
+    resources :products, only: [:show, :new]
+    resources :transactions, only: [:new]
+  end
+  resource :dashboard, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
