@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_152508) do
+ActiveRecord::Schema.define(version: 2022_02_28_154023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,23 @@ ActiveRecord::Schema.define(version: 2022_02_28_152508) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "revenues", force: :cascade do |t|
+    t.date "date"
+    t.float "revenue"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_revenues_on_project_id"
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.integer "unit_price"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tokens_on_project_id"
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "isrc"
     t.string "grid"
@@ -55,6 +72,19 @@ ActiveRecord::Schema.define(version: 2022_02_28_152508) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_tracks_on_product_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.date "date"
+    t.boolean "active"
+    t.bigint "user_id", null: false
+    t.bigint "token_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["token_id"], name: "index_transactions_on_token_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,5 +107,9 @@ ActiveRecord::Schema.define(version: 2022_02_28_152508) do
 
   add_foreign_key "products", "projects"
   add_foreign_key "projects", "users"
+  add_foreign_key "revenues", "projects"
+  add_foreign_key "tokens", "projects"
   add_foreign_key "tracks", "products"
+  add_foreign_key "transactions", "tokens"
+  add_foreign_key "transactions", "users"
 end
