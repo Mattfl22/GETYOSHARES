@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:index, :show]
+  before_action :find_project, only: [:show]
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project)
   end
 
   def new
@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    authorize @project
   end
 
   private

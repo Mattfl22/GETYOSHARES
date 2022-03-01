@@ -3,7 +3,8 @@
   <p>Find me in app/views/projects/index.html.erb</p>
 
   <% @projects.each do |project| %>
-    <%= link_to project.name, products_show_path %>
+    <%= project.name %>
+    <%#= link_to project.name, project_product_path %>
   <% end %>
 
    <%= link_to "Back", root_path %>
