@@ -27,26 +27,51 @@
       </div>
       <div class="col col-sm-5">
         <h2 class="text-primary mb-3">Financial information</h2>
-        <p class="text-primary m-0"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
+        <p class="text-primary m-0 border-bottom"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
         <p class="text-primary fs-3 m-0">xx,xxx $</p>
         <% token = Token.find_by(project_id: @project.id) %>
         <p>invested on <%= number_with_delimiter(((@project.number_of_tokens) * (token.unit_price)), :delimiter => ',')%> $ goal</p>
         <div class="artist-project-info-financial">
-          <div class="artist-project-info-financial-card">
-            <p><%= token.unit_price%> $</p>
-
+          <div class="text-center border border-secondary rounded p-3 w-25">
+            <p class="m-0 text-primary fw-bold"><%= token.unit_price%> $</p>
+            <p class="m-0" style="font-size:12px">per token</p>
           </div>
-
+          <div class="text-center border border-primary rounded p-3 ms-3 w-25">
+            <p class="m-0 text-primary fw-bold"><%= @project.number_of_tokens%></p>
+            <p class="m-0" style="font-size:12px">tokens total</p>
+          </div>
+          <div class="text-center border border-tertiary rounded p-3 ms-3 w-25">
+            <p class="m-0 text-primary fw-bold">xxx</p>
+            <p class="m-0" style="font-size:12px">tokens purchased</p>
+          </div>
         </div>
+
+        <p class="text-primary mt-3 border-bottom">Back this project</p>
+
+        <p class="text-primary mt-3 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
+
+        <p class="text-primary mt-3 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
+        <div class="artist-project-info-financial">
+          <div class="text-center border border-secondary rounded p-3 w-25">
+            <p class="m-0 text-primary fw-bold">xxx $</p>
+            <p class="m-0" style="font-size:12px">estimated annual revenue</p>
+          </div>
+          <div class="text-center border border-primary rounded p-3 ms-3 w-25">
+            <p class="m-0 text-primary fw-bold"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
+            <p class="m-0" style="font-size:12px">audio streams</p>
+          </div>
+          <div class="text-center border border-tertiary rounded p-3 ms-3 w-25">
+            <p class="m-0 text-primary fw-bold"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
+            <p class="m-0" style="font-size:12px">video streams</p>
+          </div>
+        </div>
+
+        <p class="text-primary mt-3 border-bottom">Other information</p>
+        <p>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
+        <p>Distributor: <%= @project.distributor %></p>
+
       </div>
     </div>
   </div>
-
-
-
-  <h3>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></h3>
-  <h3>Distributor:</h3>
-  <p><%= @project.distributor %></p>
-
   <%= link_to "Return to projects", projects_path %>
 </div>
