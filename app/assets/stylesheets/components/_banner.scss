@@ -5,7 +5,7 @@
   flex-direction: column;
 
   > .home-banner-title > h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
     font-family: 'Comfortaa', cursive;
     padding: 50px 0;
@@ -47,14 +47,14 @@
   align-items: center;
 
   > .home-banner-image {
-    height: 600px;
+    height: 500px;
     width: 33%;
     object-fit: contain;
     filter: grayscale(100%);
     margin: 10px;
     border-radius: 8px;
     background-position: center;
-    background-size: 1100px;
+    background-size: 900px;
     background-repeat: no-repeat;
     position: relative;
 
@@ -146,7 +146,7 @@
     border-radius: 0px 4px 4px 0px;
     opacity: 1;
     margin-left: 60px;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .home-banner-btn-submit:hover {
