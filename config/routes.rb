@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'products/show'
-  get 'products/new'
-  get 'products/edit'
-  get 'products/update'
-  get 'products/create'
+  # get 'dashboard/show'
+  # get 'products/show'
+  # get 'products/new'
+  # get 'products/edit'
+  # get 'products/update'
+  # get 'products/create'
   # get 'projects/index'
   # get 'projects/new'
   # get 'projects/edit'
@@ -12,9 +13,9 @@ Rails.application.routes.draw do
   # get 'projects/show'
   devise_for :users
   root to: 'pages#home'
-  resources :projects, only: [:index, :show, :edit, :new] do 
-    resources :products, only: [:show, :new]
-    resources :transactions, only: [:new]
+  resources :projects, only: [:index, :show, :edit, :new, :create, :update] do 
+    resources :products, only: [:show, :new, :create]
+    resources :transactions, only: [:new, :create]
   end
   resource :dashboard, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show]
+  before_action :find_project, only: [:index, :show]
 
   def index
     @projects = Project.all
@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    authorize @project
   end
 
   def update
