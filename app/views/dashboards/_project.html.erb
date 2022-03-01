@@ -1,5 +1,5 @@
 <div class ="container">
   <% user.projects.each do |project| %>
-  <%= link_to project.name, project_show_path %>
+  <%= link_to project.name, project_path(project) %>
   <% end %>
 </div>

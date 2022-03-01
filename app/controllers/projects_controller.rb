@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    authorize @project
   end
 
   def update
