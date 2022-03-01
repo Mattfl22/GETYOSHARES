@@ -1,6 +1,41 @@
-<div class="container">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to image_tag('https://cdn2.iconfinder.com/data/icons/music-filled-pixel-perfect/64/music-35-512.png'), root_path, class: "navbar-brand"%>
 
-  <%= link_to "search", projects_path %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if user_signed_in? %>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item active">
+              <%= link_to 'Explore', projects_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item dropdown">
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/vincentlenoir" />
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+              </div>
+            </li>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
 </div>
