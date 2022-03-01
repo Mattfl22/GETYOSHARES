@@ -1,10 +1,31 @@
 <div class="container">
-  <h1>Projects#index</h1>
-  <p>Find me in app/views/projects/index.html.erb</p>
+  <div class="project-title">
+  <h1>All projects</h1>
+  </div>
 
+<div>
+add project with the least remaining shares
+</div>
+
+<div class="row">
   <% @projects.each do |project| %>
-    <%= link_to project.name, project_path(project) %>
+  <div class="col-sm-6">
+  <div class="card bg-dark text-white" style="width: 300px;">
+      <img class="card-img" src="https://www.booska-p.com/wp-content/uploads/2022/02/Booba-Temps-Mort-Visu-News.jpg" alt="Card image">
+      <div class="card-img-overlay">
+        <h5 class="card-title"> <%= project.name %></h5>
+        <p class="card-text"> <%= project.user.artist_name  %> </p>
+        <p class="card-text"><i class="fa-solid fa-circle-play"></i> <%= project.number_of_tokens  %> Shares left </p>
+        <p class="card-text"><i class="fa-solid fa-coins"></i> <%= project.number_of_tokens  %> Buyers </p>
+        <%= link_to "Buy now", "", class: 'btn btn-light' %>
+        <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
+      </div>
+
+    </div>
+  </div>
   <% end %>
+</div>
+
 
    <%= link_to "Back", root_path %>
 </div>
