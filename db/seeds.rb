@@ -17,9 +17,7 @@
 require 'csv'
 
 puts "Clean db"
-
-
-puts "Creating users..."
+puts "OK let's go bitches ! Creating users..."
 
 users_path = Rails.root.join("db/seeds/csv/users.csv")
 users = {}
@@ -30,7 +28,6 @@ users = {}
 # }
 
 CSV.foreach(users_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-
   attributes = {
     first_name: row[:first_name],
     last_name: row[:last_name],
@@ -49,139 +46,153 @@ CSV.foreach(users_path, headers: :first_row, col_sep: ';', header_converters: :s
   users[row[:id]] = user
 end
 
-puts "Users created."
+puts "lol Marie's picture... shame doesn't kill, right ? "
+puts "Ok, users created. Nice bunch of losers."
 
-# puts "Creating projects..."
+puts "Creating projects..."
 
-# projects_path = Rails.root.join("db/seeds/csv/projects.csv")
-# projects = {}
+projects_path = Rails.root.join("db/seeds/csv/projects.csv")
+projects = {}
 
-# # {
-# #   "1" => <Project id=123, user_id=345, ...>,
-# #   "2" => <Project id=124, user_id=345, ...>,
-# # }
+CSV.foreach(projects_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  headers = [
+    "distributor",
+    "name",
+    "description",
+    "release_date",
+    "average_distribution_share",
+    "expected_audio_streams_year",
+    "expected_video_streams_year",
+    "number_of_tokens"
+  ]
 
-# CSV.foreach(projects_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-#   attributes = row.slice(
-#     :distributor,
-#     :name,
-#     :description,
-#     :release_date,
-#     :average_distribution_share,
-#     :expected_audio_streams_year,
-#     :expected_video_streams_year,
-#     :number_of_tokens
-#   )
+  attributes = {}
 
-#   project = Project.new(attributes)
-#   project.user = users[row[:user_id]]
+  headers.each do |header|
+    attributes[header.to_sym] = row[header.to_sym]
+  end
 
-#   file = File.open(Rails.root.join("db/seeds/images/projects/#{row[:picture_filename]}"))
-#   project.picture.attach(io: file, filename: row[:picture_filename], content_type: 'image/jpeg')
-#   project.save!
+  project = Project.new(attributes)
+  project.user = users[row[:user_id]]
 
-#   projects[row[:id]] = project
-# end
+  file = File.open(Rails.root.join("db/seeds/images/projects/#{row[:picture_filename]}"))
+  project.photo.attach(io: file, filename: row[:picture_filename], content_type: 'image/jpeg')
+  project.save!
 
-# puts "Creating products..."
+  projects[row[:id]] = project
+end
 
-# products_path = Rails.root.join("db/seeds/csv/products.csv")
-# products = {}
+puts "Projects created... but frankly, I'd prefer invest in anything than that... "
 
-# CSV.foreach(products_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-#   attributes = row.slice(
-#     :upc,
-#     :grid,
-#     :title,
-#     :language,
-#     :format,
-#     :genre,
-#     :spotify_id,
-#   )
+puts "Let's move on... Creating products..."
 
-#   product = Product.new(attributes)
-#   product.project = products[row[:project_id]]
-#   project.create!
+products_path = Rails.root.join("db/seeds/csv/products.csv")
+products = {}
 
-#   products[row[:id]] = product
-# end
+CSV.foreach(products_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  headers = ["upc", "grid", "title", "language", "format", "genre", "spotify_id"]
 
-# puts "Creating tracks..."
+  attributes = {}
 
-# tracks_path = Rails.root.join("db/seeds/csv/tracks.csv")
-# tracks = {}
+  headers.each do |header|
+    attributes[header.to_sym] = row[header.to_sym]
+  end
 
-# CSV.foreach(tracks_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-#   attributes = row.slice(
-#     :ISRC,
-#     :grid,
-#     :title,
-#     :featuring,
-#     :spotify_id,
-#     :youtube_id,
-#   )
+  product = Product.new(attributes)
+  product.project = projects[row[:project_id]]
+  product.save!
 
-#   track = Track.new(attributes)
-#   track.product = tracks[row[:product_id]]
-#   track.create!
+  products[row[:id]] = product
+end
 
-#   tracks[row[:id]] = track
-# end
+puts "Ok for products !"
 
-# puts "Creating tokens..."
+puts "Creating tracks now... "
 
-# tokens_path = Rails.root.join("db/seeds/csv/tokens.csv")
-# tokens = {}
+tracks_path = Rails.root.join("db/seeds/csv/tracks.csv")
+tracks = {}
 
-# CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-#   attributes = row.slice(
-#     :unit_price,
-#   )
+CSV.foreach(tracks_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  headers = ["isrc", "grid", "title", "featuring", "spotify_id", "youtube_id"]
+  attributes = {}
 
-#   token = Token.new(attributes)
-#   token.project = tokens[row[:project_id]]
-#   token.create!
+  headers.each do |header|
+    attributes[header.to_sym] = row[header.to_sym]
+  end
 
-#   tokens[row[:id]] = token
-# end
+  track = Track.new(attributes)
+  track.product = products[row[:product_id]]
+  track.save!
 
-# puts "Creating transactions..."
+  tracks[row[:id]] = track
+end
 
-# transactions_path = Rails.root.join("db/seeds/csv/transactions.csv")
-# transactions = {}
+puts "Oh."
+puts "My."
+puts 'God.'
+puts "Pfew, you'd need to pay me for listening to that shit lol"
+puts 'OK, your... "songs"... are created.'
 
-# CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-#   attributes = row.slice(
-#     :comment,
-#     :rating,
-#     :date,
-#     :active,
-#   )
+puts "Creating tokens now..."
 
-#   transaction = Transaction.new(attributes)
-#   transaction.token = transactions[row[:token_id]]
-#   transaction.user = transactions[row[:user_id]]
-#   transaction.create!
+tokens_path = Rails.root.join("db/seeds/csv/tokens.csv")
+tokens = {}
 
-#   transactions[row[:id]] = transaction
-# end
+CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  attributes = {
+    unit_price: row[:unit_price]
+  }
 
-# puts "Creating revenues..."
+  token = Token.new(attributes)
+  token.project = projects[row[:project_id]]
+  token.save!
 
-# revenues_path = Rails.root.join("db/seeds/csv/revenues.csv")
-# revenues = {}
+  tokens[row[:id]] = token
+end
 
-# CSV.foreach(revenues_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-#   attributes = row.slice(
-#     :date,
-#     :revenue,
-#   )
+puts "zzzzZZZZZZzzzZZZzzzzzZZzzzz...."
+puts "Creating transactions..."
 
-#   revenue = Revenue.new(attributes)
-#   revenue.project = revenues[row[:project_id]]
-#   revenue.create!
+transactions_path = Rails.root.join("db/seeds/csv/transactions.csv")
+transactions = {}
 
-#   revenues[row[:id]] = revenue
-# end
+CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  headers = ["comment", "rating", "date", "active"]
 
-# puts 'All done'
+  attributes = {}
+
+  headers.each do |header|
+    attributes[header.to_sym] = row[header.to_sym]
+  end
+
+  transaction = Transaction.new(attributes)
+  transaction.token = tokens[row[:token_id]]
+  transaction.user = users[row[:user_id]]
+  transaction.save!
+
+  transactions[row[:id]] = transaction
+end
+
+puts "OK done"
+puts "And FINALLY creating revenues..."
+
+revenues_path = Rails.root.join("db/seeds/csv/revenues.csv")
+revenues = {}
+
+CSV.foreach(revenues_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  headers = ["date", "revenue"]
+
+  attributes = {}
+
+  headers.each do |header|
+    attributes[header.to_sym] = row[header.to_sym]
+  end
+
+  revenue = Revenue.new(attributes)
+  revenue.project = projects[row[:project_id]]
+  revenue.save!
+
+  revenues[row[:id]] = revenue
+end
+
+puts "All done !!!! YEAAAH !! I think i've lost 21 grams..."
