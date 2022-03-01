@@ -131,12 +131,7 @@ tokens = {}
 
 CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
   attributes = row.slice(
-    :ISRC,
-    :grid,
-    :title,
-    :featuring,
-    :spotify_id,
-    :youtube_id,
+    :unit_price,
   )
 
   token = Token.new(attributes)
@@ -146,6 +141,43 @@ CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :
   tokens[row[:id]] = token
 end
 
+puts "Creating transactions..."
 
+transactions_path = Rails.root.join("db/seeds/csv/transactions.csv")
+transactions = {}
+
+CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  attributes = row.slice(
+    :comment,
+    :rating,
+    :date,
+    :active,
+  )
+
+  transaction = Transaction.new(attributes)
+  transaction.token = transactions[row[:token_id]]
+  transaction.user = transactions[row[:user_id]]
+  transaction.create!
+
+  transactions[row[:id]] = transaction
+end
+
+puts "Creating revenues..."
+
+revenues_path = Rails.root.join("db/seeds/csv/revenues.csv")
+revenues = {}
+
+CSV.foreach(revenues_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  attributes = row.slice(
+    :date,
+    :revenue,
+  )
+
+  revenue = Revenue.new(attributes)
+  revenue.project = revenues[row[:project_id]]
+  revenue.create!
+
+  revenues[row[:id]] = revenue
+end
 
 puts 'All done'
