@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <h1>Dashboard#show</h1>
+    <p>My info</p>
+    <%= render "info", user: @user %>
+  </div>
+
+  <div>
+  <p>My projects</p>
+    <%= render "project", user: @user %>
+  </div>
+
+  <div>
+  <p>My tokens</p>
+    <%= render "token", user: @user %>
+
+  </div>
+
+</div>

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show]
+  before_action :find_project, only: [:index, :show]
 
   def index
   end
