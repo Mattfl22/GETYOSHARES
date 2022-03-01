@@ -3,6 +3,8 @@
   <% user.projects.each do |project| %>
     <% if current_user.id == project.user_id %> 
       <%= link_to project.name, project_path(project) %>
+    <% else %>
+    <p> No projects yet ! </p>
     <% end %>
   <% end %>
 </div>

@@ -1,15 +1,52 @@
 .home-banner-left {
-  background-color: red;
-  justify-content: space-between;
+  justify-content: space-around;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  > .home-banner-title > h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    font-family: 'Comfortaa', cursive;
+    padding: 50px 0;
+  }
 
 }
+// Tentative (ratée) d'animation sur le titre
 
+// @keyframes spanFadeIn{
+//   0% {
+//     transform: translateY(100%);
+//   }
+//   100% {
+//     transform: translateY(0);
+//   }
+// }
+
+
+// .home-banner-title-span {
+//   overflow: hidden;
+//   display: block;
+
+//   > .home-banner-title-animation{
+//     display: block;
+//     animation: spanFadeIn 500ms ease forwards;
+//     transform: translateY(100%);
+
+//     &:nth-child(2) {
+//       animation-delay: 200ms;
+//     }
+
+//     &:nth-child(3) {
+//       animation-delay: 400ms;
+//     }
+//   }
+// }
 .home-banner-right {
-  background-color: green;
   display: flex;
   align-items: center;
 
-  > div {
+  > .home-banner-image {
     height: 600px;
     width: 33%;
     object-fit: contain;
@@ -18,25 +55,101 @@
     border-radius: 8px;
     background-position: center;
     background-size: 1100px;
-    background-repeat: no-repeat ;
+    background-repeat: no-repeat;
+    position: relative;
+
+    > .home-banner-image-name {
+      position: absolute;
+      color: white;
+      bottom: 4rem;
+      font-weight: 700;
+      font-size: 2rem;
+      transform: rotate(-90deg);
+    }
+
+    > .home-banner-image-hover{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 2rem;
+      padding: 0 2rem;
+      opacity: 0;
+      font-size: 2rem;
+      color: white;
+      width: 100%;
+      font-weight: 700;
+      // transition: opacity 1.5s ease;
+    }
 
     &:hover {
       width: 100%;
-    filter: grayscale(0%);
-    // transform: 2s ease;
+      filter: grayscale(0%);
+      transition: width 1.2s ease;
 
+      .opacity {
+        opacity: 0;
+      }
+
+      .home-banner-image-hover {
+        opacity: 100;
+      }
     }
+
+
   }
 
-  > .home-banner-image-cardi-b {
+  > .home-banner-image.cardi-b {
     background-image: url("https://i.pinimg.com/originals/21/83/27/2183272c595e5cf13e4a56e78ea5912b.jpg");
   }
 
-  > .home-banner-image-booba {
+  > .home-banner-image.booba {
     background-image: url("https://generations.fr/media/news/604c98f93beb1-booba-ultra-ventes.jpg");
   }
 
-  > .home-banner-image-peggy-gou {
+  > .home-banner-image.peggy-gou {
     background-image: url("https://assets.vogue.com/photos/5a90862185604a74564eb2fa/master/pass/01-Promo-Peggy-Gou.jpg");
+  }
+}
+
+
+.banner-highlight-primary {
+  background-color: $primary;
+  color: white;
+}
+
+.home-banner-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: 0px 4px 4px grey;
+
+
+  > input {
+    border: 0;
+    padding: 10px;
+  }
+
+  > input:focus-visible {
+    outline: none;
+  }
+
+  > .home-banner-btn-submit {
+    color: white;
+    text-decoration: none;
+    background-color: $primary;
+    padding: 20px;
+    border-radius: 0px 4px 4px 0px;
+    opacity: 1;
+    margin-left: 60px;
+    font-size: 2rem;
+  }
+
+  .home-banner-btn-submit:hover {
+    opacity: 0.7;
   }
 }
