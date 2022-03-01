@@ -1,7 +1,9 @@
 <div class="container">
   <div>
     <h1>Dashboard#show</h1>
+    <%# better to have partials so that several developers can work on the same page without conflicts %>
     <p>My info</p>
+    <%# user: is from the partial, it's linked with current urrent in dashboard controller, all thanks to devise %>
     <%= render "info", user: @user %>
   </div>
 

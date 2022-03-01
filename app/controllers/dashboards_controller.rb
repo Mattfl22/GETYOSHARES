@@ -3,5 +3,6 @@ class DashboardsController < ApplicationController
 # dashboards controller need to be plural even though the route dashboard is singular
   def show
     @user = current_user
+    authorize(:dashboard, :show?)
   end
 end
