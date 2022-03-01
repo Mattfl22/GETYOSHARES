@@ -10,10 +10,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_135349) do
+ActiveRecord::Schema.define(version: 2022_02_28_154023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.integer "upc"
+    t.string "grid"
+    t.string "title"
+    t.string "language"
+    t.string "format"
+    t.string "genre"
+    t.string "spotify_id"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_products_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "distributor"
+    t.string "name"
+    t.string "description"
+    t.date "release_date"
+    t.integer "average_distribution_share"
+    t.integer "expected_audio_streams_year"
+    t.integer "expected_video_streams_year"
+    t.integer "number_of_tokens"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "revenues", force: :cascade do |t|
+    t.date "date"
+    t.float "revenue"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_revenues_on_project_id"
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.integer "unit_price"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tokens_on_project_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string "isrc"
+    t.string "grid"
+    t.string "title"
+    t.string "featuring"
+    t.string "spotify_id"
+    t.string "youtube_id"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_tracks_on_product_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.date "date"
+    t.boolean "active"
+    t.bigint "user_id", null: false
+    t.bigint "token_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["token_id"], name: "index_transactions_on_token_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,4 +105,11 @@ ActiveRecord::Schema.define(version: 2022_02_28_135349) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "projects"
+  add_foreign_key "projects", "users"
+  add_foreign_key "revenues", "projects"
+  add_foreign_key "tokens", "projects"
+  add_foreign_key "tracks", "products"
+  add_foreign_key "transactions", "tokens"
+  add_foreign_key "transactions", "users"
 end

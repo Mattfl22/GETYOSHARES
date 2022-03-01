@@ -1,0 +1,12 @@
+<div class="container">
+  <h1><%= @project.name %></h1>
+  <%= link_to "Return to projects", projects_path %>
+  <br>
+  <h3>Project description</h3>
+  <p><%= @project.description %></p>
+  <h3>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></h3>
+  <h3>Distributor:</h3>
+  <p><%= @project.distributor %></p>
+  <h3>Available Tokens</h3>
+  <p>To be implemented</p>
+</div>

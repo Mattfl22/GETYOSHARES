@@ -1,0 +1,42 @@
+.home-banner-left {
+  background-color: red;
+  justify-content: space-between;
+
+}
+
+.home-banner-right {
+  background-color: green;
+  display: flex;
+  align-items: center;
+
+  > div {
+    height: 600px;
+    width: 33%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    margin: 10px;
+    border-radius: 8px;
+    background-position: center;
+    background-size: 1100px;
+    background-repeat: no-repeat ;
+
+    &:hover {
+      width: 100%;
+    filter: grayscale(0%);
+    // transform: 2s ease;
+
+    }
+  }
+
+  > .home-banner-image-cardi-b {
+    background-image: url("https://i.pinimg.com/originals/21/83/27/2183272c595e5cf13e4a56e78ea5912b.jpg");
+  }
+
+  > .home-banner-image-booba {
+    background-image: url("https://generations.fr/media/news/604c98f93beb1-booba-ultra-ventes.jpg");
+  }
+
+  > .home-banner-image-peggy-gou {
+    background-image: url("https://assets.vogue.com/photos/5a90862185604a74564eb2fa/master/pass/01-Promo-Peggy-Gou.jpg");
+  }
+}
