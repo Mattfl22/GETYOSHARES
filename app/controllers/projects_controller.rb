@@ -14,8 +14,4 @@ class ProjectsController < ApplicationController
 
   def update
   end
-
-  def show
-    @project = Project.find(params[:id])
-  end
 end
