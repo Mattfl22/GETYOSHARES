@@ -1,0 +1,8 @@
+<div class ="container">
+<%# we only display projects created by the current_user %>
+  <% user.projects.each do |project| %>
+    <% if current_user.id == project.user_id %> 
+      <%= link_to project.name, project_path(project) %>
+    <% end %>
+  <% end %>
+</div>
