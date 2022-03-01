@@ -2,6 +2,7 @@
 
 
   <div class="artist-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.vogue.fr/photos/60a51de3de22532a74a2c4cc/master/pass/V0-2-POMME.jpg);">
+    </h3 class="artist-banner-name"><%= User.find(@project.user_id).artist_name %><h3>
   </div>
 
   <h1><%= @project.name %></h1>
