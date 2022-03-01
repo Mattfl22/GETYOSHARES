@@ -1,3 +1,18 @@
 <div class ="container">
-<h2> LOGIC TBD </h2>
+
+  <% user.transactions.each do |transaction| %> 
+   <% if transaction.active == true %>
+    <ul>
+      <li>Project name :   <%= link_to transaction.token.project.name, project_path(transaction) %></li>
+      <li>Nb of tokens of the project :  <%= transaction.token.project.number_of_tokens %></li>
+      <li>number of tokens bought : <%= user.tokens.group_by{ |t| t.project_id}.count %></li>
+      <li>token unit price : <%= transaction.token.unit_price %> €</li>
+    </ul>
+    <% else %>
+    <p> No tokens yet !</p>
+    <% end %>
+  <% end %>  
+
+  
+
 </div>

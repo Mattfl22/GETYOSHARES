@@ -1,0 +1,10 @@
+﻿id;first_name;last_name;artist_name;country;date_of_birth;e-mail;password;photo_url
+1;Elie;Yaffa;Booba;France;1976-12-09;booba@gmail.com;vincent;booba.jpeg
+2;Belcalis;Marlenis Almánzar;Cardi B;United States;1992-10-11;cardi-b@gmail.com;vincent;cardi.jpeg
+3;Joseph Junior;Adenuga;Skepta;United-Kingdom;1982-09-19;skepta@gmail.com;vincent;skepta.jpeg
+4;Kim;Min-ji;Peggy Gou;Korean;1991-07-03;peggy_gou@gmail.com;vincent;peggy.jpeg
+5;Claire;Pommet;Pomme;France;1996-08-02;pomme@gmail.com;vincent;pomme.jpeg
+6;Marylou;Mayniel;Oklou;France;1993-04-23;oklou@gmail.com;vincent;oklou.jpeg
+7;Matt;Flecher;;France;1993-04-22;matt@gmail.com;vincent;mathieu.jpeg
+8;Flory;Hibelot;;France;1992-08-09;flory@gmail.com;vincent;flory.jpeg
+9;Marie;Desjonqueres;;France;1996-09-19;marie@gmail.com;vincent;marie.jpeg
