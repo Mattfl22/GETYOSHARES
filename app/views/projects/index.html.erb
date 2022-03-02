@@ -4,14 +4,14 @@
   <h1 class="text-secondary my-3">All <span class="banner-highlight-primary">projects</span></h1>
   </div>
 
-<div class="row">
+<div class="row row-cols-auto">
   <% @projects.each do |project| %>
   <% token = Token.find_by(project_id: project.id) %>
   <% transaction = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
   <% total_amount_invested = transaction * token.unit_price %>
   <% total_amount_available = (project.number_of_tokens) * (token.unit_price) %>
-  <div class="col-sm-3">
-    <div class="card text-white mb-2 border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
+  <div class="col">
+    <div class="card text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
         <div class="card-img-overlay">
           <h5 class="card-title"> <%= project.name %></h5>
           <p class="card-text"> <%= project.user.artist_name  %> </p>
