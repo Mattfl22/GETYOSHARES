@@ -1,36 +1,12 @@
 <div class ="container">
 
-<%# number of tokens bought per project for current_user 
-<%= Transaction.where(token_id: Token.where(project_id: 6), user_id: current_user).count %>
-
-<%# number of transactions <%= user.transactions.count %>
-
-<h2> Portfolio </h2>
-<%= @project_informations  %>
-
-
-<% @transaction_informations.each do |t_information| %> 
-  <li><%= t_information[:artist_name] %> 
-  <%= t_information[:transactions] %> transactions</li>
-  <% end %>
-
-  <% @project_informations .each do |p| %>
-    <%= p[:project_name] %>
-  <% end %>
-
-
-
-DO NOT LOOK BELOW
-  <% user.transactions.each do |transaction| %> 
-   <% if transaction.active == true %>
-    <ul>
-      Project name :   <%= link_to transaction.token.project.name, project_path(transaction.token.project.id) %>
-      Nb of tokens of the project :  <%= transaction.token.project.number_of_tokens %>
-      token unit price : <%= transaction.token.unit_price %> €
-    </ul>
-    <% else %>
-    <p> No tokens yet !</p>
+  <ul>
+    <% @project_informations.each do |project_information| %>
+      <li>Project name: <%= project_information[:project_name] %></li>
+      <li>Artist: <%= User.find(Project.find_by(name:project_information[:project_name]).user_id).artist_name %></li>
+      <li>Number of transactions: <%= project_information[:transactions] %></li>
+      <li class='mb-3'>Amount invested: <%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).unit_price) * project_information[:transactions] %>$</li>
     <% end %>
-  <% end %>  
+  </ul>
 
 </div>
