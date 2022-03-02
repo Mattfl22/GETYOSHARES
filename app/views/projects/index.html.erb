@@ -1,31 +1,28 @@
-<div class="container">
-  <div class="project-title">
-  <h1>All projects</h1>
-  </div>
 
-<div>
-add project with the least remaining shares
-</div>
+<div class="container-gys">
+  <div class="project-title">
+  <h1 class="text-secondary my-3">All <span class="banner-highlight-primary">projects</span></h1>
+  </div>
 
 <div class="row">
   <% @projects.each do |project| %>
-  <div class="col-sm-6">
-  <div class="card bg-dark text-white" style="width: 300px;">
-      <img class="card-img" src="https://www.booska-p.com/wp-content/uploads/2022/02/Booba-Temps-Mort-Visu-News.jpg" alt="Card image">
-      <div class="card-img-overlay">
-        <h5 class="card-title"> <%= project.name %></h5>
-        <p class="card-text"> <%= project.user.artist_name  %> </p>
-        <p class="card-text"><i class="fa-solid fa-circle-play"></i> <%= project.number_of_tokens  %> Shares left </p>
-        <p class="card-text"><i class="fa-solid fa-coins"></i> <%= project.number_of_tokens  %> Buyers </p>
-        <%= link_to "Buy now", "", class: 'btn btn-light' %>
-        <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
-      </div>
-
+  <% token = Token.find_by(project_id: project.id) %>
+  <% transaction = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
+  <% total_amount_invested = transaction * token.unit_price %>
+  <% total_amount_available = (project.number_of_tokens) * (token.unit_price) %>
+  <div class="col-sm-3">
+    <div class="card text-white mb-2 border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
+        <div class="card-img-overlay">
+          <h5 class="card-title"> <%= project.name %></h5>
+          <p class="card-text"> <%= project.user.artist_name  %> </p>
+          <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_tokens - transaction %> Shares left </p>
+          <p class="card-text"><i class="fas fa-user-friends"></i> <%= transaction  %> Buyers </p>
+          <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
+        </div>
     </div>
   </div>
   <% end %>
 </div>
 
-
-   <%= link_to "Back", root_path %>
+  <i class="fas fa-backward text-primary sticky-bottom"></i> <%= link_to "Back to home page", root_path, class: "text-decoration-none" %>
 </div>

@@ -38,79 +38,10 @@
 
 }
 
-.home-banner-right {
-  display: flex;
-  align-items: center;
-
-  > .home-banner-image {
-    height: 500px;
-    width: 33%;
-    object-fit: contain;
-    filter: grayscale(100%);
-    margin: 10px;
-    border-radius: 8px;
-    background-position: center;
-    background-size: 900px;
-    background-repeat: no-repeat;
-    position: relative;
-
-    > .home-banner-image-name {
-      position: absolute;
-      color: white;
-      bottom: 4rem;
-      font-weight: 700;
-      font-size: 2rem;
-      transform: rotate(-90deg);
-    }
-
-    > .home-banner-image-hover{
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      position: absolute;
-      bottom: 2rem;
-      padding: 0 2rem;
-      opacity: 0;
-      font-size: 2rem;
-      color: white;
-      width: 100%;
-      font-weight: 700;
-    }
-
-    &:hover {
-      width: 100%;
-      filter: grayscale(0%);
-      transition: width 1.2s ease;
-
-      .opacity {
-        opacity: 0;
-      }
-
-      .home-banner-image-hover {
-        opacity: 100;
-      }
-    }
-
-
-  }
-
-  > .home-banner-image.cardi-b {
-    background-image: url("https://i.pinimg.com/originals/21/83/27/2183272c595e5cf13e4a56e78ea5912b.jpg");
-  }
-
-  > .home-banner-image.booba {
-    background-image: url("https://generations.fr/media/news/604c98f93beb1-booba-ultra-ventes.jpg");
-  }
-
-  > .home-banner-image.peggy-gou {
-    background-image: url("https://assets.vogue.com/photos/5a90862185604a74564eb2fa/master/pass/01-Promo-Peggy-Gou.jpg");
-  }
-}
-
-
 .banner-highlight-primary {
   background-color: $primary;
   color: white;
+  padding: 5px;
 }
 
 .home-banner-form {
@@ -121,7 +52,7 @@
   border: 0;
   border-radius: 4px;
   padding: 0px 0px 0px 20px;
-  box-shadow: 0px 4px 4px grey;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 
   > input {
@@ -148,6 +79,85 @@
     opacity: 0.7;
   }
 }
+.home-banner-right {
+  display: flex;
+  align-items: center;
+
+  > .home-banner-image {
+    height: 500px;
+    width: 33%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    margin: 10px;
+    border-radius: 8px;
+    background-position: center;
+    background-size: 900px;
+    background-repeat: no-repeat;
+    position: relative;
+
+
+    > .home-banner-image-name {
+      position: absolute;
+      color: white;
+      bottom: 4rem;
+      font-weight: 700;
+      font-size: 2rem;
+      transform: rotate(-90deg);
+
+    }
+
+    > .home-banner-image-hover{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 2rem;
+      padding: 0 40px;
+      opacity: 0;
+      font-size: 2rem;
+      color: white;
+      width: 100%;
+      font-weight: 700;
+    }
+
+    &:hover {
+      width: 100%;
+      filter: grayscale(0%);
+      transition: width 1.2s ease;
+
+      .opacity {
+        opacity: 0;
+      }
+
+      .home-banner-image-hover {
+        opacity: 1;
+        transition: 2s ;
+      }
+    }
+
+    .home-banner-image-hover-token {
+      font-size: 1.5rem;
+      padding: 5px;
+      background-color: $primary;
+      border-radius: 8px;
+
+    }
+  }
+
+  > .home-banner-image.cardi-b {
+    background-image: url("https://i.pinimg.com/originals/21/83/27/2183272c595e5cf13e4a56e78ea5912b.jpg");
+  }
+
+  > .home-banner-image.booba {
+    background-image: url("https://generations.fr/media/news/604c98f93beb1-booba-ultra-ventes.jpg");
+  }
+
+  > .home-banner-image.peggy-gou {
+    background-image: url("https://assets.vogue.com/photos/5a90862185604a74564eb2fa/master/pass/01-Promo-Peggy-Gou.jpg");
+  }
+}
+
+
 
 @keyframes titleFadeIn{
   0% {

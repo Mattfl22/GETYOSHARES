@@ -11,15 +11,4 @@ class DashboardsController < ApplicationController
       @project_informations << project
     end
   end
-
-  def show_tokens
-
-    # @tokens = Token.joins(:transactions).joins(:users).where(transactions: {user: current_user})
-    # raise
-    # projects.keys.in_groups_of(1,nil).each do |p|
-    #   puts p[0]     
-    # end
-  end
-  # helper_method :show_tokens
-
 end

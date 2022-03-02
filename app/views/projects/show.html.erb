@@ -24,7 +24,10 @@
         <h2 class="text-secondary">Project description</span></h2>
         <p class="opacity-75"><%= @project.description %></p>
         <h2 class="text-secondary">Music player</h2>
-        <p>Placeholder</p>
+
+      <% @spotify_id = @project.products.first%>
+      <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
+
       </div>
       <div class="col col-sm-1">
       </div>
