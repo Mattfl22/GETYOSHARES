@@ -1,1 +1,41 @@
 // Specific CSS for your home-page
+
+
+.home-features {
+  margin-top: 50px;
+  align-items: center;
+  > h2{
+    text-align: center;
+    font-weight: 700;
+
+    > span {
+      border-bottom: 3px solid $primary;
+    }
+  }
+}
+
+.home-features-feature {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  height: 375px;
+  margin-top: 50px;
+
+
+  > img {
+    width: 50%;
+  }
+
+  > h3 {
+    color:  $primary;
+    margin: 20px 0;
+
+  }
+
+  > p {
+    text-align: center;
+    max-width: 60%;
+
+  }
+}
