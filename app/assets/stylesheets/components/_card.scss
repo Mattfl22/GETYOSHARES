@@ -82,6 +82,19 @@
   .trendings-cards{
     justify-content: center;
     margin: 0;
-  }
 
+    > .home-trending-card{
+      height: 300px;
+      width: 300px;
+
+      > .home-trending-card-infos {
+        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 75%;
+
+      }
+    }
+  }
 }
