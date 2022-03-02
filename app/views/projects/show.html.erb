@@ -42,7 +42,7 @@
 
         <div class="artist-project-info-financial">
           <div class="text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white fw-bold fs-5"><%= token.unit_price%> $</p>
+            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(token.unit_price, :delimiter => ',')%> $</p>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="text-center border border-primary rounded p-2 ms-3 w-25">
@@ -54,9 +54,21 @@
             <p class="m-0" style="font-size:12px">tokens purchased</p>
           </div>
         </div>
-        <div class="artist-project-info-buy">
-          <p class='btn btn-secondary mt-3 w-75'>Buy token</p>
+
+        <p>
+         <button class="btn btn-secondary w-25 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Buy token
+         </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <%= simple_form_for [@project] do |f| %>
+              <%= f.input :number_of_tokens %>
+              <%= f.submit %>
+            <% end %>
+          </div>
         </div>
+
 
         <p class="text-primary mt-3 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
 
