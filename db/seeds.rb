@@ -17,6 +17,14 @@
 require 'csv'
 
 puts "Clean db"
+Revenue.destroy_all
+Track.destroy_all
+Product.destroy_all
+Transaction.destroy_all
+Token.destroy_all
+Project.destroy_all
+User.destroy_all
+
 puts "OK let's go bitches ! Creating users..."
 
 users_path = Rails.root.join("db/seeds/csv/users.csv")
