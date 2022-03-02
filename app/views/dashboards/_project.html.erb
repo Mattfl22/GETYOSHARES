@@ -1,10 +1,25 @@
 <div class ="container">
-<%# we only display projects created by the current_user %>
-  <% user.projects.each do |project| %>
-    <% if current_user.id == project.user_id %> 
-      <%= link_to project.name, project_path(project) %>
-    <% else %>
-    <p> No projects yet ! </p>
-    <% end %>
+  <% current_user.projects.each do |project|  %>
+  <div class="revenue-graph">
+    <%= column_chart project.revenues.group_by_month(:date).sum(:revenue), colors: ["#6768AB"], thousands: ",", width: "800px", height: "500px" %>
+  </div>
   <% end %>
 </div>
+<%# we only display projects created by the current_user
+  <%# current_user.projects.each do |project| %>
+    <%# if current_user.id == project.user_id %>
+      <%#= link_to project.name, project_path(project) %>
+    <%# else %>
+    <%# <p> No projects yet ! </p> %>
+    <%# end %>
+  <%# end %>
+<%# </div> %>
+<%# <%= column_chart (Token.group(:project).sum(:unit_price)), stacked: true %>
+
+  <%#= column_chart (Revenue.group(:date).sum(:revenue)), stacked: true, colors: ["#6768AB"], thousands: ",", width: "800px", height: "500px" %>
+
+<%# <% data = [
+# [1,1],[2,3],[3,5],[4,8],[6,4],[7,2]
+# ] %>
+
+ <%# <%= line_chart data, colors: ["#b00", "#666"]%>
