@@ -4,32 +4,11 @@ class DashboardsController < ApplicationController
   def show
     @user = current_user
     authorize(:dashboard, :show?)
-    @transactions_per_artist = @user.transactions.group_by{ |t| t.token.project.user.artist_name}
-
+    projects = @user.transactions.group_by{ |t| t.token.project.name}
     @project_informations = []
-    @tokens_per_project = @user.tokens.group_by{ |t| t.project.name}
-    @tokens_per_project.each do |project_name, token_id, unit_price, project_id|
-      project = {project_name: project_name, token_id: token_id, unit_price: unit_price.to_i, project_id: project_id}
+    projects.each do |project_name, transactions|
+      project = { project_name: project_name, transactions: transactions.count }
       @project_informations << project
     end
-    
-    @transaction_informations = []
-    @transactions_per_artist.each do |artist_name, transactions|
-      transaction = { artist_name: artist_name, transactions: transactions.count }
-      @transaction_informations << transaction
-    end
-
   end
-
-
-  def show_tokens
-    
-    # @tokens = Token.joins(:transactions).joins(:users).where(transactions: {user: current_user})
-    # raise
-    # projects.keys.in_groups_of(1,nil).each do |p|
-    #   puts p[0]
-    # end
-  end
-  # helper_method :show_tokens
-
 end
