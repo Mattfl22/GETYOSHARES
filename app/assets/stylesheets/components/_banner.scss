@@ -149,6 +149,18 @@
   }
 }
 
+@keyframes titleFadeIn{
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// End of Homepage Banner
+
+
 // artist banner
 
 .artist-banner{
@@ -196,13 +208,4 @@
       margin: 0;
     }
 
-@keyframes titleFadeIn{
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-// End of Homepage Banner
+// End of artist banner
