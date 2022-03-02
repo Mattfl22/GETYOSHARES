@@ -207,6 +207,15 @@
       font-weight: lighter;
       margin: 0;
     }
+  }
+
+@keyframes titleFadeIn{
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 // End of artist banner
