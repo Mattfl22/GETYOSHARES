@@ -11,7 +11,7 @@
   <% total_amount_invested = transaction * token.unit_price %>
   <% total_amount_available = (project.number_of_tokens) * (token.unit_price) %>
   <div class="col-sm-3">
-    <div class="card bg-dark text-white mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
+    <div class="card text-white mb-2 border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
         <div class="card-img-overlay">
           <h5 class="card-title"> <%= project.name %></h5>
           <p class="card-text"> <%= project.user.artist_name  %> </p>
