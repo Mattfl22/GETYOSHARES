@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+
   private
 
   def find_project
