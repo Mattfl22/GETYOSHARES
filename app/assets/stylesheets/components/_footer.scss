@@ -2,9 +2,53 @@ footer {
   background-color: $primary;
   width: 100%;
   margin: 0;
-  padding: 20px 80px;
+  padding: 20px 50px;
   color: white;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between  ;
+  justify-content: space-between;
+
+  > .footer-left{
+    align-items: flex-start;
+
+    > p {
+      width: 60%;
+    }
+
+    .footer-social-media {
+
+
+      > a i {
+        color: white;
+        font-size: 2rem;
+        margin-right: 10px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+    }
+  }
+
+
+  > .footer-right > ul{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    > li {
+      list-style: none;
+      margin: 0px 10px;
+
+      > a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.8;
+      }
+      }
+    }
+  }
 }
