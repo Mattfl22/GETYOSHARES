@@ -30,7 +30,7 @@
 
   > .home-banner-title-animation{
     display: block;
-    animation: titleFadeIn 500ms ease forwards;
+    animation: titleFadeIn 800ms ease forwards;
     transform: translateY(100%);
 
 
@@ -38,6 +38,47 @@
 
 }
 
+.banner-highlight-primary {
+  background-color: $primary;
+  color: white;
+  padding: 5px;
+}
+
+.home-banner-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 0px 0px 0px 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+  > input {
+    border: 0;
+    padding: 10px;
+  }
+
+  > input:focus-visible {
+    outline: none;
+  }
+
+  > .home-banner-btn-submit {
+    color: white;
+    text-decoration: none;
+    background-color: $primary;
+    padding: 20px;
+    border-radius: 0px 4px 4px 0px;
+    opacity: 1;
+    margin-left: 60px;
+    font-size: 1.5rem;
+  }
+
+  .home-banner-btn-submit:hover {
+    opacity: 0.7;
+  }
+}
 .home-banner-right {
   display: flex;
   align-items: center;
@@ -108,46 +149,18 @@
 }
 
 
-.banner-highlight-primary {
-  background-color: $primary;
-  color: white;
-}
 
-.home-banner-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  border: 0;
-  border-radius: 4px;
-  padding: 0px 0px 0px 20px;
-  box-shadow: 0px 4px 4px grey;
-
-
-  > input {
-    border: 0;
-    padding: 10px;
+@keyframes titleFadeIn{
+  0% {
+    transform: translateY(100%);
   }
-
-  > input:focus-visible {
-    outline: none;
-  }
-
-  > .home-banner-btn-submit {
-    color: white;
-    text-decoration: none;
-    background-color: $primary;
-    padding: 20px;
-    border-radius: 0px 4px 4px 0px;
-    opacity: 1;
-    margin-left: 60px;
-    font-size: 1.5rem;
-  }
-
-  .home-banner-btn-submit:hover {
-    opacity: 0.7;
+  100% {
+    transform: translateY(0);
   }
 }
+
+// End of Homepage Banner
+
 
 // artist banner
 
@@ -206,4 +219,4 @@
   }
 }
 
-// End of Homepage Banner
+// End of artist banner
