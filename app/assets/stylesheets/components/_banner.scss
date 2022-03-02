@@ -95,6 +95,7 @@
     background-repeat: no-repeat;
     position: relative;
 
+
     > .home-banner-image-name {
       position: absolute;
       color: white;
@@ -102,6 +103,7 @@
       font-weight: 700;
       font-size: 2rem;
       transform: rotate(-90deg);
+
     }
 
     > .home-banner-image-hover{
@@ -110,7 +112,7 @@
       justify-content: space-between;
       position: absolute;
       bottom: 2rem;
-      padding: 0 2rem;
+      padding: 0 40px;
       opacity: 0;
       font-size: 2rem;
       color: white;
@@ -128,11 +130,18 @@
       }
 
       .home-banner-image-hover {
-        opacity: 100;
+        opacity: 1;
+        transition: 2s ;
       }
     }
 
+    .home-banner-image-hover-token {
+      font-size: 1.5rem;
+      padding: 5px;
+      background-color: $primary;
+      border-radius: 8px;
 
+    }
   }
 
   > .home-banner-image.cardi-b {
