@@ -7,41 +7,35 @@
   > .home-banner-title > h1 {
     font-size: 3rem;
     font-weight: 700;
-    font-family: 'Comfortaa', cursive;
     padding: 50px 0;
   }
 
 }
-// Tentative (ratée) d'animation sur le titre
 
-// @keyframes spanFadeIn{
-//   0% {
-//     transform: translateY(100%);
-//   }
-//   100% {
-//     transform: translateY(0);
-//   }
-// }
+.home-banner-title-span {
+  overflow: hidden;
+  display: block;
+  line-height: 1.5;
+
+  &:nth-child(2) span {
+    animation-delay: 200ms;
+  }
+
+  &:nth-child(3) span {
+    animation-delay: 400ms;
+  }
 
 
-// .home-banner-title-span {
-//   overflow: hidden;
-//   display: block;
+  > .home-banner-title-animation{
+    display: block;
+    animation: titleFadeIn 500ms ease forwards;
+    transform: translateY(100%);
 
-//   > .home-banner-title-animation{
-//     display: block;
-//     animation: spanFadeIn 500ms ease forwards;
-//     transform: translateY(100%);
 
-//     &:nth-child(2) {
-//       animation-delay: 200ms;
-//     }
+  }
 
-//     &:nth-child(3) {
-//       animation-delay: 400ms;
-//     }
-//   }
-// }
+}
+
 .home-banner-right {
   display: flex;
   align-items: center;
@@ -79,7 +73,6 @@
       color: white;
       width: 100%;
       font-weight: 700;
-      // transition: opacity 1.5s ease;
     }
 
     &:hover {
@@ -200,4 +193,12 @@
       font-weight: lighter;
       margin: 0;
     }
+
+@keyframes titleFadeIn{
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
