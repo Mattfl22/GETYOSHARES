@@ -1,13 +1,11 @@
-<div class="container">
-
-
-  <div class="artist-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://media.vogue.fr/photos/60a51de3de22532a74a2c4cc/master/pass/V0-2-POMME.jpg);">
+<div class="container-gys">
+  <div class="artist-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @project.photo.key %>');">
     <div class="artist-banner-name">
       <h3><%= User.find(@project.user_id).artist_name.capitalize %></h3>
       <p><%= @project.name  %></p>
     </div>
     <div class="artist-banner-genre">
-      <p><%= "Genre" %></p>
+      <p><%= Product.find_by(project_id: @project.id).genre %></p>
     </div>
     <div class="artist-banner-token">
       <h2><%= @project.number_of_tokens %></h2>
@@ -18,15 +16,15 @@
   <div class="artist-project-info">
     <div class="row">
       <div class="col col-sm-6">
-        <h2 class="text-primary">Project description</h2>
+        <h2 class="text-secondary">Project description</span></h2>
         <p class="opacity-75"><%= @project.description %></p>
-        <h2 class="text-primary">Music player</h2>
+        <h2 class="text-secondary">Music player</h2>
         <p>Placeholder</p>
       </div>
       <div class="col col-sm-1">
       </div>
       <div class="col col-sm-5">
-        <h2 class="text-primary mb-3">Financial information</h2>
+        <h2 class="text-secondary mb-3">Financial information</h2>
         <p class="text-primary m-0 border-bottom"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
         <p class="text-primary fs-3 m-0">xx,xxx $</p>
         <% token = Token.find_by(project_id: @project.id) %>
@@ -72,5 +70,5 @@
       </div>
     </div>
   </div>
-  <%= link_to "Return to projects", projects_path %>
+  <i class="fas fa-backward text-primary"></i> <%= link_to "Return to projects", projects_path, class: "text-decoration-none" %>
 </div>
