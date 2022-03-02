@@ -1,3 +1,5 @@
+// Homepage Banner
+
 .home-banner-left {
   justify-content: space-around;
   display: flex;
@@ -5,56 +7,50 @@
   flex-direction: column;
 
   > .home-banner-title > h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
-    font-family: 'Comfortaa', cursive;
     padding: 50px 0;
   }
 
 }
-// Tentative (ratée) d'animation sur le titre
 
-// @keyframes spanFadeIn{
-//   0% {
-//     transform: translateY(100%);
-//   }
-//   100% {
-//     transform: translateY(0);
-//   }
-// }
+.home-banner-title-span {
+  overflow: hidden;
+  display: block;
+  line-height: 1.5;
+
+  &:nth-child(2) span {
+    animation-delay: 200ms;
+  }
+
+  &:nth-child(3) span {
+    animation-delay: 400ms;
+  }
 
 
-// .home-banner-title-span {
-//   overflow: hidden;
-//   display: block;
+  > .home-banner-title-animation{
+    display: block;
+    animation: titleFadeIn 500ms ease forwards;
+    transform: translateY(100%);
 
-//   > .home-banner-title-animation{
-//     display: block;
-//     animation: spanFadeIn 500ms ease forwards;
-//     transform: translateY(100%);
 
-//     &:nth-child(2) {
-//       animation-delay: 200ms;
-//     }
+  }
 
-//     &:nth-child(3) {
-//       animation-delay: 400ms;
-//     }
-//   }
-// }
+}
+
 .home-banner-right {
   display: flex;
   align-items: center;
 
   > .home-banner-image {
-    height: 600px;
+    height: 500px;
     width: 33%;
     object-fit: contain;
     filter: grayscale(100%);
     margin: 10px;
     border-radius: 8px;
     background-position: center;
-    background-size: 1100px;
+    background-size: 900px;
     background-repeat: no-repeat;
     position: relative;
 
@@ -79,7 +75,6 @@
       color: white;
       width: 100%;
       font-weight: 700;
-      // transition: opacity 1.5s ease;
     }
 
     &:hover {
@@ -146,10 +141,69 @@
     border-radius: 0px 4px 4px 0px;
     opacity: 1;
     margin-left: 60px;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .home-banner-btn-submit:hover {
     opacity: 0.7;
   }
 }
+
+// artist banner
+
+.artist-banner{
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: top;
+  border-radius: 8px;
+  position: relative;
+}
+
+.artist-banner-name {
+  color: white;
+  font-weight: lighter;
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+    p {margin: 0;
+    }
+}
+
+.artist-banner-genre {
+  color: $primary;
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  background-color: white;
+  padding: 4px 8px;
+  width: 130px;
+  text-align: center;
+  border-radius: 8px;
+    p {
+      margin: 0;
+    }
+}
+
+.artist-banner-token {
+  color: white;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  text-align: center;
+    h2 {
+      font-weight: lighter;
+      margin: 0;
+    }
+}
+
+@keyframes titleFadeIn{
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// End of Homepage Banner
