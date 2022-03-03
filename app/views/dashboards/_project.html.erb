@@ -3,21 +3,29 @@
   <div class ="dashboard-artist-project border d-flex justify-center">
 
     <h3 class="dashboard-artist-project-name text-left font-weight-bold text-dark" >
-      <%= project.name  %>
+      <%= project.name %>
     </h3>
 
     <%# retrieving metrics %>
     <% token = Token.find_by(project_id: project.id) %>
     <% transactions = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
-    <% total_amount_invested = transactions * token.unit_price %>
-    <% total_amount_available = (project.number_of_tokens) * (token.unit_price) %>
+    <% total_amount_invested = transactions * token.price %>
+    <% total_amount_available = (project.number_of_tokens) * (token.price) %>
 
     <%# beg-higher part of the card %>
     <div class="dashboard-artist-project-high-part">
 
-      <%# project photo %>
-      <div class="photo-project-info-financial">
-        <%= cl_image_tag project.photo.key, height: 250, width: 250, crop: :fill  %>
+      <div class="dashboard-artist-project-high-part-left">
+        <%# project photo %>
+        <div class="photo-project-info-financial">
+          <%= cl_image_tag project.photo.key, height: 200, width: 200, crop: :fill  %>
+        </div>
+
+        <div class="dashboard-artist-project-info">
+          <p> Release date: <%= project.release_date %></p>
+          <p> Distributor: <%= project.distributor %></p>
+        </div>
+
       </div>
 
       <%# revenue chart %>
@@ -33,11 +41,11 @@
 
       <div class="dashboard-artist-project-down-part-left">
         <%# revenue generated since beginning %>
-        <div class="project-generated-revenue text-dark">
+        <div class="project-generated-revenue">
+          <p>Revenue generated since beginning of the project:</p>
           <p><%= number_with_delimiter((project.project_revenue(project)), :delimiter => ',')%>$</p>
         </div>
       </div>
-
 
       <div class="dashboard-artist-project-down-part-right">
 
@@ -46,7 +54,7 @@
           <p class="text-primary fw-bold fs-4 mb-0 me-2"><%= number_with_delimiter((total_amount_invested), :delimiter => ',') %>$</p>
           <p class="mb-0">invested on <%= number_with_delimiter((total_amount_available), :delimiter => ',')%> $ goal</p>
         </div>
-        <div class="progress mb-3">
+        <div class="dashboard-progress mb-3">
           <div class="progress-bar" role="progressbar" style="width: <%= ((total_amount_invested.to_f / total_amount_available.to_f) * 100).round %>%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= ((total_amount_invested.to_f / total_amount_available.to_f) * 100).round %>%</div>
         </div>
         <%# progress bar-end %>
@@ -54,7 +62,7 @@
         <%# tokens info %>
         <div class="artist-project-info-financial">
           <div class="text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(token.unit_price, :delimiter => ',')%> $</p>
+            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(token.price, :delimiter => ',')%> $</p>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="text-center border border-primary rounded p-2 ms-3 w-25">
