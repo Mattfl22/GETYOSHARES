@@ -16,11 +16,12 @@
               <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %>
             </li>
             <li class="nav-item dropdown">
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown"%>
+              <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"><%= link_to "log out", destroy_user_session_path, method: :delete %></a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
               </div>
+              
+            
             </li>
         </ul>
       <% else %>
