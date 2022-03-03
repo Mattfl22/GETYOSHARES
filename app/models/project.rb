@@ -30,5 +30,8 @@ class Project < ApplicationRecord
     else
       buyers.values.sum
     end
+
+  def project_revenue(project)
+    revenues.find_by(project_id: project).revenue
   end
 end
