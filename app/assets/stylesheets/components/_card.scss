@@ -77,26 +77,63 @@
   justify-content: space-between;
   flex-direction: column;
   color: white;
-  padding: 20px;
-  margin-top: 50px;
+  padding: 5px;
+  margin-top: 5px;
   position: relative;
-
-  > .dashboard-artist-project-high-part {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
-    height: 50%;
-  }
-
-  > .dashboard-artist-project-down-part-right {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    height: 50%;
-    background-color: red;
-  }
-
 }
+
+.dashboard-artist-project-high-part {
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
+  width: 100%
+}
+
+.dashboard-artist-project-high-part-left {
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  color: black;
+}
+
+.photo-project-info-financial {
+  border-radius: 15px;
+  height: 80%;
+}
+
+.dashboard-artist-project-down-part {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  width: 100%
+}
+
+
+ .dashboard-artist-project-down-part-left {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0px 50px 0px 50px;
+  width: 50%;
+  height: 100%;
+  color: black;
+  border: solid 1px grey;
+}
+
+.dashboard-artist-project-down-part-right {
+  align-items: justify;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 50%;
+}
+
+.dashboard-progress {
+  width: 80%;
+}
+
 
 // End of dashboard artist card financial info per project
 
