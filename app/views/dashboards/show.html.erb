@@ -1,22 +1,23 @@
+
+
 <div class="container container-dashboard">
+
   <div>
     <h2>Welcome to your dashboard, <%=@user.first_name%>.</h2>
     <%# better to have partials so that several developers can work on the same page without conflicts %>
-    <p>Your dashboard was last updated on 01/03/2022 </p>
+    <p>Your dashboard was last updated on <%= Time.current.to_formatted_s(:short)   %> </p>
     <%# user: is from the partial, it's linked with current urrent in dashboard controller, all thanks to devise %>
     <%# <%= render "info", user: @user %>
   </div>
 
   <div>
-  <h3>My projects</h3>
+  <h5 class='text-primary'>My projects</h5>
     <%= render "project" %>
   </div>
 
   <div>
-  <h5>Portfolio</h5>
+  <h5 class='text-primary'>Portfolio</h5>
     <%= render "token", user: @user %>
 
   </div>
-
-<%= button_to "log out", destroy_user_session_path, method: :delete %>
 </div>
