@@ -72,31 +72,28 @@
         </div>
 
         <!-- investment distribution -->
-        <p class="text-primary mt-3 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
-        <div class="d-flex">
-          <%= pie_chart @shares, legend: "bottom", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', width: "250px", height: "250px" %>
-
-        </div>
+        <p class="text-primary mt-4 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
+        <%= pie_chart @shares, legend: "right", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', width: "400px", height: "150px" %>
 
         <!-- previsional information -->
-        <p class="text-primary mt-3 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
+        <p class="text-primary mt-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
         <div class="artist-project-info-financial">
-          <div class="text-center border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-secondary fw-bold">xxx $</p>
+          <div class="text-left p-2 w-25">
+            <p class="m-0 text-secondary fw-bold fs-5"> <%= number_with_delimiter(@project.project_revenue(@project).round, :delimeter => ',')  %> $</p>
             <p class="m-0" style="font-size:12px">estimated annual revenue</p>
           </div>
-          <div class="text-center border border-primary rounded p-2 ms-3 w-25">
-            <p class="m-0 text-primary fw-bold"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
+          <div class="text-left p-2 ms-3 w-25">
+            <p class="m-0 text-primary fw-bold fs-5"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
             <p class="m-0" style="font-size:12px">audio streams</p>
           </div>
-          <div class="text-center rounded p-2 ms-3 w-25" style="border:1px solid #f9bc0b">
-            <p class="m-0 fw-bold" style="color:#f9bc0b"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
+          <div class="text-center p-2 ms-3 w-25">
+            <p class="m-0 fw-bold fs-5" style="color:#f9bc0b"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
             <p class="m-0" style="font-size:12px;">video streams</p>
           </div>
         </div>
 
         <!-- other information -->
-        <p class="text-primary mt-3 border-bottom">Other information</p>
+        <p class="text-primary mt-4 border-bottom">Other information</p>
         <p>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
         <p>Distributor: <%= @project.distributor %></p>
       </div>
