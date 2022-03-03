@@ -121,8 +121,4 @@ Rails.application.configure do
   # devise
   config.action_mailer.default_url_options = { host: 'heroku', port: 80 }
 
-
-  # Stripe
-  config.stripe.secret_key = Rails.application.credentials.stripe[:production][:secret_key]
-  config.stripe.publishable_key = Rails.application.credentials.stripe[:production][:publishable_key]
 end

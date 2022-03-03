@@ -75,6 +75,3 @@ gem 'devise'
 
 # pundit
 gem 'pundit'
-
-# Stripe
-gem 'stripe-rails'

@@ -20,7 +20,3 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
-# Stripe routes
-root 'billing#index', as: :billing
-get '/card/new' => 'billing#new_card', as: :add_payment_method
