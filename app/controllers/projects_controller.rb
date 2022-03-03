@@ -20,10 +20,11 @@ class ProjectsController < ApplicationController
 
   def show
     authorize @project
-    @token = Token.find_by(project_id: @project.id)
-    @transaction = Transaction.where(token_id: Token.where(project_id: @project.id)).count
-    @total_amount_invested = @transaction * @token.unit_price
-    @total_amount_available = @project.number_of_tokens * @token.unit_price
+    # variables for piechart
+    distribution_share = @project.average_distribution_share
+    investor_share = @project.number_of_tokens
+    artist_share = 100 - distribution_share - investor_share
+    @shares = { "Distributor's share": distribution_share, "Investor's share": investor_share, "Artist's _share": artist_share }
   end
 
   private
