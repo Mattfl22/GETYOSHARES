@@ -35,6 +35,10 @@ gem 'simple_form'
 gem "chartkick"
 gem "groupdate"
 
+#stripe
+gem 'money-rails'
+gem 'stripe'
+
 #cloudinary
 gem 'cloudinary', '~> 1.16.0'
 
