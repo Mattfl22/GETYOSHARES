@@ -148,7 +148,7 @@ tokens = {}
 
 CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
   attributes = {
-    unit_price: row[:unit_price]
+    price: row[:unit_price]
   }
 
   token = Token.new(attributes)

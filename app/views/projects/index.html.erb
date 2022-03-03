@@ -8,8 +8,8 @@
   <% @projects.each do |project| %>
   <% token = Token.find_by(project_id: project.id) %>
   <% transaction = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
-  <% total_amount_invested = transaction * token.unit_price %>
-  <% total_amount_available = (project.number_of_tokens) * (token.unit_price) %>
+  <% total_amount_invested = transaction * token.price %>
+  <% total_amount_available = (project.number_of_tokens) * (token.price) %>
   <div class="col">
     <div class="card text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
         <div class="card-img-overlay">

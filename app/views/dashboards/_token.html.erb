@@ -5,7 +5,7 @@
       <li>Project name: <%= project_information[:project_name] %></li>
       <li>Artist: <%= User.find(Project.find_by(name:project_information[:project_name]).user_id).artist_name %></li>
       <li>Number of transactions: <%= project_information[:transactions] %></li>
-      <li class='mb-3'>Amount invested: <%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).unit_price) * project_information[:transactions] %>$</li>
+      <li class='mb-3'>Amount invested: <%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).price) * project_information[:transactions] %>$</li>
     <% end %>
   </ul>
 

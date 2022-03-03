@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_160312) do
+ActiveRecord::Schema.define(version: 2022_03_03_111509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 2022_03_01_160312) do
   end
 
   create_table "tokens", force: :cascade do |t|
-    t.integer "unit_price"
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["project_id"], name: "index_tokens_on_project_id"
   end
 
@@ -104,11 +104,15 @@ ActiveRecord::Schema.define(version: 2022_03_01_160312) do
 
   create_table "transactions", force: :cascade do |t|
     t.string "comment"
-    t.integer "rating"
     t.date "date"
+    t.integer "rating"
     t.boolean "active"
     t.bigint "user_id", null: false
     t.bigint "token_id", null: false
+    t.string "state"
+    t.string "token_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["token_id"], name: "index_transactions_on_token_id"
