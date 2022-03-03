@@ -1,8 +1,10 @@
+<!-- variables -->
 <% token = Token.find_by(project_id: @project.id) %>
 <% transaction = Transaction.where(token_id: Token.where(project_id: @project.id)).count %>
 <% total_amount_invested = transaction * token.unit_price %>
 <% total_amount_available = (@project.number_of_tokens) * (token.unit_price) %>
 
+<!-- banner -->
 <div class="container-gys">
   <div class="artist-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @project.photo.key %>');">
     <div class="artist-banner-name">
@@ -18,21 +20,24 @@
     </div>
   </div>
 
+<!-- project information -->
   <div class="artist-project-info">
     <div class="row">
+    <!-- project description & music player: left part -->
       <div class="col col-sm-6">
         <h2 class="text-secondary">Project description</span></h2>
         <p class="opacity-75"><%= @project.description %></p>
         <h2 class="text-secondary">Music player</h2>
-
-      <% @spotify_id = @project.products.first%>
-      <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
-
+        <% @spotify_id = @project.products.first%>
+        <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
       </div>
+      <!-- empty middle column -->
       <div class="col col-sm-1">
       </div>
+      <!-- project financial information: right part -->
       <div class="col col-sm-5">
         <h2 class="text-secondary mb-3">Financial information</h2>
+        <!-- project funding status -->
         <p class="text-primary m-0 border-bottom"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
 
         <div class="d-flex mt-3 mb-0 align-items-center">
@@ -72,9 +77,11 @@
           </div>
         </div>
 
-
+        <!-- investment distribution -->
         <p class="text-primary mt-3 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
+        <%= pie_chart Project.group(:name).count %>
 
+        <!-- previsional information -->
         <p class="text-primary mt-3 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
         <div class="artist-project-info-financial">
           <div class="text-center border border-secondary rounded p-2 w-25">
@@ -91,11 +98,13 @@
           </div>
         </div>
 
+        <!-- other information -->
         <p class="text-primary mt-3 border-bottom">Other information</p>
         <p>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
         <p>Distributor: <%= @project.distributor %></p>
       </div>
     </div>
   </div>
+  <!-- link to index -->
   <i class="fas fa-backward text-primary"></i> <%= link_to "Return to projects", projects_path, class: "text-decoration-none" %>
 </div>
