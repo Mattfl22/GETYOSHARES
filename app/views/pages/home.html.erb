@@ -16,7 +16,8 @@
     </div>
 
     <div class="home-banner-right col-8">
-      <% user = User.find(2) %>
+    <%# change artist_name to modify the whole card %>
+      <% user = User.find_by(artist_name: "Cardi B") %>
       <div class="home-banner-image cardi-b">
         <div class="home-banner-image-name opacity"><%= user.artist_name %></div>
         <div class="home-banner-image-hover">
@@ -30,7 +31,7 @@
       </div>
 
       <div class="home-banner-image booba">
-        <% user = User.find(1) %>
+        <% user = User.find_by(artist_name: "Booba") %>
         <div class="home-banner-image-name opacity"><%= user.artist_name %></div>
         <div class="home-banner-image-hover">
           <span><%= user.artist_name %></span>
@@ -43,7 +44,7 @@
       </div>
 
       <div class="home-banner-image peggy-gou">
-        <% user = User.find(4) %>
+        <% user = User.find_by(artist_name: "Peggy Gou") %>
         <div class="home-banner-image-name opacity"><%= user.artist_name %></div>
         <div class="home-banner-image-hover">
           <span><%= user.artist_name %></span>
@@ -104,10 +105,13 @@
       <div class="home-trending-card col-lg-4 col-md-6 col-sm-12"  id="htc-1">
 
         <div class="home-trending-card-infos">
-          <h4>UP</h4>
-          <p>Cardi B</p>
-          <p>$1.000.000</p>
-          <%= link_to "View More", project_path(Project.find_by(user_id: 2).id), class: "btn btn-trending-card" %>
+        <%# change artist_name to modify the whole card %>
+        <% user = User.find_by(artist_name: "Cardi B") %>
+        <% project = Project.find_by(user_id: user) %>
+          <h4> <%= project.name.upcase %> </h4>
+          <p><%= user.artist_name %></p>
+          <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
+          <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
           
         </div>
 
@@ -118,10 +122,12 @@
       <div class="home-trending-card col-lg-4 col-md-6 col-sm-12"  id="htc-2">
 
         <div class="home-trending-card-infos">
-          <h4>IGNORANCE IS BLISS</h4>
-          <p>Skepta</p>
-          <p>$150.000</p>
-          <%= link_to "View More", project_path(Project.find_by(user_id: 3).id), class: "btn btn-trending-card" %>
+        <% user = User.find_by(artist_name: "Skepta") %>
+        <% project = Project.find_by(user_id: user) %>
+          <h4> <%= project.name.upcase %> </h4>
+          <p><%= user.artist_name %></p>
+          <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
+          <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
         </div>
 
         <%= image_tag("ignorance.jpg")%>
@@ -131,10 +137,12 @@
       <div class="home-trending-card col-lg-4 col-md-6 col-sm-12" id="htc-3">
 
         <div class="home-trending-card-infos">
-          <h4>GALORE</h4>
-          <p>Oklou</p>
-          <p>$75.000</p>
-          <%= link_to "View More", project_path(Project.find_by(user_id: 6).id), class: "btn btn-trending-card" %>
+          <% user = User.find_by(artist_name: "Oklou") %>
+          <% project = Project.find_by(user_id: user) %>
+          <h4> <%= project.name.upcase %> </h4>
+          <p><%= user.artist_name %></p>
+          <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
+          <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
         </div>
 
         <%= image_tag("galore-cover.jpg")%>
