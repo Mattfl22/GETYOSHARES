@@ -168,6 +168,7 @@
   }
 }
 
+
 // End of Homepage Banner
 
 
@@ -219,13 +220,70 @@
     }
   }
 
-@keyframes titleFadeIn{
-  0% {
-    transform: translateY(100%);
+
+
+// End of artist banner
+
+
+// Media queries
+
+@media(max-width: 992px) {
+
+}
+
+@media(max-width: 768px) {
+  .home-banner-left {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    > .home-banner-title > h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      padding: 0;
+    }
   }
-  100% {
-    transform: translateY(0);
+  .home-banner-right {
+    display: none;
+
+  }
+  .home-banner-form {
+    margin: 0;
+    padding: 0;
+
+    > .home-banner-btn-submit {
+      padding: 10px;
+    }
+
   }
 }
 
-// End of artist banner
+@media(max-width: 480px) {
+  .home-banner-left {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    > .home-banner-title > h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      padding: 0;
+    }
+  }
+  .home-banner-right {
+    display: none;
+
+  }
+  .home-banner-form {
+    margin: 0;
+    padding: 0;
+
+    > .home-banner-btn-submit {
+      padding: 10px;
+    }
+
+  }
+
+}

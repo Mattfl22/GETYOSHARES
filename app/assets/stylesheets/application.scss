@@ -18,3 +18,20 @@
 .container-gys {
   margin: 0px 80px;
 }
+
+
+// Media queries
+
+@media(max-width: 992px) {
+
+}
+
+@media(max-width: 768px) {
+
+}
+
+@media(max-width: 480px) {
+  .container-gys {
+    margin: 0px 20px;
+  }
+}
