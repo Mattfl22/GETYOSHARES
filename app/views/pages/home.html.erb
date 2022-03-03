@@ -107,9 +107,7 @@
           <h4>UP</h4>
           <p>Cardi B</p>
           <p>$1.000.000</p>
-          <%= link_to project_path(Project.find_by(user_id: 2).id), class: "btn btn-trending-card" do %>
-            <div>View More</div>
-          <% end %>
+          <%= link_to "View More", project_path(Project.find_by(user_id: 2).id), class: "btn btn-trending-card" %>
           
         </div>
 
@@ -123,9 +121,7 @@
           <h4>IGNORANCE IS BLISS</h4>
           <p>Skepta</p>
           <p>$150.000</p>
-          <%= link_to project_path(Project.find_by(user_id: 3).id), class: "btn btn-trending-card" do %>
-            <div>View More</div>
-          <% end %>
+          <%= link_to "View More", project_path(Project.find_by(user_id: 3).id), class: "btn btn-trending-card" %>
         </div>
 
         <%= image_tag("ignorance.jpg")%>
@@ -138,9 +134,7 @@
           <h4>GALORE</h4>
           <p>Oklou</p>
           <p>$75.000</p>
-          <%= link_to project_path(Project.find_by(user_id: 6).id), class: "btn btn-trending-card" do %>
-            <div>View More</div>
-          <% end %>
+          <%= link_to "View More", project_path(Project.find_by(user_id: 6).id), class: "btn btn-trending-card" %>
         </div>
 
         <%= image_tag("galore-cover.jpg")%>
