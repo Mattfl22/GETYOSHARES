@@ -22,4 +22,8 @@ class Project < ApplicationRecord
   def total_amount_available(project)
     project.number_of_tokens * unit_price
   end
+
+  def project_revenue(project)
+    revenues.find_by(project_id: project).revenue
+  end
 end
