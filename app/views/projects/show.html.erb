@@ -25,9 +25,11 @@
         <% @spotify_id = @project.products.first%>
         <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
       </div>
+
       <!-- empty middle column -->
       <div class="col col-sm-1">
       </div>
+
       <!-- project financial information: right part -->
       <div class="col col-sm-5">
         <h2 class="text-secondary mb-3">Financial information</h2>
