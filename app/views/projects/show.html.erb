@@ -1,5 +1,5 @@
 <!-- banner -->
-<div class="container-gys">
+<div class="container">
   <div class="artist-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @project.photo.key %>');">
     <div class="artist-banner-name">
       <h3><%= User.find(@project.user_id).artist_name.capitalize %></h3>
@@ -63,12 +63,10 @@
 
         <!-- button for payment (stripe) -->
         <p>
-         <div class="btn btn-secondary w-25 mt-1">
-            <%= form_tag project_transactions_path(@project, Transaction.new), method: :post do %>
-              <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
-              <%= submit_tag 'Buy token', class: 'btn btn-secondary' %>
-            <% end %>
-         </div>
+          <%= form_tag project_transactions_path(@project, Transaction.new), method: :post do %>
+            <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
+            <%= submit_tag 'Buy token', class: 'btn btn-secondary' %>
+          <% end %>
         </p>
 
         <!-- investment distribution -->
