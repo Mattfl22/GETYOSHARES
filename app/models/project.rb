@@ -23,6 +23,14 @@ class Project < ApplicationRecord
     project.number_of_tokens * unit_price
   end
 
+  def number_of_buyers(project)
+    buyers = transactions.where(token_id: Token.where(project_id: project.id)).group(:user_id).count
+    if buyers.values.sum == 0
+      0
+    else
+      buyers.values.sum
+    end
+
   def project_revenue(project)
     revenues.find_by(project_id: project).revenue
   end

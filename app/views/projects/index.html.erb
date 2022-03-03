@@ -4,7 +4,19 @@
   <h1 class="text-secondary my-3">All <span class="banner-highlight-primary">projects</span></h1>
   </div>
 
+<% user = User.find(4) %>
+<% project = Project.find_by(user_id: user) %>
+<div class="artist-banner text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path user.photo.key, crop: :fit %>'); height:300px; width:949px">
+        <div class="card-img-overlay">
+          <h1 class="card-title"> <%= project.name %> </h1>
+          <h5 class="card-text"> <%=  user.artist_name %> </h5>
+          <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_tokens - project.number_of_transactions(project) %> Tokens left </p>
+          <p class="card-text"><i class="fas fa-user-friends"></i> <%= project.number_of_buyers(project) %> Buyers </p>
+          <%= link_to "Discover", project_path(Project.find_by(user_id: user).id), class: 'btn btn-outline-light'%>
+        </div>
+    </div>
 <div class="row row-cols-auto">
+
   <% @projects.each do |project| %>
   <% token = Token.find_by(project_id: project.id) %>
   <% transaction = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
@@ -15,8 +27,8 @@
         <div class="card-img-overlay">
           <h5 class="card-title"> <%= project.name %></h5>
           <p class="card-text"> <%= project.user.artist_name  %> </p>
-          <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_tokens - transaction %> Shares left </p>
-          <p class="card-text"><i class="fas fa-user-friends"></i> <%= transaction  %> Buyers </p>
+          <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_tokens - transaction %> Tokens left </p>
+          <p class="card-text"><i class="fas fa-user-friends"></i> <%= project.number_of_buyers(project)  %> Buyers </p>
           <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
         </div>
     </div>
