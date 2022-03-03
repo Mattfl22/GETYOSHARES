@@ -20,8 +20,12 @@ class ProjectsController < ApplicationController
 
   def show
     authorize @project
+    # variables for piechart
+    distribution_share = @project.average_distribution_share
+    investor_share = @project.number_of_tokens
+    artist_share = 100 - distribution_share - investor_share
+    @shares = { "Distributor's share": distribution_share, "Investor's share": investor_share, "Artist's _share": artist_share }
   end
-
 
   private
 
