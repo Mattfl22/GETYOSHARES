@@ -25,9 +25,11 @@
         <% @spotify_id = @project.products.first%>
         <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
       </div>
+
       <!-- empty middle column -->
       <div class="col col-sm-1">
       </div>
+
       <!-- project financial information: right part -->
       <div class="col col-sm-5">
         <h2 class="text-secondary mb-3">Financial information</h2>
@@ -35,8 +37,10 @@
         <p class="text-primary m-0 border-bottom"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
 
         <div class="d-flex mt-3 mb-0 align-items-center">
-          <p class="text-primary fw-bold fs-4 mb-0 me-2"><%= number_with_delimiter((@project.total_amount_invested(@project)), :delimiter => ',') %> $</p>
-          <p class="mb-0">invested on <%= number_with_delimiter((@total_amount_available), :delimiter => ',')%> $ goal</p>
+          <% amount_invested = @project.total_amount_invested(@project).to_i %>
+          <p class="text-primary fw-bold fs-4 mb-0 me-2"><%= number_with_delimiter(amount_invested, :delimiter => ',') %> $</p>
+          <% total_amount_available = @project.total_amount_available(@project).to_i %>
+          <p class="mb-0">invested on <%= number_with_delimiter(total_amount_available, :delimiter => ',')%> $ goal</p>
         </div>
         <div class="progress mb-3">
          <div class="progress-bar" role="progressbar" style="width: <%= (( @project.total_amount_invested(@project).to_f / @project.total_amount_available(@project).to_f) * 100).round %>%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= ((@project.total_amount_invested(@project).to_f / @project.total_amount_available(@project).to_f) * 100).round %>%</div>
@@ -57,46 +61,39 @@
           </div>
         </div>
 
+        <!-- button for payment (stripe) -->
         <p>
-         <button class="btn btn-secondary w-25 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Buy token
-         </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body">
-            <%= simple_form_for [@project] do |f| %>
-              <%= f.input :number_of_tokens %>
-              <%= f.submit %>
+         <div class="btn btn-secondary w-25 mt-1">
+            <%= form_tag project_transactions_path(@project, Transaction.new), method: :post do %>
+              <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
+              <%= submit_tag 'Buy token', class: 'btn btn-secondary' %>
             <% end %>
-          </div>
-        </div>
+         </div>
+        </p>
 
         <!-- investment distribution -->
-        <p class="text-primary mt-3 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
-        <div class="d-flex">
-          <%= pie_chart @shares, legend: "bottom", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', width: "250px", height: "250px" %>
-
-        </div>
+        <p class="text-primary mt-4 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
+        <%= pie_chart @shares, legend: "right", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', width: "400px", height: "150px" %>
 
         <!-- previsional information -->
-        <p class="text-primary mt-3 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
+        <p class="text-primary mt-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
         <div class="artist-project-info-financial">
-          <div class="text-center border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-secondary fw-bold">xxx $</p>
+          <div class="text-left p-2 w-25">
+            <p class="m-0 text-secondary fw-bold fs-5"> <%= number_with_delimiter(@project.project_revenue(@project).round, :delimeter => ',')  %> $</p>
             <p class="m-0" style="font-size:12px">estimated annual revenue</p>
           </div>
-          <div class="text-center border border-primary rounded p-2 ms-3 w-25">
-            <p class="m-0 text-primary fw-bold"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
+          <div class="text-left p-2 ms-3 w-25">
+            <p class="m-0 text-primary fw-bold fs-5"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
             <p class="m-0" style="font-size:12px">audio streams</p>
           </div>
-          <div class="text-center rounded p-2 ms-3 w-25" style="border:1px solid #f9bc0b">
-            <p class="m-0 fw-bold" style="color:#f9bc0b"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
+          <div class="text-center p-2 ms-3 w-25">
+            <p class="m-0 fw-bold fs-5" style="color:#f9bc0b"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
             <p class="m-0" style="font-size:12px;">video streams</p>
           </div>
         </div>
 
         <!-- other information -->
-        <p class="text-primary mt-3 border-bottom">Other information</p>
+        <p class="text-primary mt-4 border-bottom">Other information</p>
         <p>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
         <p>Distributor: <%= @project.distributor %></p>
       </div>

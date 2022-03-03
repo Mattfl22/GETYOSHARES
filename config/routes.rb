@@ -15,8 +15,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :projects, only: [:index, :show, :edit, :new, :create, :update] do
     resources :products, only: [:show, :new, :create]
-    resources :transactions, only: [:new, :create]
+    resources :transactions, only: [:new,:show, :create] do
+      resources :payments, only: :new
+    end
   end
   resource :dashboard, only: [:show]
+  mount StripeEvent::Engine, at: '/stripe-webhooks'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
