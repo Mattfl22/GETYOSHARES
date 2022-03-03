@@ -10,10 +10,26 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="icon" type="image/png" href="logo.png" />
+
   </head>
 
   <body>
+
+    <% if params[:action] == "home" %>
+      <%= render 'shared/navbar-home' %>
+    <% else %>
+      <div class="d-flex">
+        <%= render 'shared/sidebar' %>
+        <div class="flex-grow-1">
+    <% end %>
+
     <%= yield %>
+    <% unless params[:action] == 'home' %>
+        </div>
+      </div>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render 'shared/footer' %>
