@@ -16,7 +16,7 @@ class Project < ApplicationRecord
   end
 
   def total_amount_invested(project)
-    unit_price * number_of_transactions(project)
+    unit_price * number_of_transactions(project).to_i
   end
 
   def total_amount_available(project)
