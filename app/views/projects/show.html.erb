@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+<% token = Token.find_by(project_id: @project.id) %>
+<% transaction = Transaction.where(token_id: Token.where(project_id: @project.id)).count %>
+<% total_amount_invested = transaction * token.price %>
+<% total_amount_available = (@project.number_of_tokens) * (token.price) %>
+
+=======
 <!-- banner -->
+>>>>>>> master
 <div class="container-gys">
   <div class="artist-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @project.photo.key %>');">
     <div class="artist-banner-name">
@@ -46,7 +54,7 @@
 
         <div class="artist-project-info-financial">
           <div class="text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(@project.unit_price, :delimiter => ',')%> $</p>
+            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(token.price, :delimiter => ',')%> $</p>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="text-center border border-primary rounded p-2 ms-3 w-25">
@@ -66,10 +74,15 @@
         </p>
         <div class="collapse" id="collapseExample">
           <div class="card card-body">
-            <%= simple_form_for [@project] do |f| %>
-              <%= f.input :number_of_tokens %>
-              <%= f.submit %>
-            <% end %>
+            <%= form_tag project_transactions_path(@project, Transaction.new), method: :post do %>
+            <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
+            <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+          <% end %>
+
+            <%#= simple_form_for [@project] do |f| %>
+              <%#= f.input :number_of_tokens %>
+              <%#= f.submit %>
+            <%# end %>
           </div>
         </div>
 
