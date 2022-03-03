@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_03_03_111509) do
+=======
+ActiveRecord::Schema.define(version: 2022_03_02_153352) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +90,7 @@ ActiveRecord::Schema.define(version: 2022_03_03_111509) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price_cents", default: 0, null: false
+    t.boolean "bought", default: false
     t.index ["project_id"], name: "index_tokens_on_project_id"
   end
 

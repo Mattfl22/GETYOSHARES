@@ -6,6 +6,8 @@
       <li>Artist: <%= User.find(Project.find_by(name:project_information[:project_name]).user_id).artist_name %></li>
       <li>Number of transactions: <%= project_information[:transactions] %></li>
       <li class='mb-3'>Amount invested: <%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).price) * project_information[:transactions] %>$</li>
+      <%# <li>Revenue Generated:</li>
+      <li class='mb-3'>+15% since last month</li> %>
     <% end %>
   </ul>
 

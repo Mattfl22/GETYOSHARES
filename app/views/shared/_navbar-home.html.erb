@@ -18,7 +18,7 @@
             <li class="nav-item dropdown">
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown"%>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item"><%= link_to "log out", destroy_user_session_path, method: :delete %></a>
                 <a class="dropdown-item" href="#">Another action</a>
               </div>
             </li>
