@@ -9,8 +9,8 @@
     <%# retrieving metrics %>
     <% token = Token.find_by(project_id: project.id) %>
     <% transactions = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
-    <% total_amount_invested = transactions * token.unit_price %>
-    <% total_amount_available = (project.number_of_tokens) * (token.unit_price) %>
+    <% total_amount_invested = transactions * token.price %>
+    <% total_amount_available = (project.number_of_tokens) * (token.price) %>
 
     <%# beg-higher part of the card %>
     <div class="dashboard-artist-project-high-part">
@@ -53,7 +53,7 @@
         <%# tokens info %>
         <div class="artist-project-info-financial">
           <div class="text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(token.unit_price, :delimiter => ',')%> $</p>
+            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(token.price, :delimiter => ',')%> $</p>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="text-center border border-primary rounded p-2 ms-3 w-25">
