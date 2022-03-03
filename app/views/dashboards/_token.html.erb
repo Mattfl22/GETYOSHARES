@@ -1,14 +1,35 @@
 <div class ="container">
-
-  <ul>
-    <% @project_informations.each do |project_information| %>
-      <li>Project name: <%= project_information[:project_name] %></li>
-      <li>Artist: <%= User.find(Project.find_by(name:project_information[:project_name]).user_id).artist_name %></li>
-      <li>Number of transactions: <%= project_information[:transactions] %></li>
-      <li class='mb-3'>Amount invested: <%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).price) * project_information[:transactions] %>$</li>
-      <%# <li>Revenue Generated:</li>
-      <li class='mb-3'>+15% since last month</li> %>
-    <% end %>
-  </ul>
-
+  <div class="row align-items-end mb-2 align-items-center">
+    <div class='col col-lg-1 bg-white py-1 rounded me-2'>
+      <p class='text-primary fs-4'><%= current_user.number_of_token_user %></p>
+      <p class='fs-6 mb-0'>Tokens</p>
+    </div>
+    <div class='col col-lg-2 bg-white py-1 rounded'>
+      <p class='text-primary fs-4'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%>$</p>
+      <p class='fs-6 mb-0'>Amount invested</p>
+    </div>
+  </div>
+  <% @project_informations.each do |project_information| %>
+    <div class="row align-items-end mb-2 bg-white py-1 rounded">
+      <div class='col col-lg-1'>
+        <%= cl_image_tag Project.find_by(name:project_information[:project_name]).photo.key, height: 100, width:100, crop: :fill, class: 'rounded' %>
+      </div>
+      <div class='col col-lg-2 ms-2'>
+        <p class='mb-0 text-primary fw-bold'><%= project_information[:project_name] %></p>
+        <p class='mb-0 text-muted'>project name</p>
+      </div>
+      <div class='col col-lg-2'>
+        <p class='mb-0 text-primary fw-bold'><%= User.find(Project.find_by(name:project_information[:project_name]).user_id).artist_name %></p>
+        <p class='mb-0 text-muted'>artist</p>
+      </div>
+      <div class='col col-lg-3'>
+        <p class='mb-0 text-primary fw-bold'><%= project_information[:transactions] %></p>
+        <p class='mb-0 text-muted'>number of transactions</p>
+      </div>
+      <div class='col col-lg-3'>
+        <p class='mb-0 text-primary fw-bold'><%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).price) * project_information[:transactions] %>$</p>
+        <p class='mb-0 text-muted'>amount invested</p>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -1,0 +1,77 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  flex-shrink: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+
+
+}
+.sidebar-home {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  > .logo > img {
+    width: 40px;
+  }
+
+  > p {
+    color: $primary;
+    font-weight: 700;
+  }
+}
+
+
+.sidebar-menu ul {
+  justify-content: space-between;
+  align-items: flex-start;
+  color: $primary;
+  padding: 0;
+  margin: 0;
+
+  > li {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    padding: 15px 10px;
+
+    > a {
+      text-decoration: none;
+      margin-left: 5px;
+    }
+  }
+}
+
+.sidebar-profile {
+  position: absolute;
+  left: 20px;
+  bottom: 2rem;
+}
+
+.nav-link {
+  border-radius: 8px;
+}
+// Sidebar Animations
+.nav-link:hover {
+  color: white;
+  background-color: $primary;
+
+  > a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.nav-link .fa {
+  transition: all 1s
+}
+
+.nav-link:hover .fa {
+  transform: rotate(360deg)
+}
