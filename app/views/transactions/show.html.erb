@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col">
+      <h1>Transaction #<%= @transaction.id %> <small><span class="badge badge-primary"><%= @transaction.state %></span></small></h1>
+      <ul class="list-unstyled">
+        <li><strong>ISSUED ON</strong> <%= @transaction.created_at.to_date %></li>
+        <li><strong>Token</strong> <%= @token.project_id %> [<%= @transaction.transaction_sku %>]</li>
+        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @transaction.amount %></li>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
