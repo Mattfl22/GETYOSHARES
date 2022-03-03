@@ -6,7 +6,7 @@
     <% current_user.projects.each do |project|  %>
       <div class ="dashboard-artist-project border d-flex justify-center">
         <h3 class="dashboard-artist-project-name text-left font-weight-bold text-dark" >
-          <%= project.name %>
+          <%= link_to project.name.upcase, project_path(project), class:"text-decoration-none" %>
         </h3>
 
         <%# retrieving metrics %>
