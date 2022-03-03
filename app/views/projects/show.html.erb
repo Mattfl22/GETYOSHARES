@@ -75,8 +75,7 @@
         <div class="collapse" id="collapseExample">
           <div class="card card-body">
             <%= form_tag project_transactions_path(@project, Transaction.new), method: :post do %>
-            <%= hidden_field_tag 'token_id', @project.tokens.find {|token| token.transactions.nil? } %>
-            <% raise %>
+            <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
             <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
           <% end %>
 

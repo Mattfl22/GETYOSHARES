@@ -176,7 +176,9 @@ CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_convert
   transaction = Transaction.new(attributes)
   transaction.token = tokens[row[:token_id]]
   transaction.user = users[row[:user_id]]
-  transaction.save!
+  if transaction.save!
+    transaction.set_token_as_bought
+  end
 
   transactions[row[:id]] = transaction
 end
