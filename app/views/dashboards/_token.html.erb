@@ -14,7 +14,7 @@
       <div class='col col-lg-1'>
         <%= cl_image_tag Project.find_by(name:project_information[:project_name]).photo.key, height: 100, width:100, crop: :fill, class: 'rounded' %>
       </div>
-      <div class='col col-lg-2 ms-2'>
+      <div class='col col-lg-2 ms-4'>
         <p class='mb-0 text-primary fw-bold'><%= project_information[:project_name] %></p>
         <p class='mb-0 text-muted'>project name</p>
       </div>
