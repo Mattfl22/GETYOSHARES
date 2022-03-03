@@ -1,6 +1,12 @@
+<% token = Token.find_by(project_id: @project.id) %>
+<% transaction = Transaction.where(token_id: Token.where(project_id: @project.id)).count %>
+<% total_amount_invested = transaction * token.unit_price %>
+<% total_amount_available = (@project.number_of_tokens) * (token.unit_price) %>
+
+
 <div class="container container-dashboard">
   <div>
-    <h2>Welcome to your dashboard <%=@user.first_name%>!</h2>
+    <h2>Welcome to your dashboard, <%=@user.first_name%>.</h2>
     <%# better to have partials so that several developers can work on the same page without conflicts %>
     <p>Your dashboard was last updated on 01/03/2022 </p>
     <%# user: is from the partial, it's linked with current urrent in dashboard controller, all thanks to devise %>
