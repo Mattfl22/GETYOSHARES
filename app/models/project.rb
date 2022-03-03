@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   has_many :tracks, through: :products
 
   def unit_price
-    tokens.first.price
+    Token.first.price
   end
 
   def number_of_transactions(project)
@@ -16,7 +16,7 @@ class Project < ApplicationRecord
   end
 
   def total_amount_invested(project)
-    tokens.first.price * number_of_transactions(project).to_i
+    unit_price * number_of_transactions(project).to_i
   end
 
   def total_amount_available(project)
