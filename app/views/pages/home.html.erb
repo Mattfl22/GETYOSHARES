@@ -14,23 +14,25 @@
         <input type="submit" value="Go !" class="home-banner-btn-submit">
       </form>
     </div>
+
     <div class="home-banner-right col-8">
 
       <div class="home-banner-image cardi-b">
-        <div class="home-banner-image-name opacity">Cardi B</div>
+        <div class="home-banner-image-name opacity"><%= User.find(2).artist_name %></div>
         <div class="home-banner-image-hover">
-          <span>Cardi B</span>
+
+          <span><%= User.find(2).artist_name %></span>
           <div class="home-banner-image-hover-token">
-            <span>30</span>
+            <span><%= (Project.find_by(user_id: 2).number_of_tokens) - (Transaction.where(token_id: Token.where(project_id: 2)).count) %></span>
             <span>Tokens left</span>
           </div>
         </div>
       </div>
 
       <div class="home-banner-image booba">
-        <div class="home-banner-image-name opacity">Booba</div>
+        <div class="home-banner-image-name opacity"><%= User.find(1).artist_name %></div>
         <div class="home-banner-image-hover">
-          <span>Booba</span>
+          <span><%= User.find(1).artist_name %></span>
           <div class="home-banner-image-hover-token">
             <span>90</span>
             <span>Tokens left</span>
@@ -39,9 +41,9 @@
       </div>
 
       <div class="home-banner-image peggy-gou">
-        <div class="home-banner-image-name opacity">Peggy Gou</div>
+        <div class="home-banner-image-name opacity"><%= User.find(4).artist_name %></div>
         <div class="home-banner-image-hover">
-          <span>Peggy Gou</span>
+          <span><%= User.find(4).artist_name %></span>
           <div class="home-banner-image-hover-token">
             <span>120</span>
             <span>Tokens left</span>
@@ -101,7 +103,10 @@
           <h4>UP</h4>
           <p>Cardi B</p>
           <p>$1.000.000</p>
-          <div class="btn btn-trending-card">View More</div>
+          <%= link_to project_path(Project.find_by(user_id: 2).id), class: "btn btn-trending-card" do %>
+            <div>View More</div>
+          <% end %>
+          
         </div>
 
         <%= image_tag("up-cover.jpg")%>
