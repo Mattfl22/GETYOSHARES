@@ -55,3 +55,24 @@
     }
   }
 }
+
+
+
+
+// Media queries
+
+@media(max-width: 992px) {
+
+}
+
+@media(max-width: 768px) {
+
+}
+
+@media(max-width: 480px) {
+  .home-features-feature {
+    justify-content: space-between;
+    height: 320px;
+  }
+
+}
