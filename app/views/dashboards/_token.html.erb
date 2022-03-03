@@ -1,11 +1,11 @@
 <div class ="container">
   <div class="row align-items-end mb-2 align-items-center">
     <div class='col col-lg-1 bg-white py-1 rounded me-2'>
-      <p class='text-primary fs-4'><%= current_user.number_of_token_user %></p>
+      <p class='text-primary fs-4 mb-0'><%= current_user.number_of_token_user %></p>
       <p class='fs-6 mb-0'>Tokens</p>
     </div>
     <div class='col col-lg-2 bg-white py-1 rounded'>
-      <p class='text-primary fs-4'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%>$</p>
+      <p class='text-primary fs-4 mb-0'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%>$</p>
       <p class='fs-6 mb-0'>Amount invested</p>
     </div>
   </div>
