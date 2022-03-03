@@ -48,7 +48,7 @@
 
         <div class="artist-project-info-financial">
           <div class="text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(@project.unit_price.to_i, :delimiter => ',')%> $</p>
+            <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(@project.unit_price, :delimiter => ',')%> $</p>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="text-center border border-primary rounded p-2 ms-3 w-25">
