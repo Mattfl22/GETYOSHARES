@@ -69,15 +69,13 @@
 
 .dashboard-artist-project {
   border-radius: 8px;
-  height: 570px;
-  width: 900px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
   background-color: white;
   padding: 3px;
-  margin-top: 3px;
+  margin-top: 5px;
   margin-bottom: 5px;
   position: relative;
 }
@@ -92,7 +90,7 @@
 .dashboard-artist-project-high-part-left {
   align-items: center;
   flex-direction: column;
-  padding: 15px;
+  // padding: 15px;
   color: black;
 }
 
@@ -106,31 +104,31 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  margin: 0px;
 }
 
 .dashboard-artist-project-down-part {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: flex-end;
   padding-bottom: 5px;
   margin-bottom: 5px;
   width: 100%
 }
 
-
  .dashboard-artist-project-down-part-left {
-  align-items: center;
   display: flex;
   justify-content: center;
-  margin: 0px 50px 0px -19px;
   width: 50%;
   height: 100%;
-  color: black;
+  color: white;
 }
 
 .project-generated-revenue {
   display: flex;
   position: relative;
-  background-color: $light-gray;
+  background-color: $primary;
+  color: white;
   border-radius: 8px;
   padding: 40px 80px 40px 80px;
 }
@@ -156,7 +154,6 @@
 }
 
 .artist-project-info-financial {
-  margin-bottom: 10px;
 }
 .dashboard-progress {
   width: 80%;
