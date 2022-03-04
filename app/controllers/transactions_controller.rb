@@ -4,8 +4,9 @@ class TransactionsController < ApplicationController
     @transaction  = Transaction.create!(token: token, amount: token.price, state: 'pending', user: current_user)
     authorize @transaction
 
-    session = Stripe::Checkout::Session.create(
+    checkout_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
+      customer_email: current_user.email,
       line_items: [{
         name: "token.sku",
         amount: token.price_cents,
@@ -16,8 +17,17 @@ class TransactionsController < ApplicationController
       cancel_url: project_transaction_url(@transaction.token.project, @transaction)
     )
 
-    @transaction.update(checkout_session_id: session.id)
-    redirect_to new_project_transaction_payment_path(@transaction.token.project, @transaction)
+    @transaction.update(checkout_session_id: checkout_session.id)
+    # binding.pry
+
+    redirect_to checkout_session[:url]
+    # redirect_to new_project_transaction_payment_path(@transaction.token.project, @transaction)
+
+    # CECILE, COMMENT FAIRE??
+    # stripe = Stripe(ENV['STRIPE_PUBLISHABLE_KEY'])
+    # stripe.redirectToCheckout({
+    #   sessionId: @transaction.checkout_session_id
+    # });
   end
 
   def show
