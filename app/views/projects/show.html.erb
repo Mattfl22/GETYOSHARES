@@ -54,17 +54,17 @@
          <div class="progress-bar" role="progressbar" style="width: <%= (( @project.total_amount_invested(@project).to_f / @project.total_amount_available(@project).to_f) * 100).round %>%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= ((@project.total_amount_invested(@project).to_f / @project.total_amount_available(@project).to_f) * 100).round %>%</div>
         </div>
 
-        <div class="artist-project-info-financial">
+        <div class="artist-project-info-financial mb-10">
           <div class="text-center bg-secondary border border-secondary rounded p-2 w-25">
             <p class="m-0 text-white fw-bold fs-5"><%= number_with_delimiter(@project.unit_price.to_i, :delimiter => ',')%> $</p>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="text-center border border-primary rounded p-2 ms-3 w-25">
-            <p class="m-0 text-primary fw-bold fs-5"><%= @project.number_of_tokens%></p>
+            <p class="m-0 text-primary fw-bold fs-4"><%= @project.number_of_tokens%></p>
             <p class="m-0" style="font-size:12px">tokens total</p>
           </div>
           <div class="text-center rounded p-2 ms-3 w-25" style="border:1px solid #f9bc0b">
-            <p class="m-0 fw-bold fs-5" style="color:#f9bc0b"><%= @project.number_of_transactions(@project) %></p>
+            <p class="m-0 fw-bold fs-4" style="color:#f9bc0b"><%= @project.number_of_transactions(@project) %></p>
             <p class="m-0" style="font-size:12px">tokens purchased</p>
           </div>
         </div>

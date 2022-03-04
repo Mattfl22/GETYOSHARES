@@ -1,3 +1,11 @@
+
+<% current_user.projects.each do |project|  %>
+<%# financial results card per project %>
+  <div class ="dashboard-artist-project border d-flex justify-center">
+
+    <h3 class="dashboard-artist-project-name text-left font-weight-bold text-dark mt-2" >
+      <strong><%= project.name %></strong>
+    </h3>
 <% if current_user.projects.empty? %>
   <p> No projects yet ! </p>
   <%= link_to "Add a project 😉", projects_path, class:"btn btn-primary mb-5" %>
@@ -28,9 +36,38 @@
               <p> Release date: <%= project.release_date %></p>
               <p> Distributor: <%= project.distributor %></p>
             </div>
-
           </div>
 
+      <div class="dashboard-artist-project-high-part-left">
+        <%# project photo %>
+        <div class="photo-project-info-financial mb-2">
+          <%= cl_image_tag project.photo.key, height: 220, width: 220, crop: :fill %>
+        </div>
+
+        <div class="dashboard-artist-project-info">
+          <p class= "mb-0"> <strong>Release date:</strong>  <%= project.release_date %></p>
+          <p> <strong>Distributor:</strong> <%= project.distributor %></p>
+        </div>
+      </div>
+
+      <%# revenue chart %>
+      <div class="revenue-graph">
+        <%= column_chart project.revenues.group_by_month(:date).sum(:revenue), xtitle: "Month", ytitle: "Revenue", colors: ["#6768AB"], thousands: ",", width: "500px", height: "300px"%>
+      </div>
+    <%# end-higher part of the card %>
+    </div>
+
+    <%# beg-downest part of the card %>
+    <div class="dashboard-artist-project-down-part">
+
+      <div class="dashboard-artist-project-down-part-left">
+        <%# revenue generated since beginning %>
+        <div class="project-generated-revenue">
+          <div class="project-generated-revenue-dollar"><%= image_tag "money-check-dollar-solid.svg", height: 40, width: 40 %></div>
+          <div class="project-generated-revenue-increase"><%= image_tag "increase.png", height: 33, width: 33 %></div>
+          <h2 class="text-dark"><strong><%= number_with_delimiter((project.project_revenue(project).round), :delimiter => ',')%>$</strong></h2>
+        </div>
+      </div>
           <%# revenue chart %>
           <div class="revenue-graph">
             <%= column_chart project.revenues.group_by_month(:date).sum(:revenue), xtitle: "Month", ytitle: "Revenue", colors: ["#6768AB"], thousands: ",", width: "500px", height: "300px" %>
@@ -50,6 +87,10 @@
             </div>
           </div>
 
+        <%# progress bar %>
+        <div class="d-flex mt-3 mb-0 align-items-center text-dark">
+          <p class="text-primary fw-bold fs-4 mb-0 me-2"><%= number_with_delimiter((total_amount_invested.round), :delimiter => ',') %>$</p>
+          <p class="mb-0">invested on <%= number_with_delimiter((total_amount_available.round), :delimiter => ',')%> $ goal</p>
           <div class="dashboard-artist-project-down-part-right">
 
             <%# progress bar %>
