@@ -11,7 +11,7 @@
       <%= form_tag projects_path, :class=>"home-banner-form", method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-        placeholder: "Find your future star"%>
+        placeholder: "Invest in top artists"%>
         <%= submit_tag "Go!", class: "home-banner-btn-submit" %>
       <% end %>
 
@@ -151,8 +151,6 @@
 
       </div>
     </div>
-    <%= link_to projects_path, class: "btn btn-primary mt-4" do %>
-      <div> All Artists</div>
-    <% end %>
+      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5" %> 
   </div>
 </div>
