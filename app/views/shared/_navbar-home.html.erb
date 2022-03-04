@@ -1,36 +1,27 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to image_tag('https://cdn2.iconfinder.com/data/icons/music-filled-pixel-perfect/64/music-35-512.png'), root_path, class: "navbar-brand"%>
+<div class="navbar navbar-expand-sm navbar-gys">
+  <div class="container-navbar">
+    <%= link_to "GY$", root_path, class: "logo"%>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse navbar-collapse-gys" id="navbarSupportedContent">
       <% if user_signed_in? %>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item active">
-              <%= link_to 'Explore', projects_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Dashboard', dashboard_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item dropdown">
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown"%>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-              </div>
-            </li>
+        <ul class="navbar-nav me-auto navbar-menu">
+          <li class="nav-link"><i class="fa fa-compass"></i><%= link_to "Explore", projects_path %></li>
+          <li class="nav-link"><i class="fa fa-chart-line"></i></i><%= link_to "Dashboard", dashboard_path%></li>
+          <li class="nav-item dropdown">
+            <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            </div>
+          </li>
         </ul>
       <% else %>
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-          </li>
+          <li class="nav-link"><i class="fa fa-sign-in-alt"></i><%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %></li>
+          <li class="nav-link"><i class="fa fa-user-plus"></i><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></li>
         </ul>
       <% end %>
     </div>

@@ -1,0 +1,29 @@
+<div class="sidebar bg-white">
+  <div class="sidebar-home">
+    <%= link_to image_tag('https://cdn2.iconfinder.com/data/icons/music-filled-pixel-perfect/64/music-35-512.png'), root_path, class: "logo" %>
+    <p>Get Yo' Shares</p>
+  </div>
+  <hr>
+  <% if user_signed_in? %>
+  <div class="sidebar-menu">
+    <ul>
+      <li>Menu</li>
+      <li class="nav-link"><i class="fa fa-home"></i><%= link_to "Home", root_path %></li>
+      <li class="nav-link"><i class="fa fa-compass"></i><%= link_to "Explore", projects_path %></li>
+      <li class="nav-link"><i class="fa fa-chart-line"></i></i><%= link_to "Dashboard", dashboard_path%></li>
+      <li class="nav-link"><i class="fa fa-times-circle"></i><%= link_to "Log out", destroy_user_session_path,method: :delete%></li>
+    </ul>
+  </div>
+  <div class="sidebar-profile">
+    <%= cl_image_tag current_user.photo.key, class: "avatar"%>
+    <%= current_user.first_name %>
+  </div>
+  <% else %>
+    <div class="sidebar-menu">
+      <ul>
+        <li class="nav-link"><i class="fa fa-sign-in-alt"></i><%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %></li>
+        <li class="nav-link"><i class="fa fa-user-plus"></i><%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %></li>
+        </ul>
+    </div>
+    <% end %>
+</div>

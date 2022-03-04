@@ -63,7 +63,103 @@
 #htc-3 {
   background: linear-gradient(223.46deg, #FCB045 2.55%, rgba(252, 176, 69, 0) 100%), #CC198E;
 }
-// End of cards trending
+// End of home cards trending
+
+// Dashboard artist card financial info per project
+
+.dashboard-artist-project {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: white;
+  padding: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.dashboard-artist-project-high-part {
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
+  width: 100%
+}
+
+.dashboard-artist-project-high-part-left {
+  align-items: center;
+  flex-direction: column;
+  // padding: 15px;
+  color: black;
+}
+
+.photo-project-info-financial img {
+  border-radius: 8px;
+  border: solid 2px #6768AB;
+  height: 100%;
+}
+
+.dashboard-artist-project-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 0px;
+}
+
+.dashboard-artist-project-down-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  width: 100%
+}
+
+ .dashboard-artist-project-down-part-left {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  color: white;
+}
+
+.project-generated-revenue {
+  display: flex;
+  position: relative;
+  background-color: $primary;
+  color: white;
+  border-radius: 8px;
+  padding: 40px 80px 40px 80px;
+}
+
+.project-generated-revenue-dollar {
+  position: absolute;
+  left: 15px;
+  top: 8px;
+}
+
+.project-generated-revenue-increase {
+  position: absolute;
+  right: 23px;
+}
+
+.dashboard-artist-project-down-part-right {
+  align-items: justify;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  width: 50%;
+}
+
+.artist-project-info-financial {
+}
+.dashboard-progress {
+  width: 80%;
+}
+
+// End of dashboard artist card financial info per project
 
 // Media queries
 

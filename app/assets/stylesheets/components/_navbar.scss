@@ -1,13 +1,122 @@
-.navbar-lewagon {
+.navbar-gys {
   justify-content: space-between;
   background: white;
-  padding: 0 50px;
+  padding: 5px 0;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-gys .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+
+.container-navbar {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 80px;
+  width: 100%;
+}
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+}
+.nav-link {
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-right: 10px;
+
+  > a {
+    text-decoration: none;
+    margin-left: 5px;
+  }
+}
+
+.logo {
+  padding: 5px 20px;
+  border-radius: 8px;
+  background-color: $primary;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+
+  &:hover {
+    background-color: $secondary;
+    color: white;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+}
+
+// Navbar Animations
+.nav-link:hover {
+  color: $secondary;
+
+
+  > a {
+    color: $secondary;
+    text-decoration: none;
+  }
+}
+
+.nav-link .fa {
+  transition: all 1s
+}
+
+.nav-link:hover .fa {
+  transform: rotate(360deg)
+}
+
+
+// Media queries
+
+@media(max-width: 992px) {
+
+}
+
+@media(max-width: 768px) {
+  .container-navbar {
+    margin: 0px 60px;
+  }
+}
+
+@media(max-width: 480px) {
+  .container-navbar {
+    margin: 0px 40px;
+  }
+  .navbar-menu {
+    padding: 10px 0;
+  }
+  .nav-link {
+    justify-content: start;
+    margin-bottom: 5px;
+  }
+
+}
+
+
+// Logo animation
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
