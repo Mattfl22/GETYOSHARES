@@ -8,10 +8,13 @@
           <span class="home-banner-title-span"><span class="home-banner-title-animation">Get <span class="banner-highlight-primary">Rich.</span><span></span>
         </h1>
       </div>
-      <form action="#" method="" class="home-banner-form">
-        <input type="text" placeholder="Find your future star">
-        <input type="submit" value="Go !" class="home-banner-btn-submit">
-      </form>
+      <%= form_tag projects_path, :class=>"home-banner-form", method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Find your future star"%>
+        <%= submit_tag "Go!", class: "home-banner-btn-submit" %>
+      <% end %>
+
     </div>
 
     <div class="home-banner-right col-8">
@@ -111,7 +114,7 @@
           <p><%= user.artist_name %></p>
           <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
-          
+
         </div>
 
         <%= image_tag("up-cover.jpg")%>
