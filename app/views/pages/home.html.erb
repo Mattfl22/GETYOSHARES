@@ -111,8 +111,8 @@
         <% user = User.find_by(artist_name: "Cardi B") %>
         <% project = Project.find_by(user_id: user) %>
           <h4> <%= project.name.upcase %> </h4>
-          <p><%= user.artist_name %></p>
-          <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
+          <h5><%= user.artist_name %></h5>
+          <%# <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %>
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
 
         </div>
@@ -127,8 +127,8 @@
         <% user = User.find_by(artist_name: "Skepta") %>
         <% project = Project.find_by(user_id: user) %>
           <h4> <%= project.name.upcase %> </h4>
-          <p><%= user.artist_name %></p>
-          <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
+          <h5><%= user.artist_name %></h5>
+          <%# $ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %>
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
         </div>
 
@@ -142,8 +142,8 @@
           <% user = User.find_by(artist_name: "Oklou") %>
           <% project = Project.find_by(user_id: user) %>
           <h4> <%= project.name.upcase %> </h4>
-          <p><%= user.artist_name %></p>
-          <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
+          <h5><%= user.artist_name %></h5>
+          <%# <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %>
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
         </div>
 
