@@ -20,4 +20,13 @@ class User < ApplicationRecord
     end
     return sum
   end
+
+  def user_revenues
+    revenues = []
+    tokens.each do |t|
+      revenues << t.project.revenues
+    end
+    # current_user.user_revenues.group_by(&:project_id)
+  end
+
 end
