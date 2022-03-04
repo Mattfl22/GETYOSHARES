@@ -6,12 +6,12 @@
     <% current_user.projects.each do |project|  %>
       <div class ="dashboard-artist-project border d-flex justify-center">
         <h3 class="dashboard-artist-project-name text-left font-weight-bold text-dark" >
-          <%= link_to project.name.upcase, project_path(project), class:"text-decoration-none" %>
+          <%= link_to project.name.upcase, project_path(project.id), class:"text-decoration-none" %>
         </h3>
 
         <%# retrieving metrics %>
         <% token = Token.find_by(project_id: project.id) %>
-        <% transactions = Transaction.where(token_id: Token.where(project_id: project.id)).count %>
+        <% transactions = Transaction.where(token_id: token).count %>
         <% total_amount_invested = transactions * token.price %>
         <% total_amount_available = (project.number_of_tokens) * (token.price) %>
 
