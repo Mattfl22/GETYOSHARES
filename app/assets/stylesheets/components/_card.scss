@@ -68,17 +68,17 @@
 // Dashboard artist card financial info per project
 
 .dashboard-artist-project {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  height: 600px;
-  width: 1000px;
+  height: 570px;
+  width: 900px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  color: white;
-  padding: 5px;
-  margin-top: 5px;
+  background-color: white;
+  padding: 3px;
+  margin-top: 3px;
+  margin-bottom: 5px;
   position: relative;
 }
 
@@ -96,9 +96,16 @@
   color: black;
 }
 
-.photo-project-info-financial {
-  border-radius: 15px;
-  height: 80%;
+.photo-project-info-financial img {
+  border-radius: 8px;
+  border: solid 2px #6768AB;
+  height: 100%;
+}
+
+.dashboard-artist-project-info {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .dashboard-artist-project-down-part {
@@ -114,11 +121,29 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin: 0px 50px 0px 50px;
+  margin: 0px 50px 0px -19px;
   width: 50%;
   height: 100%;
   color: black;
-  border: solid 1px grey;
+}
+
+.project-generated-revenue {
+  display: flex;
+  position: relative;
+  background-color: $light-gray;
+  border-radius: 8px;
+  padding: 40px 80px 40px 80px;
+}
+
+.project-generated-revenue-dollar {
+  position: absolute;
+  left: 15px;
+  top: 8px;
+}
+
+.project-generated-revenue-increase {
+  position: absolute;
+  right: 23px;
 }
 
 .dashboard-artist-project-down-part-right {
@@ -130,6 +155,9 @@
   width: 50%;
 }
 
+.artist-project-info-financial {
+  margin-bottom: 10px;
+}
 .dashboard-progress {
   width: 80%;
 }
