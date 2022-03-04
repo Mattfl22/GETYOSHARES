@@ -9,7 +9,8 @@ class ProjectsController < ApplicationController
       products.genre ILIKE :query \
       OR users.artist_name ILIKE :query \
     "      
-      @projects = Project.joins(:products, :user).where(sql_query, query: "%#{params[:query]}%")
+      @projects = Project.joins(:products, :user).where(sql_query, query: "%#{params[:query]}%").distinct
+      
     else
       @projects = Project.all
     end
