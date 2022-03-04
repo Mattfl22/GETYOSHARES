@@ -8,8 +8,8 @@
           <span class="home-banner-title-span"><span class="home-banner-title-animation">Get <span class="banner-highlight-primary">Rich.</span><span></span>
         </h1>
       </div>
-      <form action="#" method="" class="home-banner-form">
-        <input type="text" placeholder="Find your future star">
+      <form action="/projects" method="GET" class="home-banner-form">
+        <input type="text" placeholder="Find your future star" name="search">
         <input type="submit" value="Go !" class="home-banner-btn-submit">
       </form>
     </div>
@@ -111,7 +111,7 @@
           <p><%= user.artist_name %></p>
           <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
-          
+
         </div>
 
         <%= image_tag("up-cover.jpg")%>

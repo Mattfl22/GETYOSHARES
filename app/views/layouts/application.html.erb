@@ -15,20 +15,8 @@
   </head>
 
   <body>
-
-    <% if params[:action] == "home" %>
-      <%= render 'shared/navbar-home' %>
-    <% else %>
-      <div class="d-flex">
-        <%= render 'shared/sidebar' %>
-        <div class="flex-grow-1">
-    <% end %>
-
+    <%= render 'shared/navbar-home' %>
     <%= yield %>
-    <% unless params[:action] == 'home' %>
-        </div>
-      </div>
-    <% end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -36,3 +24,17 @@
 
   </body>
 </html>
+
+<%# Sidebar %>
+<%#  <% if params[:action] == "home" %>
+      <%# <%= render 'shared/navbar-home'
+    <% else
+      <div class="d-flex">
+        <%= render 'shared/sidebar'
+        <div class="flex-grow-1">
+    <% end
+
+    <% unless params[:action] == 'home'
+        </div>
+      </div>
+    <% end %>
