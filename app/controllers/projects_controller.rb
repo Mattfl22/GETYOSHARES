@@ -3,6 +3,16 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = policy_scope(Project)
+    # we search by genre or artist name
+    if params[:query].present?
+      sql_query = " \
+      products.genre ILIKE :query \
+      OR users.artist_name ILIKE :query \
+    "      
+      @projects = Project.joins(:products, :user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @projects = Project.all
+    end
   end
 
   def new
