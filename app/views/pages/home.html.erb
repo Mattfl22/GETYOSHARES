@@ -14,6 +14,7 @@
         placeholder: "Find your future star"%>
         <%= submit_tag "Go!", class: "home-banner-btn-submit" %>
       <% end %>
+
     </div>
 
     <div class="home-banner-right col-8">
@@ -113,7 +114,7 @@
           <p><%= user.artist_name %></p>
           <p>$ <%= number_with_delimiter(project.project_revenue(project).round, :delimeter => ',')  %></p>
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
-          
+
         </div>
 
         <%= image_tag("up-cover.jpg")%>

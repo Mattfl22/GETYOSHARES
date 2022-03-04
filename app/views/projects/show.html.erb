@@ -17,15 +17,23 @@
 <!-- project information -->
   <div class="artist-project-info">
     <div class="row">
-    <!-- project description & music player: left part -->
+      <!-- project description & music player: left part -->
       <div class="col col-sm-6">
         <h2 class="text-secondary">Project description</span></h2>
-        <p class="opacity-75"><%= @project.description %></p>
-        <h2 class="text-secondary">Music player</h2>
+        <p class="opacity-75"><%= @project.description %></p> 
+        <!-- spotify infos -->
         <% @spotify_id = @project.products.first%>
-        <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
+        <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="250" 
+        frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
+        <!-- youtube infos, video is launched automatically but muted -->
+        <% @youtube_id = @project.tracks.where.not(youtube_id: nil).first%>
+        <% if @youtube_id != nil %>
+          <iframe id="ytplayer" type="text/html" width="100%" height="350" allowfullscreen style="border-radius:8px"
+          src="http://www.youtube.com/embed/<%=@youtube_id.youtube_id%>?rel=0&amp;autoplay=1&mute=1"
+          frameborder="0"></iframe>
+        <% end %>
       </div>
-
+   
       <!-- empty middle column -->
       <div class="col col-sm-1">
       </div>
@@ -42,7 +50,7 @@
           <% total_amount_available = @project.total_amount_available(@project).to_i %>
           <p class="mb-0">invested on <%= number_with_delimiter(total_amount_available, :delimiter => ',')%> $ goal</p>
         </div>
-        <div class="progress mb-3">
+        <div class="progress my-3">
          <div class="progress-bar" role="progressbar" style="width: <%= (( @project.total_amount_invested(@project).to_f / @project.total_amount_available(@project).to_f) * 100).round %>%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"><%= ((@project.total_amount_invested(@project).to_f / @project.total_amount_available(@project).to_f) * 100).round %>%</div>
         </div>
 
@@ -98,5 +106,5 @@
     </div>
   </div>
   <!-- link to index -->
-  <i class="fas fa-backward text-primary"></i> <%= link_to "Return to projects", projects_path, class: "text-decoration-none" %>
+  <i class="fas fa-backward text-primary mt-5"></i> <%= link_to "Return to projects", projects_path, class: "text-decoration-none" %>
 </div>
