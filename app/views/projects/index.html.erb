@@ -1,15 +1,15 @@
 
-<div class="container-gys">
+<div class="container-index">
   <div class="project-title">
-  <h1 class="text-secondary my-3">All <span class="banner-highlight-primary">projects</span></h1>
+  <h1 class="text-primary my-5">All <span class="banner-highlight-primary">projects</span></h1>
   </div>
 
 <%# change artist_name to modify the whole card %>
 <% user = User.find_by(artist_name: "Peggy Gou") %>
 <% project = Project.find_by(user_id: user) %>
-<div class="artist-banner text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path user.photo.key, crop: :fit %>'); height:300px; width:949px">
-        <div class="card-img-overlay d-flex flex-column justify-content-between">
-          <div>
+<div class="artist-banner text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path user.photo.key, crop: :fit %>'); height:300px; width:100% text-center">
+        <div class="card-img-overlay">
+
           <h1 class="card-title"> <%= project.name %> </h1>
           <h5 class="card-text"> <%=  user.artist_name %> </h5>
           </div>
@@ -27,9 +27,9 @@
             </div>
           </div>
         </div>
-    </div>
-<div class="row row-cols-auto">
+</div>
 
+<div class="row row-cols-auto d-flex justify-content-between">
   <% @projects.each do |project| %>
   <div class="col-4">
     <div class="card  text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:280px; width:340px">

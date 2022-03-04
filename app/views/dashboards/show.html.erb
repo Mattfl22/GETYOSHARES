@@ -1,6 +1,6 @@
 <div class="container-gys">
   <div>
-    <h2 class="mt-3 text-secondary">Welcome to your dashboard, <%=@user.first_name%>.</h2>
+    <h1 class="mt-5 text-primary">Welcome to your dashboard, <span class="banner-highlight-primary"><%=@user.first_name%></span>.</h1>
     <%# better to have partials so that several developers can work on the same page without conflicts %>
     <p>Your dashboard was last updated on <%= Time.current.to_formatted_s(:short)   %> </p>
     <%# user: is from the partial, it's linked with current urrent in dashboard controller, all thanks to devise %>
