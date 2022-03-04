@@ -70,7 +70,7 @@
         </div>
 
         <!-- button for payment (stripe) -->
-        <div class="align-items d-flex justify-content-between">
+        <div class="align-items d-flex justify-content-between mt-3">
           <p>
             <%= form_tag project_transactions_path(@project, Transaction.new), method: :post, class: "w-100" do %>
               <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
@@ -101,9 +101,9 @@
         </div>
 
         <!-- other information -->
-        <p class="text-primary mt-4 border-bottom">Other information</p>
-        <p>Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
-        <p>Distributor: <%= @project.distributor %></p>
+        <p class="text-primary mt-4 border-bottom"><i class="fas fa-info-circle text-secondary"></i> Other information</p>
+        <p class="text-secondary">Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
+        <p class="text-secondary">Distributor: <%= @project.distributor %></p>
       </div>
     </div>
   </div>
