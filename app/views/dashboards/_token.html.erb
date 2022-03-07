@@ -1,35 +1,47 @@
 <div class ="container">
 
-  <div class="d-flex">
-    <%= column_chart current_user.revenues_as_investor.group(:project_id).sum(:revenue) %>
-    <%= pie_chart current_user.revenues_as_investor.group(:project_id).sum(:revenue) %>
-  </div>
-
-    <div data-controller="update-chart">
-      <label for="project-select">Project:</label>
-      <select id="project" data-action="change->update-chart#update">
-        <% current_user.projects_as_investor.uniq.each do |p| %>
-            <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum(:revenue).to_a.to_json.html_safe%>><%= p.name %></option>
-        <% end %>
-      </select>
-    </div>
-
-    <%= column_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date).sum(:revenue), id: 'chart-projects-revenues' %>
-
   <% if current_user.tokens.empty? %>
     <p> No tokens yet ! </p>
     <%= link_to "Find investments 😉", projects_path, class:"btn btn-primary mb-5" %>
   <% else %>
-    <div class="row align-items-end mb-2 align-items-center">
-      <div class='col col-lg-1 bg-white py-1 rounded me-2'>
-        <p class='text-primary fs-4'><%= current_user.number_of_token_user %></p>
-        <p class='fs-6 mb-0'>Tokens</p>
+    <!-- div with chart and other porfolio infos -->
+    <div class="row align-items-end mb-2 align-items-start">
+      <div class='col col-lg-8 border border-primary py-5 px-3 rounded bg-white'>
+       <h5 class='mb-3'>Revenues per month per project</h3>
+
+        <!-- drop down to select project -->
+        <div data-controller="update-chart">
+          <label for="project-select">Project:</label>
+          <select id="project" data-action="change->update-chart#update">
+            <% current_user.projects_as_investor.uniq.each do |p| %>
+                <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum(:revenue).to_a.to_json.html_safe%>><%= p.name %></option>
+            <% end %>
+          </select>
+        </div>
+
+         <!-- chart -->
+        <%= column_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date, format: "%b %Y").sum(:revenue), id: 'chart-projects-revenues', height: "250px", thousands: ",", colors: ["#6768AB"], suffix: ' $' %>
       </div>
-      <div class='col col-lg-2 bg-white py-1 rounded'>
-        <p class='text-primary fs-4'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%>$</p>
-        <p class='fs-6 mb-0'>Amount invested</p>
+
+      <!-- portfolio informations (tokens + amount invested) -->
+      <div class='col col-lg-4'>
+        <div class='py-3 rounded border border-primary p-3 bg-white'>
+          <p class='text-primary fs-4 mb-0'><%= current_user.number_of_token_user %></p>
+          <p class='fs-6 my-0 text-muted'>Tokens</p>
+        </div>
+        <div class='py-3 rounded border border-primary p-3 bg-white my-3'>
+          <p class='text-primary fs-4 mb-0'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%> $</p>
+          <p class='fs-6 my-0 text-muted'>Total amount invested</p>
+        </div>
+        <div class='py-3 rounded border border-primary p-3 bg-white'>
+          <p class='text-primary fs-4 mb-0'><%= number_with_delimiter(current_user.revenues_as_investor.sum(:revenue), :delimiter => ',')%> $</p>
+          <p class='fs-6 my-0 text-muted'>Total revenue</p>
+        </div>
       </div>
     </div>
+
+    <h5 class='text-primary mt-5'>My portfolio</h5>
+    <!-- list of projects -->
     <% @project_informations.each do |project_information| %>
       <div class="row align-items-end mb-2 bg-white py-1 rounded">
         <div class='col col-lg-1'>
@@ -48,7 +60,7 @@
           <p class='mb-0 text-muted'>number of transactions</p>
         </div>
         <div class='col col-lg-3'>
-          <p class='mb-0 text-primary fw-bold'><%= (Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).price) * project_information[:transactions] %>$</p>
+          <p class='mb-0 text-primary fw-bold'><%= number_with_delimiter((Token.find_by(project_id: Project.find_by(name: project_information[:project_name])).price) * project_information[:transactions], :delimiter => ',') %>$</p>
           <p class='mb-0 text-muted'>amount invested</p>
         </div>
       </div>

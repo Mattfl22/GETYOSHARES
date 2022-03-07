@@ -172,15 +172,20 @@
 // End of Homepage Banner
 
 
-// artist banner
+// Artist banner
 
 .artist-banner{
   width: 100%;
-  height: 400px;
-  background-size: cover;
-  background-position: top;
+  height: 300px;
   border-radius: 8px;
   position: relative;
+  background-color: $primary;
+}
+
+.test-cardi{
+  background-image: url("test-cardi.png");
+  height: 200px;
+
 }
 
 .artist-banner-name {

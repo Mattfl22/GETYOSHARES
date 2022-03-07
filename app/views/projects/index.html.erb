@@ -5,22 +5,25 @@
   </div>
 
 <%# change artist_name to modify the whole card %>
-<% user = User.find_by(artist_name: "Peggy Gou") %>
+<% user = User.find_by(artist_name: "Cardi B") %>
 <% project = Project.find_by(user_id: user) %>
-<div class="artist-banner text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path user.photo.key, crop: :fit %>'); height:300px; width:100% text-center">
+<div class="artist-banner text-white shadow-sm p-3 mb-5 rounded">
         <div class="card-img-overlay">
           <h1 class="card-title"> <%= project.name %> </h1>
           <h5 class="card-text"> <%=  user.artist_name %> </h5>
           <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_tokens - project.number_of_transactions(project) %> Tokens left </p>
           <p class="card-text"><i class="fas fa-user-friends"></i> <%= project.number_of_buyers(project) %> Buyers </p>
           <%= link_to "Discover", project_path(project.id), class: 'btn btn-outline-light'%>
+          <div class="test-cardi"></div>
         </div>
 </div>
+
+<%# End of banner-card %>
 
 <div class="row row-cols-auto d-flex justify-content-between">
   <% @projects.each do |project| %>
   <div class="col">
-    <div class="card text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); height:220px; width:300px">
+    <div class="card text-white border border-white shadow-sm p-3 mb-5 bg-body rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); background-position:center; height:220px; width:300px">
         <div class="card-img-overlay">
           <h5 class="card-title"> <%= project.name %></h5>
           <p class="card-text"> <%= project.user.artist_name  %> </p>
