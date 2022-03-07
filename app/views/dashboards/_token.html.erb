@@ -1,5 +1,5 @@
 <div class ="container">
-
+  <h5 class='text-primary mb-3'>My dashboard</h5>
   <% if current_user.tokens.empty? %>
     <p> No tokens yet ! </p>
     <%= link_to "Find investments 😉", projects_path, class:"btn btn-primary mb-5" %>
@@ -14,7 +14,7 @@
           <label for="project-select">Project:</label>
           <select id="project" data-action="change->update-chart#update">
             <% current_user.projects_as_investor.uniq.each do |p| %>
-                <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum(:revenue).to_a.to_json.html_safe%>><%= p.name %></option>
+                <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum(:revenue).to_a.to_json.html_safe%>><%= "#{User.find(p.user_id).artist_name} - #{p.name}" %></option>
             <% end %>
           </select>
         </div>
