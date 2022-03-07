@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :transactions
   has_many :revenues, through: :projects
   has_many :tokens, through: :transactions
+  has_many :projects_as_investor, through: :tokens, source: :project
+  # has_many :revenues_as_investor, through: :projects_as_investor, source: :revenue
   has_one_attached :photo
 
   def number_of_token_user
@@ -21,12 +23,7 @@ class User < ApplicationRecord
     return sum
   end
 
-  def user_revenues
-    revenues = []
-    tokens.each do |t|
-      revenues << t.project.revenues
-    end
-    # current_user.user_revenues.group_by(&:project_id)
+  def revenues_as_investor
+    Revenue.where(project: projects_as_investor)
   end
-
 end
