@@ -36,6 +36,8 @@ class ProjectsController < ApplicationController
     investor_share = @project.number_of_tokens
     artist_share = 100 - distribution_share - investor_share
     @shares = { "Distributor's share": distribution_share, "Investor's share": investor_share, "Artist's share": artist_share }
+    current_user.cart.destroy if current_user.cart.present?
+    @cart = Cart.new(user: current_user)
   end
 
   private

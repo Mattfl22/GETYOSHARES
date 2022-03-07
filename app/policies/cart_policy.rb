@@ -1,4 +1,4 @@
-class TransactionPolicy < ApplicationPolicy
+class CartPolicy < ApplicationPolicy
   class Scope < Scope
 
   end

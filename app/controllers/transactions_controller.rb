@@ -3,24 +3,6 @@ class TransactionsController < ApplicationController
     token = Token.find(params[:token_id])
     @transaction  = Transaction.create!(token: token, amount: token.price, state: 'pending', user: current_user)
     authorize @transaction
-
-    checkout_session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      customer_email: current_user.email,
-      line_items: [{
-        name: "token.sku",
-        amount: token.price_cents,
-        currency: 'eur',
-        quantity: 1
-      }],
-      success_url: project_transaction_url(@transaction.token.project, @transaction),
-      cancel_url: project_transaction_url(@transaction.token.project, @transaction)
-    )
-
-    @transaction.update(checkout_session_id: checkout_session.id)
-    # binding.pry
-
-    redirect_to checkout_session[:url]
     # redirect_to new_project_transaction_payment_path(@transaction.token.project, @transaction)
 
     # CECILE, COMMENT FAIRE??

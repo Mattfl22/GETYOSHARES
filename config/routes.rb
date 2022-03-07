@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'carts/create'
+  # get 'carts/show'
   # get 'dashboard/show'
   # get 'products/show'
   # get 'products/new'
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
     resources :transactions, only: [:new,:show, :create]
   end
   resource :dashboard, only: [:show]
+  resources :carts, only: [:show, :create]
   mount StripeEvent::Engine, at: '/stripe-webhooks'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
