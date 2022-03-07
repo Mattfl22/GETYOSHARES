@@ -1,4 +1,21 @@
 <div class ="container">
+
+  <div class="d-flex">
+    <%= column_chart current_user.revenues_as_investor.group(:project_id).sum(:revenue) %>
+    <%= pie_chart current_user.revenues_as_investor.group(:project_id).sum(:revenue) %>
+  </div>
+
+    <div data-controller="update-chart">
+      <label for="project-select">Project:</label>
+      <select id="project" data-action="change->update-chart#update">
+        <% current_user.projects_as_investor.uniq.each do |p| %>
+            <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum(:revenue).to_a.to_json.html_safe%>><%= p.name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <%= column_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date).sum(:revenue), id: 'chart-projects-revenues' %>
+
   <% if current_user.tokens.empty? %>
     <p> No tokens yet ! </p>
     <%= link_to "Find investments 😉", projects_path, class:"btn btn-primary mb-5" %>
