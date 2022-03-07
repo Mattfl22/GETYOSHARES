@@ -184,13 +184,18 @@
 
 .test-cardi{
   background-image: url("test-cardi.png");
-  width: 100%;
+  width: 30%;
   height: 375px;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   bottom: 0;
-  right: -30rem;
+  right: 8rem;
+  // animation: titleFadeIn 3s ease forwards;
+  z-index: 2;
+
+
 
 }
 
