@@ -1,4 +1,4 @@
-﻿id;user_id;token_id;comment;rating;date;active
+﻿id;user_id;token_id;comment;rating;created_at;active
 1;7;1;;;01/01/2022;true
 2;7;131;;;01/01/2022;true
 3;7;132;;;01/01/2022;true
