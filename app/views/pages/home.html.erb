@@ -59,47 +59,51 @@
 
     </div>
   </div>
-</div>
-
-
-<div class="container-gys">
 
   <div class="home-features">
     <h2>Invest on <span>tomorrow's artists</span></h2>
-    <div class="row">
-      <div class="home-features-feature col-lg-4 col-md-6 col-sm-12">
+    <div class="swiper" data-controller="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="home-features-feature">
+            <%= image_tag("home-feature-1.svg")%>
+            <div class="home-features-feature-description">
+              <h3>Discover musician's projects</h3>
+              <p>Artists have huge costs associated with launching new albums, singles or EPs. They need to advance money to cover music videos, promotions or any other associated costs before generating a single penny of revenue, which makes it very hard to succeed in the music industry. Support artists you like or want to see succeed by investing in their musical projects. </p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="home-features-feature d-flex justify-align-content">
+            <div>
+              <%= image_tag("home-feature-2.svg")%>
+            </div>
+            <div class="home-features-feature-description">
+              <h3>Invest through a token system</h3>
+              <p>To invest in the projects, Geyoshares has decided to implement a token system. An artist can choose to divide the projects in three different shares: the artist’s shares, the distributor’s shares and the investor’s shares, which are up for sale on this website.
 
-        <%= image_tag("home-feature-1.svg")%>
-        <h3>Discover  artists</h3>
-        <p>Discover tomorrow’s artists depending on the artist’s name,
-        genre or anticipated generated revenue.</p>
+              Each token has a value of 0.1% of the total project, meaning there are a 1000 tokens up for sale per project. In other words, for one token purchased, an investor will earn 0.1% of the future revenue stream.
 
-      </div>
-
-      <div class="home-features-feature col-lg-4 col-md-6 col-sm-12">
-
-        <%= image_tag("home-feature-2.svg")%>
-        <h3>Invest in their projects</h3>
-        <p>Take advantage of our secture platform to invest in
-        an artist’s project to finance their upcoming hits,
-        music videos and other costs.</p>
-
-      </div>
-
-      <div class="home-features-feature col-lg-4 col-md-6 col-sm-12">
-
-        <%= image_tag("home-feature-3.svg")%>
-        <h3>Become rich</h3>
-        <p>Beneficiate  from a high return on investment
-        on your projects.</p>
-
+              The price per token varies for each project and is determined by the artists themselves based on the calculated estimated revenues. These metrics will allow you to invest in projects in a transparent manner. </p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="home-features-feature">
+            <div>
+              <%= image_tag("home-feature-3.svg")%>
+            </div>
+            <div class="home-features-feature-description">
+              <h3>Earn money every month</h3>
+              <p>Thanks to solid and transparent partnerships with distributors, earnings will be redistributed monthly, based on the artist’s generated revenues. On this basis, investors will gain from a rapid return on investment. </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-</div>
-
-<div class="container-gys text-center">
   <div class="home-trendings">
     <h2><span>Trending</span> Artists</h2>
     <div class="row trendings-cards">
@@ -150,6 +154,6 @@
 
       </div>
     </div>
-      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5" %>
+      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5 text-center" %>
   </div>
 </div>
