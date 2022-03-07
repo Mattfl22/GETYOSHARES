@@ -3,6 +3,7 @@ class TransactionsController < ApplicationController
     token = Token.find(params[:token_id])
     @transaction  = Transaction.create!(token: token, amount: token.price, state: 'pending', user: current_user)
     authorize @transaction
+  
 
     checkout_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -10,7 +11,7 @@ class TransactionsController < ApplicationController
       line_items: [{
         name: "token.sku",
         amount: token.price_cents,
-        currency: 'eur',
+        currency: 'usd',
         quantity: 1
       }],
       success_url: project_transaction_url(@transaction.token.project, @transaction),

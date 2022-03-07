@@ -72,10 +72,10 @@
         <!-- button for payment (stripe) -->
         <div class="align-items d-flex justify-content-between mt-3">
           <p>
-            <%= form_tag project_transactions_path(@project, Transaction.new), method: :post, class: "w-100" do %>
-              <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.compact.first.id %>
-              <%= submit_tag 'Buy token', class: 'btn btn-secondary w-100' %>
-            <% end %>
+          <%= form_tag project_transactions_path(@project, Transaction.new), method: :post, class: "w-100" do %>
+            <%= hidden_field_tag 'token_id', @project.tokens.map {|token| token if !token.bought?}.first.id %>
+            <%= submit_tag 'Buy token', class: 'btn btn-secondary w-100' %>
+          <% end %>
           </p>
         </div>
 
