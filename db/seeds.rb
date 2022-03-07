@@ -165,7 +165,7 @@ transactions_path = Rails.root.join("db/seeds/csv/transactions.csv")
 transactions = {}
 
 CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-  headers = ["comment", "rating", "date", "active"]
+  headers = ["comment", "rating", "created_at", "active"]
 
   attributes = {}
 
