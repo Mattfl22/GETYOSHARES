@@ -9,37 +9,46 @@
       <p><%= Product.find_by(project_id: @project.id).genre %></p>
     </div>
     <div class="artist-banner-token">
-      <h2><%= @project.number_of_tokens - @project.number_of_transactions(@project)%></h2>
+      <p><%= @project.number_of_tokens - @project.number_of_transactions(@project)%></p>
       <p>tokens left</p>
     </div>
   </div>
 
-<!-- project information -->
+  <!-- project information -->
   <div class="artist-project-info">
     <div class="row">
       <!-- project description & music player: left part -->
-      <div class="col col-sm-6">
+      <div class="col-12">
         <h2 class="text-secondary">Project description</span></h2>
         <p class="opacity-75"><%= @project.description %></p>
-        <!-- spotify infos -->
-        <% @spotify_id = @project.products.first%>
-        <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="250"
-        frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
-        <!-- youtube infos, video is launched automatically but muted -->
-        <% @youtube_id = @project.tracks.where.not(youtube_id: nil).first%>
-        <% if @youtube_id != nil %>
-          <iframe id="ytplayer" type="text/html" width="100%" height="350" allowfullscreen style="border-radius:8px"
-          src="http://www.youtube.com/embed/<%=@youtube_id.youtube_id%>?rel=0&amp;autoplay=1&mute=1"
-          frameborder="0"></iframe>
-        <% end %>
+        <div class="project-show-media d-flex justify-content-between">
+          <!-- spotify infos -->
+          <div class="col-lg-5 col-sm-12">
+            <% @spotify_id = @project.products.first%>
+            <iframe src="https://open.spotify.com/embed/album/<%=@spotify_id.spotify_id%>" width="100%" height="350px "
+            frameborder="0" allowtransparency="true" allow="encrypted-media" style="border-radius:8px"></iframe>
+          </div>
+
+          <!-- youtube infos, video is launched automatically but muted -->
+          <div class="col-lg-5 col-sm-12">
+
+            <% @youtube_id = @project.tracks.where.not(youtube_id: nil).first%>
+            <% if @youtube_id != nil %>
+              <iframe id="ytplayer" type="text/html" width="100%" height="350px" allowfullscreen style="border-radius:8px"
+              src="http://www.youtube.com/embed/<%=@youtube_id.youtube_id%>?rel=0&amp;autoplay=1&mute=1"
+              frameborder="0"></iframe>
+            <% end %>
+          </div>
+        </div>
       </div>
+
 
       <!-- empty middle column -->
       <div class="col col-sm-1">
       </div>
 
       <!-- project financial information: right part -->
-      <div class="col col-sm-5">
+      <div class="col-12">
         <h2 class="text-secondary mb-3">Financial information</h2>
         <!-- project funding status -->
         <p class="text-primary m-0 border-bottom"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
@@ -79,26 +88,35 @@
           </p>
         </div>
 
-        <!-- investment distribution -->
-        <p class="text-primary mt-4 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
-        <%= pie_chart @shares, legend: "right", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', width: "400px", height: "150px" %>
 
-        <!-- previsional information -->
-        <p class="text-primary mt-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
-        <div class="artist-project-info-financial">
-          <div class="text-left p-2 w-25">
-            <p class="m-0 text-secondary fw-bold fs-5"> <%= number_with_delimiter(@project.project_revenue(@project).round, :delimeter => ',')  %> $</p>
-            <p class="m-0" style="font-size:12px">estimated annual revenue</p>
+        <div class="project-show-invest row justify-content-between">
+          <!-- investment distribution  -->
+          <div class="project-show-invest-left col-lg-5 col-sm-12">
+            <p class="text-primary mt-4 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
+            <%= pie_chart @shares, legend: "right", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', height: "150px" %>
           </div>
-          <div class="text-left p-2 ms-3 w-25">
-            <p class="m-0 text-primary fw-bold fs-5"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
-            <p class="m-0" style="font-size:12px">audio streams</p>
+
+          <!-- previsional information -->
+          <div class="project-show-invest-right col-lg-5 col-sm-12">
+            <p class="text-primary mt-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
+            <div class="artist-project-info-financial justify-content-between">
+              <div class="text-left p-2">
+                <p class="m-0 text-secondary fw-bold fs-5"> <%= number_with_delimiter(@project.project_revenue(@project).round, :delimeter => ',')  %> $</p>
+                <p class="m-0" style="font-size:12px">estimated annual revenue</p>
+              </div>
+              <div class="text-left p-2 ms-3">
+                <p class="m-0 text-primary fw-bold fs-5"><%= number_with_delimiter(@project.expected_audio_streams_year, :delimiter => ',')%></p>
+                <p class="m-0" style="font-size:12px">audio streams</p>
+              </div>
+              <div class="text-center p-2 ms-3">
+                <p class="m-0 fw-bold fs-5" style="color:#f9bc0b"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
+                <p class="m-0" style="font-size:12px;">video streams</p>
+              </div>
+            </div>
           </div>
-          <div class="text-center p-2 ms-3 w-25">
-            <p class="m-0 fw-bold fs-5" style="color:#f9bc0b"><%= number_with_delimiter(@project.expected_video_streams_year, :delimiter => ',')%></p>
-            <p class="m-0" style="font-size:12px;">video streams</p>
-          </div>
+
         </div>
+
 
         <!-- other information -->
         <p class="text-primary mt-4 border-bottom"><i class="fas fa-info-circle text-secondary"></i> Other information</p>
