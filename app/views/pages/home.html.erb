@@ -12,9 +12,8 @@
         <%= text_field_tag :query,
         params[:query],
         placeholder: "Invest in top artists"%>
-        <%= submit_tag "Go!", class: "home-banner-btn-submit" %>
+        <%= image_submit_tag("next.png", class: "home-banner-btn-submit") %>
       <% end %>
-
     </div>
 
     <div class="home-banner-right col-8">
@@ -151,6 +150,6 @@
 
       </div>
     </div>
-      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5" %> 
+      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5" %>
   </div>
 </div>
