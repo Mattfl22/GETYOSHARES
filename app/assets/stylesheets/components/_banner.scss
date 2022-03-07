@@ -20,17 +20,17 @@
   line-height: 1.5;
 
   &:nth-child(2) span {
-    animation-delay: 200ms;
+    animation-delay: 400ms;
   }
 
   &:nth-child(3) span {
-    animation-delay: 400ms;
+    animation-delay: 800ms;
   }
 
 
   > .home-banner-title-animation{
     display: block;
-    animation: titleFadeIn 800ms ease forwards;
+    animation: titleFadeIn 1s ease forwards;
     transform: translateY(100%);
 
 
@@ -72,7 +72,7 @@
     border-radius: 0px 4px 4px 0px;
     opacity: 1;
     margin-left: 60px;
-    font-size: 1.5rem;
+    width: 80px;
   }
 
   .home-banner-btn-submit:hover {
@@ -123,7 +123,7 @@
     &:hover {
       width: 100%;
       filter: grayscale(0%);
-      transition: width 1.2s ease;
+      transition: width 1.8s ease;
 
       .opacity {
         opacity: 0;
@@ -131,7 +131,7 @@
 
       .home-banner-image-hover {
         opacity: 1;
-        transition: 2s ;
+        transition: 4.4s ;
       }
     }
 
