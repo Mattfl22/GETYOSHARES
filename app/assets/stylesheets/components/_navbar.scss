@@ -37,15 +37,13 @@
 .logo {
   padding: 5px 20px;
   border-radius: 8px;
-  background-color: $primary;
+  color: $primary;
   align-items: center;
-  color: white;
   text-decoration: none;
   font-weight: 700;
+  font-family: 'Exo', sans-serif;
 
   &:hover {
-    background-color: $secondary;
-    color: white;
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
