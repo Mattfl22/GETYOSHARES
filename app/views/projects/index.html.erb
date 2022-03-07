@@ -23,7 +23,7 @@
 <div class="row row-cols-auto d-flex justify-content-between">
   <% @projects.each do |project| %>
   <div class="col">
-    <div class="card text-white shadow-sm p-3 mb-5 rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); background-position:center; height:220px; width:300px">
+    <div class="card text-white shadow-sm p-3 mb-5 rounded" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); background-repeat:no-repeat; background-size:cover; background-position:inherit; height:220px; width:300px">
         <div class="card-img-overlay">
           <h5 class="card-title"> <%= project.name %></h5>
           <p class="card-text"> <%= project.user.artist_name  %> </p>
