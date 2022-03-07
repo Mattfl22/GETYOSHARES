@@ -1,13 +1,1 @@
-<div class="container">
-  <div class="row py-4">
-    <div class="col payment-page">
-      <% if @transaction.state == "paid" %>
-        <h4><%= "Congratulations! Your transaction was successful!" %></h4>
-        <p><%= "A confirmation e-mail will be sent to you shortly" %></p>
-      <% else  %>
-        <h4><%="Your order is still pending" %></h4>
-      <% end %>
-      <%= link_to "Back to my dashboard", dashboard_path, class: "btn btn-primary" %>
-    </div>
-  </div>
-</div>
+

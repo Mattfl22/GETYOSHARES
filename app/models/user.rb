@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :projects
   has_many :transactions
-  has_many :carts
+  has_one :cart
   has_many :revenues, through: :projects
   has_many :tokens, through: :transactions
   has_one_attached :photo

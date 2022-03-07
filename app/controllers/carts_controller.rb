@@ -2,21 +2,26 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    transaction = Transaction.find(params[:transaction_id])
-    @cart = transaction.carts.new(cart_params)
+    # token = Token.find(params[:token_id])
+    @cart = Cart.create(user: current_user, quantity: params[:quantity], state: 'pending')
+    @project = Project.find(params[:project_id])
     authorize @cart
-
+    params[:quantity].to_i.times do 
+      token = @project.tokens.find { |token| token if !token.bought? }
+      transaction = Transaction.create!(token: token, amount: token.price, user: current_user, cart_id: @cart.id)
+    end
+    
     checkout_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
       line_items: [{
-        name: "token.sku",
-        amount: token.price_cents,
+        name: @project.name,
+        amount: @cart.transactions.first.token.price_cents,
         currency: 'usd',
-        quantity: cart.quantity
+        quantity: @cart.quantity
       }],
-      # success_url: project_transaction_url(@transaction.token.project, @transaction),
-      # cancel_url: project_transaction_url(@transaction.token.project, @transaction)
+      success_url: cart_url(@cart),
+      cancel_url: cart_url(@cart)
     )
 
     @cart.update(checkout_session_id: checkout_session.id)
@@ -26,9 +31,9 @@ class CartsController < ApplicationController
   end
 
   def show
+    @cart = current_user.cart
+    authorize @cart
   end
 
-  def cart_params 
-    params.require(:cart).permit(:quantity, :state, :checkout_session_id)
-  end
+
 end
