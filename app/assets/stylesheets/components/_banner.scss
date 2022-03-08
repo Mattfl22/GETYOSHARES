@@ -70,13 +70,13 @@
     background-color: $primary;
     padding: 20px;
     border-radius: 0px 4px 4px 0px;
-    opacity: 1;
     margin-left: 60px;
     width: 80px;
   }
 
   .home-banner-btn-submit:hover {
-    opacity: 0.7;
+    background-color: $secondary;
+
   }
 }
 .home-banner-right {
@@ -104,15 +104,16 @@
       font-size: 2rem;
       transform: rotate(-90deg);
 
+
     }
 
     > .home-banner-image-hover{
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: space-around;
       position: absolute;
       bottom: 2rem;
-      padding: 0 40px;
+      padding: 0;
       opacity: 0;
       font-size: 2rem;
       color: white;
@@ -124,6 +125,7 @@
       width: 100%;
       filter: grayscale(0%);
       transition: width 1.8s ease;
+
 
       .opacity {
         opacity: 0;
@@ -146,6 +148,10 @@
 
   > .home-banner-image.cardi-b {
     background-image: url("https://i.pinimg.com/originals/21/83/27/2183272c595e5cf13e4a56e78ea5912b.jpg");
+
+    > .home-banner-image-name{
+      bottom: 4.4rem;
+    }
   }
 
   > .home-banner-image.booba {
@@ -154,6 +160,10 @@
 
   > .home-banner-image.peggy-gou {
     background-image: url("https://electro-news.eu/wp-content/uploads/2020/04/peggy-gou-1575282700.78.2560x1440.jpg.webp");
+
+    > .home-banner-image-name {
+      bottom: 6rem;
+    }
   }
 }
 
@@ -172,7 +182,7 @@
 // End of Homepage Banner
 
 
-// Artist banner
+// Artist banner (index)
 
 .artist-banner{
   width: 100%;
@@ -193,9 +203,6 @@
   right: 8rem;
   // animation: titleFadeIn 3s ease forwards;
   z-index: 2;
-
-
-
 }
 
 .artist-banner-name {
@@ -239,9 +246,61 @@
       margin: 0;
     }
   }
+// End of artist banner
 
+// Artist banner (project show)
 
+.artist-banner-show{
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background-color: $primary;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
+.artist-banner-name-show {
+  color: white;
+  font-weight: lighter;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+    p {margin: 0;
+    }
+}
+
+.artist-banner-genre-show {
+  color: $primary;
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  background-color: white;
+  padding: 4px 8px;
+  width: 130px;
+  text-align: center;
+  border-radius: 8px;
+    p {
+      margin: 0;
+    }
+}
+
+.artist-banner-token-show {
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  text-align: center;
+    > :nth-child(1) {
+      font-weight: 700;
+      font-size : 2rem;
+      margin: 0;
+    }
+
+    > :nth-child(2) {
+      margin: 0;
+    }
+  }
 // End of artist banner
 
 

@@ -56,45 +56,72 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="home-features">
     <h2>Invest on <span>tomorrow's artists</span></h2>
-    <div class="row">
-      <div class="home-features-feature col-lg-4 col-md-6 col-sm-12">
-
+    <div class="row text-center">
+      <div class="home-features-sml col-lg-4 col-md-6 col-sm-12">
         <%= image_tag("home-feature-1.svg")%>
         <h3>Discover  artists</h3>
-        <p>Discover tomorrow’s artists depending on the artist’s name,
+        <p>Discover tomorrow's artists depending on the artist's name,
         genre or anticipated generated revenue.</p>
-
+        <p>
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample1">
+            See more
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample1">
+          <div class="card card-body">
+            Artists have huge costs associated with launching new albums, singles or EPs. They need to advance money to cover music videos, promotions or any other associated costs before <strong>generating a single penny of revenue,</strong> which makes it very hard to succeed in the music industry. Support artists you like or want to see succeed by investing in their musical projects.
+          </div>
+        </div>
       </div>
 
-      <div class="home-features-feature col-lg-4 col-md-6 col-sm-12">
-
+      <div class="home-features-sml col-lg-4 col-md-6 col-sm-12">
         <%= image_tag("home-feature-2.svg")%>
         <h3>Invest in their projects</h3>
         <p>Take advantage of our secture platform to invest in
-        an artist’s project to finance their upcoming hits,
+        an artist's project to finance their upcoming hits,
         music videos and other costs.</p>
+        <p>
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+            See more
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample2">
+          <div class="card card-body">
+            To invest in the projects, Geyoshares has decided to implement a token system. An artist can choose to divide the projects in three different shares: <strong>the artist’s shares, the distributor’s shares and the investor’s shares,</strong>  which are up for sale on this website. <wbr>
 
+            Each token has a value of 0.1% of the total project, meaning there are a 1000 tokens up for sale per project. In other words, for one token purchased, an investor will earn 0.1% of the future revenue stream. <br>
+
+            The price per token varies for each project and is determined by the artists themselves based on the <strong>calculated estimated revenues.</strong> These metrics will allow you to invest in projects in a transparent manner.
+          </div>
+        </div>
       </div>
 
-      <div class="home-features-feature col-lg-4 col-md-6 col-sm-12">
-
+      <div class="home-features-sml col-lg-4 col-md-6 col-sm-12">
         <%= image_tag("home-feature-3.svg")%>
         <h3>Become rich</h3>
         <p>Beneficiate  from a high return on investment
         on your projects.</p>
-
+        <p>
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+            See more
+          </a>
+        </p>
+        <div class="collapse" id="collapseExample3">
+          <div class="card card-body">
+            Thanks to solid and transparent partnerships with distributors, <strong>earnings will be redistributed monthly</strong> , based on the artist’s generated revenues. On this basis, investors will gain from a rapid return on investment.
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
 
-  <div class="home-trendings">
+  <div class="home-trendings text-center">
     <h2><span>Trending</span> Artists</h2>
     <div class="row trendings-cards">
       <div class="home-trending-card col-lg-4 col-md-4 col-sm-12"  id="htc-1">
@@ -144,6 +171,6 @@
 
       </div>
     </div>
-      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5" %>
+      <%= link_to "Invest in top artists", projects_path, class: "btn btn-primary my-5 text-center" %>
   </div>
 </div>

@@ -14,13 +14,24 @@
   }
 }
 
+.home-features-sml {
+  align-items: center;
+  > img {
+ width: 250px;
+ length: 250px;
+ margin-top: 40px;
+  }
+  > h3 {
+color: $primary;
+  }
+}
+
 .home-features-feature {
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
   align-items: center;
-  height: 375px;
-  margin-top: 50px;
+  width: 80%;
+  margin: 50px auto;
 
 
   > img {
@@ -56,7 +67,10 @@
   }
 }
 
-
+.card-body {
+  border:0;
+  background-color: rgba(103,104,171, 0.3);
+}
 
 
 // Media queries
