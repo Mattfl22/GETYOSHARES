@@ -109,11 +109,11 @@
 
     > .home-banner-image-hover{
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: space-around;
       position: absolute;
       bottom: 2rem;
-      padding: 0 40px;
+      padding: 0;
       opacity: 0;
       font-size: 2rem;
       color: white;
@@ -125,6 +125,7 @@
       width: 100%;
       filter: grayscale(0%);
       transition: width 1.8s ease;
+
 
       .opacity {
         opacity: 0;
