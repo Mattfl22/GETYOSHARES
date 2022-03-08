@@ -25,9 +25,10 @@ class CartsController < ApplicationController
     )
 
     @cart.update(checkout_session_id: checkout_session.id)
-    # binding.pry
+    
 
     redirect_to checkout_session[:url]
+ 
   end
 
   def show

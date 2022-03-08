@@ -25,10 +25,10 @@ class Project < ApplicationRecord
 
   def number_of_buyers(project)
     buyers = transactions.where(token_id: Token.where(project_id: project.id)).group(:user_id).count
-    if buyers.values.sum == 0
+    if buyers.values.count == 0
       0
     else
-      buyers.values.sum
+      buyers.values.count
     end
   end
 
