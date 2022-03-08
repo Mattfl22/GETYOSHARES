@@ -1,0 +1,4 @@
+﻿cart_id;checkout_session_id;quantity;user_id;state;created_at
+1;1;26;7;paid;01/01/2022
+2;2;36;8;paid;01/01/2022
+3;3;52;9;paid;01/01/2022
