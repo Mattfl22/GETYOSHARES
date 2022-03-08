@@ -5,6 +5,7 @@ class CartsController < ApplicationController
     # token = Token.find(params[:token_id])
     @cart = Cart.create(user: current_user, quantity: params[:quantity], state: 'pending')
     @project = Project.find(params[:project_id])
+    binding.pry
     authorize @cart
     params[:quantity].to_i.times do 
       token = @project.tokens.find { |token| token if !token.bought? }
@@ -25,9 +26,10 @@ class CartsController < ApplicationController
     )
 
     @cart.update(checkout_session_id: checkout_session.id)
-    # binding.pry
+    
 
     redirect_to checkout_session[:url]
+ 
   end
 
   def show
