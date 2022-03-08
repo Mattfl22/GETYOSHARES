@@ -23,8 +23,7 @@
     <div class="row">
       <!-- project description & music player: left part -->
       <div class="col-8 p-2">
-        <%# <h2 class="text-secondary">Project description</span></h2> %>
-        <p class="opacity-75 p-2"><%= @project.description %></p>
+        <p class="opacity-75 p-2 col-lg-11 col-sm-12"><%= @project.description %></p>
 
         <div class="project-show-media justify-content-between">
           <!-- spotify infos -->
@@ -82,11 +81,9 @@
 
 
       <!-- empty middle column -->
-      <%# <div class="col col-sm-1">
-      </div> %>
 
       <!-- project financial information: right part -->
-      <div class="col-8">
+      <div class="col col-lg-8">
         <h2 class="text-secondary mb-3">Financial information</h2>
         <!-- project funding status -->
         <p class="text-primary m-0 border-bottom"><i class="fas fa-coins text-secondary"></i>  Project funding status</p>
@@ -104,13 +101,13 @@
 
         <div class="project-show-invest">
           <!-- investment distribution  -->
-          <div class="project-show-invest-left col-lg-12 col-sm-12">
+          <div class="project-show-invest-left">
             <p class="text-primary mt-4 border-bottom"><i class="fas fa-hand-holding-usd text-secondary"></i> Investment distribution</p>
-            <%= pie_chart @shares, legend: "right", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', height: "150px" %>
+            <%= pie_chart @shares, legend: "right", colors: ["#6768AB", "#26216", "#f9bc0b"], suffix: '%', height: "150px", width: "400px" %>
           </div>
 
           <!-- previsional information -->
-          <div class="project-show-invest-right col-lg-12 col-sm-12">
+          <div class="project-show-invest-right">
             <p class="text-primary mt-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</p>
             <div class="artist-project-info-financial justify-content-between">
               <div class="text-left p-2">
@@ -132,7 +129,7 @@
 
 
         <!-- other information -->
-        <p class="text-primary mt-4 border-bottom col-9"><i class="fas fa-info-circle text-secondary"></i> Other information</p>
+        <p class="text-primary mt-4 border-bottom col-12"><i class="fas fa-info-circle text-secondary"></i> Other information</p>
         <p class="text-secondary">Release date: <%= @project.release_date.strftime("%B %d, %Y") %></p>
         <p class="text-secondary">Distributor: <%= @project.distributor %></p>
       </div>
