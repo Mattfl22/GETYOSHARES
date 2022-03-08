@@ -34,7 +34,7 @@
           <p class='fs-6 my-0 text-white fw-light'>Total amount invested</p>
         </div>
         <div class='py-3 rounded border border-primary p-3 bg-primary'>
-          <p class='text-primary fs-4 mb-0 text-white'><%= number_with_delimiter(current_user.revenues_as_investor.sum('revenue * 0.001'), :delimiter => ',')%> $</p>
+          <p class='text-primary fs-4 mb-0 text-white'><%= number_with_delimiter(current_user.revenues_as_investor.sum('revenue * 0.001').round(2), :delimiter => ',')%> $</p>
           <p class='fs-6 my-0 text-white fw-light'>Total revenue</p>
         </div>
       </div>
