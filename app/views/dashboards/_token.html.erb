@@ -1,7 +1,7 @@
 <div class ="container">
   <h5 class='text-primary mb-3'>My dashboard</h5>
   <% if current_user.tokens.empty? %>
-    <p> No tokens yet ! </p>
+    <p> No token yet ! </p>
     <%= link_to "Find investments 😉", projects_path, class:"btn btn-primary mb-5" %>
   <% else %>
     <!-- div with chart and other porfolio infos -->

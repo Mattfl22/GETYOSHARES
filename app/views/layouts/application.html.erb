@@ -36,20 +36,13 @@
   </head>
 
   <body data-controller="highlight">
-    <%= render 'shared/navbar-home' %>
+    <%= render 'shared/navbar-home', class: "site-header"%>
+
     <%= yield %>
-  <body>
-  <%# class header, content, footer, to have a footer always on the bottom of the page %>
 
-    <header class="site-header"><%= render 'shared/navbar-home' %></header>
-
-	  <main class="site-content"><%= yield %>
     <%= render 'shared/flashes' %>
-    </main>
-    
-	  <footer class="site-footer"><%= render 'shared/footer' %></footer>
-    
 
+	  <%= render 'shared/footer', class: "site-footer"%>
   </body>
 </html>
 
