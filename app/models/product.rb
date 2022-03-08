@@ -48,5 +48,5 @@ class Product < ApplicationRecord
 
   belongs_to :project
   has_many :tracks
-  validates :genre, inclusion: { in: genres_list, message: "it's not a valid genre" }
+  # validates :genre, inclusion: { in: genres_list, message: "it's not a valid genre" }
 end
