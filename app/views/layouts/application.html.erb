@@ -41,8 +41,7 @@
     <header class="site-header"><%= render 'shared/navbar-home' %></header>
 
 	  <main class="site-content"><%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'shared/flashes' %>
     </main>
     
 	  <footer class="site-footer"><%= render 'shared/footer' %></footer>
