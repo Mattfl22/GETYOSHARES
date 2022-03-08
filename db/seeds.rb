@@ -21,6 +21,7 @@ Revenue.destroy_all
 Track.destroy_all
 Product.destroy_all
 Transaction.destroy_all
+Cart.destroy_all
 Token.destroy_all
 Project.destroy_all
 User.destroy_all
@@ -148,7 +149,7 @@ tokens = {}
 
 CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
   attributes = {
-    price: row[:unit_price]
+    price: row[:price]
   }
 
   token = Token.new(attributes)
@@ -159,13 +160,35 @@ CSV.foreach(tokens_path, headers: :first_row, col_sep: ';', header_converters: :
 end
 
 puts "zzzzZZZZZZzzzZZZzzzzzZZzzzz...."
+
+puts "carts !"
+
+carts_path = Rails.root.join("db/seeds/csv/carts.csv")
+carts = {}
+
+CSV.foreach(carts_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
+  headers = ["checkout_session_id", "quantity", "state", "created_at"]
+  attributes = {}
+
+  headers.each do |header|
+    attributes[header.to_sym] = row[header.to_sym]
+  end
+
+  cart = Cart.new(attributes)
+  cart.user = users[row[:user_id]]
+  cart.save!
+
+  carts[row[:id]] = cart
+end
+
+puts "Ok"
 puts "Creating transactions..."
 
 transactions_path = Rails.root.join("db/seeds/csv/transactions.csv")
 transactions = {}
 
 CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_converters: :symbol) do |row|
-  headers = ["comment", "rating", "created_at", "active"]
+  headers = ["token_sku", "comment", "rating", "created_at", "active"]
 
   attributes = {}
 
@@ -176,6 +199,7 @@ CSV.foreach(transactions_path, headers: :first_row, col_sep: ';', header_convert
   transaction = Transaction.new(attributes)
   transaction.token = tokens[row[:token_id]]
   transaction.user = users[row[:user_id]]
+  transaction.cart = carts[row[:cart_id]]
   if transaction.save!
     transaction.set_token_as_bought
   end
