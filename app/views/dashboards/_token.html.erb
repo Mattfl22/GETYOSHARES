@@ -7,35 +7,35 @@
     <!-- div with chart and other porfolio infos -->
     <div class="row align-items-end mb-2 align-items-start">
       <div class='col col-lg-8 border border-primary py-5 px-3 rounded bg-white'>
-       <h5 class='mb-3'>Revenues per month per project</h3>
+       <h5 class='mb-3 text-secondary'>Revenues per month per project</h3>
 
         <!-- drop down to select project -->
         <div data-controller="update-chart">
           <label for="project-select">Project:</label>
           <select id="project" data-action="change->update-chart#update">
             <% current_user.projects_as_investor.uniq.each do |p| %>
-                <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum(:revenue).to_a.to_json.html_safe%>><%= "#{User.find(p.user_id).artist_name} - #{p.name}" %></option>
+                <option value=<%= p.id %> data-chart-value=<%= current_user.revenues_as_investor.where(project_id: p.id).group_by_month(:date).sum('revenue * 0.001').to_a.to_json.html_safe%>><%= "#{User.find(p.user_id).artist_name} - #{p.name}" %></option>
             <% end %>
           </select>
         </div>
 
          <!-- chart -->
-        <%= column_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date, format: "%b %Y").sum(:revenue), id: 'chart-projects-revenues', height: "250px", thousands: ",", colors: ["#6768AB"], suffix: ' $' %>
+        <%= column_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date, format: "%b %Y").sum('revenue * 0.001'), id: 'chart-projects-revenues', height: "250px", thousands: ",", colors: ["#6768AB"], suffix: ' $' %>
       </div>
 
       <!-- portfolio informations (tokens + amount invested) -->
       <div class='col col-lg-4'>
-        <div class='py-3 rounded border border-primary p-3 bg-white'>
-          <p class='text-primary fs-4 mb-0'><%= current_user.number_of_token_user %></p>
-          <p class='fs-6 my-0 text-muted'>Tokens</p>
+        <div class='py-3 rounded border border-primary p-3 bg-primary'>
+          <p class='text-primary fs-4 mb-0 text-white'><%= current_user.number_of_token_user %></p>
+          <p class='fs-6 my-0 text-white fw-light'>Tokens</p>
         </div>
-        <div class='py-3 rounded border border-primary p-3 bg-white my-3'>
-          <p class='text-primary fs-4 mb-0'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%> $</p>
-          <p class='fs-6 my-0 text-muted'>Total amount invested</p>
+        <div class='py-3 rounded border border-primary p-3 bg-primary my-3'>
+          <p class='text-primary fs-4 mb-0 text-white'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%> $</p>
+          <p class='fs-6 my-0 text-white fw-light'>Total amount invested</p>
         </div>
-        <div class='py-3 rounded border border-primary p-3 bg-white'>
-          <p class='text-primary fs-4 mb-0'><%= number_with_delimiter(current_user.revenues_as_investor.sum(:revenue), :delimiter => ',')%> $</p>
-          <p class='fs-6 my-0 text-muted'>Total revenue</p>
+        <div class='py-3 rounded border border-primary p-3 bg-primary'>
+          <p class='text-primary fs-4 mb-0 text-white'><%= number_with_delimiter(current_user.revenues_as_investor.sum('revenue * 0.001'), :delimiter => ',')%> $</p>
+          <p class='fs-6 my-0 text-white fw-light'>Total revenue</p>
         </div>
       </div>
     </div>
@@ -43,7 +43,7 @@
     <h5 class='text-primary mt-5'>My portfolio</h5>
     <!-- list of projects -->
     <% @project_informations.each do |project_information| %>
-      <div class="row align-items-end mb-2 bg-white py-1 rounded">
+      <div class="row align-items-center mb-2 bg-white py-1 rounded">
         <div class='col col-lg-1'>
           <%= cl_image_tag Project.find_by(name:project_information[:project_name]).photo.key, height: 100, width:100, crop: :fill, class: 'rounded' %>
         </div>
