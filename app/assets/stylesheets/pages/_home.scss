@@ -11,14 +11,28 @@
 }
 
 .home-features-sml {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+
+
   > img {
- width: 250px;
- length: 250px;
- margin-top: 40px;
+    width: 250px;
+    margin-top: 50px;
   }
+
   > h3 {
-color: $primary;
+    color: $primary;
+    margin: 20px 0;
+    font-size: 1.5rem;
+
+  }
+
+  > p {
+    text-align: center;
+    max-width: 80%;
+
   }
 }
 

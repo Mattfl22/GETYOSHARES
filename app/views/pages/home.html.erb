@@ -83,8 +83,7 @@
         <%= image_tag("home-feature-2.svg")%>
         <h3>Invest in their projects</h3>
         <p>Take advantage of our secture platform to invest in
-        an artist's project to finance their upcoming hits,
-        music videos and other costs.</p>
+        an artist's project to finance their upcoming hits.</p>
         <p>
           <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
             See more
@@ -105,7 +104,7 @@
         <%= image_tag("home-feature-3.svg")%>
         <h3>Become rich</h3>
         <p>Beneficiate  from a high return on investment
-        on your projects.</p>
+        on your<br> projects.</p>
         <p>
           <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
             See more
@@ -144,7 +143,7 @@
       <div class="home-trending-card col-lg-4 col-md-4 col-sm-12"  id="htc-2">
 
         <div class="home-trending-card-infos">
-        <% user = User.find_by(artist_name: "Skepta") %>
+        <% user = User.find_by(artist_name: "La Fève") %>
         <% project = Project.find_by(user_id: user) %>
           <h4> <%= project.name.upcase %> </h4>
           <h5><%= user.artist_name %></h5>
@@ -152,7 +151,7 @@
           <%= link_to "View More", project_path(project), class: "btn btn-trending-card" %>
         </div>
 
-        <%= image_tag("ignorance.jpg")%>
+        <%= image_tag("errr.jpg")%>
 
       </div>
 
