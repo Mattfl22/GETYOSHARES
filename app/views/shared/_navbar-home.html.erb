@@ -12,9 +12,13 @@
           <li class="nav-link"><i class="fa fa-compass"></i><%= link_to "Explore", projects_path %></li>
           <li class="nav-link"><i class="fa fa-chart-line"></i></i><%= link_to "Dashboard", dashboard_path%></li>
           <li class="nav-item dropdown">
-            <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.photo.key != nil %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <div data-initials="FH" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"dropdown-item"%>
             </div>
           </li>
         </ul>
