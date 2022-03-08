@@ -1,13 +1,17 @@
 // Specific CSS for your home-page
 
 
-.home-features {
+.home-features{
   margin-top: 50px;
   align-items: center;
+
+
+
   > h2{
     text-align: center;
     font-weight: 700;
   }
+
 }
 
 .home-features-sml {
@@ -15,6 +19,15 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  animation: fadeIn 3s forwards;
+  opacity: 0;
+
+  &:nth-child(2) {
+    animation-delay: 2000ms;
+  }
+  &:nth-child(3) {
+    animation-delay: 3000ms;
+  }
 
 
   > img {
@@ -36,32 +49,6 @@
   }
 }
 
-.home-features-feature {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 80%;
-  margin: 50px auto;
-
-
-  > img {
-    width: 50%;
-  }
-
-  > h3 {
-    color:  $primary;
-    margin: 20px 0;
-    font-size: 1.5rem;
-
-  }
-
-  > p {
-    text-align: center;
-    max-width: 70%;
-
-  }
-}
-
 
 .home-trendings {
   margin-top: 50px;
@@ -79,6 +66,10 @@
   background-color: rgba(103,104,171, 0.3);
 }
 
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
 
 // Media queries
 
