@@ -1,7 +1,7 @@
 <!-- banner -->
 <div class="container-gys">
 
-  <div class="artist-banner-show mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @project.photo.key %>');">
+  <div class="artist-banner-show mb-3 rounded" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @project.photo.key %>');">
     <div class="artist-banner-name">
       <h3><%= User.find(@project.user_id).artist_name.capitalize %></h3>
       <p><%= @project.name  %></p>
