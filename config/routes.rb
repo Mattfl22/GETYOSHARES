@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'carts/create'
   # get 'carts/show'
   # get 'dashboard/show'

@@ -80,3 +80,6 @@ gem 'devise'
 
 # pundit
 gem 'pundit'
+
+# admin
+gem 'rails_admin', '~> 2.0'
