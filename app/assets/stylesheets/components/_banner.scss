@@ -70,13 +70,13 @@
     background-color: $primary;
     padding: 20px;
     border-radius: 0px 4px 4px 0px;
-    opacity: 1;
     margin-left: 60px;
     width: 80px;
   }
 
   .home-banner-btn-submit:hover {
-    opacity: 0.7;
+    background-color: $secondary;
+
   }
 }
 .home-banner-right {
@@ -103,6 +103,7 @@
       font-weight: 700;
       font-size: 2rem;
       transform: rotate(-90deg);
+
 
     }
 
@@ -146,6 +147,10 @@
 
   > .home-banner-image.cardi-b {
     background-image: url("https://i.pinimg.com/originals/21/83/27/2183272c595e5cf13e4a56e78ea5912b.jpg");
+
+    > .home-banner-image-name{
+      bottom: 4.4rem;
+    }
   }
 
   > .home-banner-image.booba {
@@ -154,6 +159,10 @@
 
   > .home-banner-image.peggy-gou {
     background-image: url("https://electro-news.eu/wp-content/uploads/2020/04/peggy-gou-1575282700.78.2560x1440.jpg.webp");
+
+    > .home-banner-image-name {
+      bottom: 6rem;
+    }
   }
 }
 
