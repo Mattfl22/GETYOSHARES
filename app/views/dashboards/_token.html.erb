@@ -44,7 +44,15 @@
     </div>
 
     <h5 class='text-secondary mt-5 mb-3'>My investments</h5>
-    <div class="create-a-playlist btn-primary"> Create a playlist </div> <%= create_playlist(current_user) %>    <!-- list of projects -->
+
+
+    <%#= link_to "Create a playlist", :controller => :dashboards, :action => :create_playlist %>
+    <%= link_to "Create a playlist", create_playlist_path, method: :post %>
+
+    <%# <div class="create-a-playlist btn-primary"> Create a playlist </div> <%= link_to "Create a playlist" %>     %>
+
+
+    <!-- list of projects -->
     <% @project_informations.each do |project_information| %>
       <div class="row align-items-center mb-2 bg-white py-1 rounded">
         <div class='col col-lg-1'>
