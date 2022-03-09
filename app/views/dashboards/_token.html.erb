@@ -47,7 +47,8 @@
 
 
     <%#= link_to "Create a playlist", :controller => :dashboards, :action => :create_playlist %>
-    <%= link_to "Create a playlist", create_playlist_path, method: :post %>
+    <%# <%= link_to "Create a playlist", create_playlist_path, method: :post %> %>
+    <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 
     <%# <div class="create-a-playlist btn-primary"> Create a playlist </div> <%= link_to "Create a playlist" %>     %>
 
