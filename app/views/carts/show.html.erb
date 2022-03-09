@@ -7,11 +7,6 @@
           <% if @cart.state == "paid" %>
             <h4> Congratulations! Your transaction was successful!</h4>
             <p>A confirmation e-mail will be sent to you shortly</p>
-            <p> Your order : </p>
-            <h4> <%= @project.user.artist_name %> </h4>
-            <p> Project : <%= @project.name %> </p>
-            <p> Number of tokens : <%= @cart.quantity %> </p>
-            <p> Total amount : <%= @cart.quantity*@cart.transactions.first.token.price_cents %> </p>
           <% else  %>
             <h4>Your order is still pending</h4>
           <% end %>
