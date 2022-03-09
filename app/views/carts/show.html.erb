@@ -1,14 +1,14 @@
-<div class="container-gys"> 
+<div class="container-gys">
   <div class="row p3-4">
     <div class="col payment-page d-flex justify-content-center">
       <div  class="card border-0 pb-5" style="width: 25rem">
         <%= image_submit_tag("jul.png", class: "card-img-top", height: 'auto', width: '300') %>
-        <div class="my-3">
+        <div class="my-3 text-center">
           <% if @cart.state == "paid" %>
             <h4> Congratulations! Your transaction was successful!</h4>
-            <p>A confirmation e-mail will be sent to you shortly</p>
           <% else  %>
             <h4>Your order is still pending</h4>
+            <p>A confirmation e-mail will be sent to you shortly</p>
           <% end %>
           <%= link_to "Back to my dashboard", dashboard_path, class: "btn btn-primary" %>
         </div>
