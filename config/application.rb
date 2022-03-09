@@ -1,5 +1,6 @@
 require_relative "boot"
 require 'rspotify'
+require 'rspotify/oauth'
 
 require "rails/all"
 
