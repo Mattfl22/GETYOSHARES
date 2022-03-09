@@ -229,7 +229,7 @@
 .index-cardi-absolute{
   background-image: url("test-cardi.png");
   width: 30%;
-  height: 330px;
+  height: 380px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -385,5 +385,7 @@
     }
 
   }
-
+  .index-artist-banner {
+    display: none;
+  }
 }
