@@ -238,11 +238,6 @@
   right: 8rem;
   z-index: 2;
 }
-.index-cards-card-tokens-info {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-}
 
 .index-card-img-overlay{
     height: 100%;
@@ -250,18 +245,26 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    .index-cards-card-project-info{
 
+    > .index-cards-card-project-info {
       > h5 {
         font-weight: 700;
         font-size: 2rem;
       }
-  }
-  > .index-cards-card-tokens-info {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    width: 100%;
+    }
+
+  > .index-cards-card-bottom {
+      width: 100%;
+      > .index-cards-card-tokens-info {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+        width: 100%;
+
+        > p {
+          margin-right: 10px;
+        }
+      }
   }
 }
 // End of artist banner (index)

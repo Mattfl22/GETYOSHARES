@@ -25,18 +25,20 @@
 
 <div class="row row-cols-auto d-flex justify-content-between index-cards">
   <% @projects.each do |project| %>
-  <div class="col">
-    <div class="index-cards-card text-white shadow-sm mb-5 rounded p-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); background-repeat:no-repeat; background-size:cover; background-position:inherit; height:240px; width:380px">
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="index-cards-card text-white shadow-sm mb-5 rounded p-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path User.find(project.user_id).photo.key, crop: :fit, height: 320 %>'); background-repeat:no-repeat; background-size:cover; background-position:inherit; height:240px;">
         <div class="index-card-img-overlay">
         <div class="index-cards-card-project-info">
           <h5 class="card-title"> <%= project.name %></h5>
           <p class="card-text"> <%= project.user.artist_name  %> </p>
         </div>
+        <div class="index-cards-card-bottom">
           <div class="index-cards-card-tokens-info">
-            <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
             <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_tokens - project.number_of_transactions(project) %> Tokens left </p>
             <p class="card-text"><i class="fas fa-user-friends"></i> <%= project.number_of_buyers(project)  %> Buyers </p>
           </div>
+          <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
+        </div>
         </div>
     </div>
   </div>
