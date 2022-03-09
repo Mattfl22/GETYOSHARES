@@ -1,2 +1,24 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<div class="container-gys">
+  <div class="p-4 bg-white">
+    <%= simple_form_for @project do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :average_distribution_share %>
+      <%= f.input :expected_audio_streams_year %>
+      <%= f.input :expected_video_streams_year %>
+      <%= f.input :release_date %>
+      <%= f.input :distributor %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :number_of_tokens %>
+
+      <%= f.abyme_for(:tokens)%>
+
+      <%= f.abyme_for(:products) do |abyme| %>
+        <%= abyme.records %>
+        <%= abyme.new_records %>
+        <%= add_associated_record %>
+      <% end %>
+      <%= f.submit 'Save new project', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

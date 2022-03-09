@@ -10,15 +10,16 @@ class CartsController < ApplicationController
       token = @project.tokens.find { |token| token if !token.bought? }
       transaction = Transaction.create!(token: token, amount: token.price, user: current_user, cart_id: @cart.id)
     end
-    
+    binding.pry
     checkout_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
       line_items: [{
-        name: @project.name,
+        name: @project.user.artist_name,
         amount: @cart.transactions.first.token.price_cents,
         currency: 'usd',
-        quantity: @cart.quantity
+        quantity: @cart.quantity,
+        images: [@project.photo]
       }],
       success_url: cart_url(@cart),
       cancel_url: cart_url(@cart)
