@@ -1,5 +1,4 @@
 <div class="container">
-  <h5 class='text-primary mb-3'>My projects</h5>
   <% if current_user.projects.empty? %>
     <p>No projects yet !</p>
     <%= link_to "Add a project 😉", projects_path, class:"btn btn-primary mb-5" %>
@@ -7,7 +6,7 @@
     <div class="container">
     <div class="financial-info justify-content-center mb-5">
     <% current_user.projects.each do |project|  %>
-    <%# financial results card per project %>
+      <%# financial results card per project %>
       <div class ="dashboard-artist-project border d-flex">
         <h3 class="dashboard-artist-project-name font-weight-bold text-dark mt-3" >
           <strong><%= project.name %></strong>
