@@ -1,13 +1,12 @@
 <div class ="container">
-  <h5 class='text-primary mb-3'>My dashboard</h5>
   <% if current_user.tokens.empty? %>
     <p> No token yet ! </p>
     <%= link_to "Find investments 😉", projects_path, class:"btn btn-primary mb-5" %>
   <% else %>
     <!-- div with chart and other porfolio infos -->
-    <div class="row align-items-end mb-2 align-items-start">
-      <div class='col col-lg-8 border border-primary py-5 px-3 rounded bg-white'>
-       <h5 class='mb-3 text-secondary'>Revenues per month per project</h3>
+    <div class="row align-items-center mb-2 align-items-start">
+      <div class='col col-lg-7 py-3 px-3 bg-white'>
+       <h5 class='mb-3 text-secondary'>Revenues per month per project</h5>
 
         <!-- drop down to select project -->
         <div data-controller="update-chart">
@@ -20,27 +19,31 @@
         </div>
 
          <!-- chart -->
-        <%= column_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date, format: "%b %Y").sum('revenue * 0.001'), id: 'chart-projects-revenues', height: "250px", thousands: ",", colors: ["#6768AB"], suffix: ' $' %>
+        <%= line_chart current_user.revenues_as_investor.where(project_id: current_user.projects_as_investor.first.id).group_by_month(:date, format: "%b %Y").sum('revenue * 0.001'), id: 'chart-projects-revenues', height: "250px", thousands: ",", colors: ["#262161"], suffix: ' $' %>
+      </div>
+
+      <div class='col col-lg-1'>
       </div>
 
       <!-- portfolio informations (tokens + amount invested) -->
       <div class='col col-lg-4'>
-        <div class='py-3 rounded border border-primary p-3 bg-primary'>
+        <h5 class='mb-3 text-secondary'>Overview</h5>
+        <div class='py-2 rounded p-3 bg-primary'>
           <p class='text-primary fs-4 mb-0 text-white'><%= current_user.number_of_token_user %></p>
           <p class='fs-6 my-0 text-white fw-light'>Tokens</p>
         </div>
-        <div class='py-3 rounded border border-primary p-3 bg-primary my-3'>
+        <div class='py-2 rounded p-3 bg-secondary my-3'>
           <p class='text-primary fs-4 mb-0 text-white'><%= number_with_delimiter(current_user.total_amount_invested_user , :delimiter => ',')%> $</p>
           <p class='fs-6 my-0 text-white fw-light'>Total amount invested</p>
         </div>
-        <div class='py-3 rounded border border-primary p-3 bg-primary'>
-          <p class='text-primary fs-4 mb-0 text-white'><%= number_with_delimiter(current_user.revenues_as_investor.sum('revenue * 0.001').round(2), :delimiter => ',')%> $</p>
-          <p class='fs-6 my-0 text-white fw-light'>Total revenue</p>
+        <div class='py-2 rounded p-3' style='background-color:#f9bc0b'>
+          <p class='fs-4 mb-0'><%= number_with_delimiter(current_user.revenues_as_investor.sum('revenue * 0.001').round(2), :delimiter => ',')%> $</p>
+          <p class='fs-6 my-0 fw-light'>Total revenue</p>
         </div>
       </div>
     </div>
 
-    <h5 class='text-primary mt-5'>My portfolio</h5>
+    <h5 class='text-secondary mt-5 mb-3'>My investments</h5>
     <!-- list of projects -->
     <% @project_informations.each do |project_information| %>
       <div class="row align-items-center mb-2 bg-white py-1 rounded">
@@ -66,4 +69,5 @@
       </div>
     <% end %>
   <% end %>
+  <div class="mb-5"></div>
 </div>
