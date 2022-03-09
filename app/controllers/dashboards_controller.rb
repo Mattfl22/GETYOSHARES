@@ -11,4 +11,8 @@ class DashboardsController < ApplicationController
       @project_informations << project
     end
   end
+
+  def create_playlist(current_user)
+    create_spoti_playlist(current_user)
+  end
 end

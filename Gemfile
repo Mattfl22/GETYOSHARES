@@ -40,6 +40,9 @@ gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
 
+#spotify
+gem 'rspotify', '~> 2.11.1'
+
 #cloudinary
 gem 'cloudinary', '~> 1.16.0'
 
