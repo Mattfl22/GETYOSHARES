@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  include CloudinaryHelper
+  
   before_action :authenticate_user!
 
   def create
@@ -25,7 +27,9 @@ class CartsController < ApplicationController
         amount: @cart.transactions.first.token.price_cents,
         currency: 'usd',
         quantity: @cart.quantity,
-        images: [@project.photo]
+        images: [
+          cl_image_path(@project.photo.key)
+        ]
       }],
       success_url: cart_url(@cart),
       cancel_url: cart_url(@cart)
