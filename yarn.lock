@@ -6313,6 +6313,11 @@ static-extend@^0.1.1:
   resolved "https://registry.npmjs.org/statuses/-/statuses-1.5.0.tgz"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
+stimulus-scroll-reveal@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-scroll-reveal/-/stimulus-scroll-reveal-3.0.0.tgz#0081591b0e4fc03963f7ae33d653ac4aeb73c4fc"
+  integrity sha512-WRW8pwuTU3IX7jziHMSI1XxktBL2yqtwj5aJs+C6sFZ+M27+b+3df2nIYxo1O5pn+RV97exoecpUHVlDa6ALxQ==
+
 stimulus@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/stimulus/-/stimulus-3.0.1.tgz"
