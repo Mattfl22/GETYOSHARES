@@ -1,7 +1,6 @@
 require_relative "boot"
 require 'rspotify'
 require 'rspotify/oauth'
-
 require "rails/all"
 
 RSpotify::authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'])

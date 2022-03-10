@@ -5,7 +5,9 @@ class CreateSpotifyPlaylistService
   end
 
   def call
-    spotify_user = RSpotify::User.find('112551945')
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+
+    # spotify_user = RSpotify::User.find('112551945')
 
     # spotify_user = RSpotify::User.new(
     #   {
@@ -16,7 +18,6 @@ class CreateSpotifyPlaylistService
     #     } ,
     #     'id' => self.credentials["user_id"]
     #   })
-
 
     my_playlists = spotify_user.playlists
 
