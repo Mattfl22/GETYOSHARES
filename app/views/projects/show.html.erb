@@ -50,7 +50,12 @@
       <div class="col-4 project-show-tokens-sticky p-4 border" data-controller="counter">
         <div class="artist-project-info-financial mb-15 align-items d-flex justify-content-between ">
           <div class="d-flex flex-column justify-content-evenly text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white h4 fw-bold"><small>$</small><span data-counter-target="price"><%= @project.unit_price.to_i/1000%></span>K</p>
+            <p class="m-0 text-white h4 fw-bold">
+            <% if (@project.unit_price.to_i) >= 1000 %>
+              <small>$</small><%=(@project.unit_price.to_i)/1000%>K</p>
+            <% else  %>
+              <small>$</small><%=(@project.unit_price.to_i) %>
+            <% end %>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="d-flex flex-column justify-content-evenly text-center border border-primary rounded p-2 ms-3 w-25">
