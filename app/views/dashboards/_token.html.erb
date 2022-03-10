@@ -44,6 +44,11 @@
     </div>
 
     <h5 class='text-secondary mt-5 mb-3'>My investments</h5>
+
+    <%= form_tag '/auth/spotify', method: :post do %>
+      <%= submit_tag "Create a Spotify playlist", class: "btn btn-primary mb-2", data: { disable_with: "Creating playlist..." } %>
+    <% end %>
+
     <!-- list of projects -->
     <% @project_informations.each do |project_information| %>
       <div class="row align-items-center mb-2 bg-white py-1 rounded">
