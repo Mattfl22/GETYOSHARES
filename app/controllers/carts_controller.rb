@@ -14,7 +14,6 @@ class CartsController < ApplicationController
     @cart.save!
 
     @project = Project.find(params[:project_id])
-
     params[:quantity].to_i.times do
       token = @project.tokens.find { |token| token if !token.bought? }
       transaction = Transaction.create!(token: token, amount: token.price, user: current_user, cart_id: @cart.id)
@@ -36,7 +35,9 @@ class CartsController < ApplicationController
     )
 
     @cart.update(checkout_session_id: checkout_session.id)
+
     redirect_to checkout_session[:url]
+
   end
 
   def show

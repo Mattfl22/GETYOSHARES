@@ -13,7 +13,7 @@
     <h5 class="card-text"> <%=  user.artist_name %> </h5>
     <div class="index-artist-card-tokens-infos">
       <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_transactions(project) != nil ? (project.number_of_tokens - project.number_of_transactions(project)) : project.number_of_tokens %> Tokens left </p>
-      <p class="card-text"><i class="fas fa-user-friends"></i> <%= project.number_of_buyers(project) %> Buyers </p>
+      <p class="card-text"><i class="fas fa-user-friends"></i> <%= pluralize project.number_of_buyers(project), 'Buyer' %></p>
     </div>
     <%= link_to "Discover", project_path(project.id), class: 'index-artist-banner-btn'%>
   </div>
@@ -35,7 +35,7 @@
         <div class="index-cards-card-bottom">
           <div class="index-cards-card-tokens-info">
             <p class="card-text"><i class="fas fa-donate"></i> <%= project.number_of_transactions(project) != nil ? (project.number_of_tokens - project.number_of_transactions(project)) : project.number_of_tokens %> Tokens left </p>
-            <p class="card-text"><i class="fas fa-user-friends"></i> <%= project.number_of_buyers(project)  %> Buyers </p>
+            <p class="card-text"><i class="fas fa-user-friends"></i> <%= pluralize project.number_of_buyers(project), 'Buyer' %></p>
           </div>
           <%= link_to "Discover", project_path(project) ,  class: 'btn btn-outline-light'%>
         </div>
