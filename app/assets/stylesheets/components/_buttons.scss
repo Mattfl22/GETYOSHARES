@@ -32,10 +32,16 @@
   color: white;
 }
 
-.btn.active.focus {
-  outline: none;
+.btn-primary {
+  box-shadow: none !important;
+  border: none !important;
 }
 
-.btn-home:hover {
-  background-color:#262161 ;
+.btn {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.btn-primary:hover{
+  background-color: #262161
 }
