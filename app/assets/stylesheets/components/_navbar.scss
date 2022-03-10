@@ -22,7 +22,6 @@
   justify-content: space-between;
 }
 .nav-link {
-  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -73,17 +72,17 @@
 [data-initials]:before {
   background: $primary;
   color: white;
-  opacity: 1; 
-  content: attr(data-initials); 
-  display: inline-block; 
-  font-weight: bold; 
-  border-radius: 50%; 
-  vertical-align: middle; 
-  margin-right: 0.5em; 
-  width: 50px; 
-  height: 50px; 
-  line-height: 50px; 
-  text-align: center; 
+  opacity: 1;
+  content: attr(data-initials);
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
   }
 
 // Media queries
