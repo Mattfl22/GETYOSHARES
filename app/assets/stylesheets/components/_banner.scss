@@ -95,6 +95,8 @@
     background-size: 900px;
     background-repeat: no-repeat;
     position: relative;
+    transition: width 2.5s ease-in-out;
+
 
 
     > .home-banner-image-name {
@@ -120,12 +122,12 @@
       color: white;
       width: 100%;
       font-weight: 700;
+
     }
 
     &:hover {
       width: 100%;
       filter: grayscale(0%);
-      transition: width 2.5s ease;
 
 
       .opacity {
