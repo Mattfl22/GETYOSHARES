@@ -42,6 +42,8 @@ gem 'stripe_event'
 
 #spotify
 gem 'rspotify', '~> 2.11.1'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-spotify-oauth2', '~> 1.0'
 
 #cloudinary
 gem 'cloudinary', '~> 1.16.0'

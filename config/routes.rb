@@ -14,10 +14,10 @@ Rails.application.routes.draw do
   # get 'projects/create'
   # get 'projects/update'
   # get 'projects/show'
-  post 'create_playlist', to: 'dashboards#create_playlist'
-  get '/auth/spotify/callback', to: 'dashboards#create_playlist'
 
   devise_for :users
+  post 'create_playlist', to: 'dashboards#create_playlist'
+  get '/auth/spotify/callback', to: 'dashboards#create_playlist'
   root to: 'pages#home'
   resources :projects, only: [:index, :show, :edit, :new, :create, :update] do
     resources :products, only: [:show, :new, :create]

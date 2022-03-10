@@ -45,13 +45,9 @@
 
     <h5 class='text-secondary mt-5 mb-3'>My investments</h5>
 
-
-    <%#= link_to "Create a playlist", :controller => :dashboards, :action => :create_playlist %>
-    <%# <%= link_to "Create a playlist", create_playlist_path, method: :post %> %>
-    <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-
-    <%# <div class="create-a-playlist btn-primary"> Create a playlist </div> <%= link_to "Create a playlist" %>     %>
-
+    <%= form_tag '/auth/spotify', method: :post do %>
+      <%= submit_tag "Create a Spotify playlist", class: "btn btn-primary mb-2", data: { disable_with: "Creating playlist..." } %>
+    <% end %>
 
     <!-- list of projects -->
     <% @project_informations.each do |project_information| %>

@@ -1,23 +1,11 @@
 class CreateSpotifyPlaylistService
   def initialize(user)
     @user = user
-    RSpotify.authenticate("c6dd542512e445df990e7a7d889e636e", "ea5a0bb9078243e896ef58d3964cba48")
+    # RSpotify.authenticate("c6dd542512e445df990e7a7d889e636e", "ea5a0bb9078243e896ef58d3964cba48")
   end
 
   def call
-    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-
-    # spotify_user = RSpotify::User.find('112551945')
-
-    # spotify_user = RSpotify::User.new(
-    #   {
-    #     'credentials' => {
-    #        "token" => self.credentials["BQCwC-MJSAlLdshi717gT4FDD9DFLIIQL0sPsxq8436A6lIYRvY3uZBH8zL7tWLj3K_Imt_rpe5qr5f1vNn1m1DvUQEDcdlERztw-zd7uAf7hKoo1QXpYxRgjfEDsWyDh77q0UhsCdIVyEO83L124CF5g5y79g"],
-    #       #  "refresh_token" => self.credentials["refresh_token"],
-    #       #  "access_refresh_callback" => callback_proc
-    #     } ,
-    #     'id' => self.credentials["user_id"]
-    #   })
+    spotify_user = RSpotify::User.new('id' => @user.uid, 'credentials' => { 'token' => @user.token })
 
     my_playlists = spotify_user.playlists
 
@@ -33,11 +21,13 @@ class CreateSpotifyPlaylistService
     @user.projects_as_investor.uniq.each do |project|
       track_urls = []
 
-      project.tracks.each do |track|
+      project.tracks.where.not(spotify_id: nil).each do |track|
         next if existing_playlist_spotify_track_ids.include?(track.spotify_id)
 
-        track_urls << "https://open.spotify.com/track/#{track.spotify_id}"
+        track_urls << "spotify:track:#{track.spotify_id}"
       end
+
+      next if track_urls.empty?
 
       gys_playlist.add_tracks!(track_urls)
     end
