@@ -47,7 +47,7 @@
         </div>
       </div>
 
-      <div class="col-4 project-show-tokens-sticky p-4 border" data-controller="counter">
+      <div class="col-4 project-show-tokens-sticky p-4 border mt-3" data-controller="counter">
         <div class="artist-project-info-financial mb-15 align-items d-flex justify-content-between ">
           <div class="d-flex flex-column justify-content-evenly text-center bg-secondary border border-secondary rounded p-2 w-25">
             <p class="m-0 text-white h4 fw-bold"><small>$</small><span data-counter-target="price"><%= @project.unit_price.to_i/1000%></span>K</p>
@@ -116,7 +116,7 @@
             </div>
 
             <!-- previsional information -->
-            <div class="project-show-invest-right">
+            <div class="project-show-invest-right mt-5">
               <h5 class="text-primary my-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</h5>
               <div class="artist-project-info-financial justify-content-around">
                 <div class="text-center p-2">
@@ -134,20 +134,14 @@
               </div>
             </div>
           <!-- other information -->
-            <h5 class="text-primary my-4 border-bottom col-12"><i class="fas fa-info-circle text-secondary"></i> Other information</h5>
-            <div class = "d-flex justify-content-between px-4">
+            <h5 class="text-primary my-4 border-bottom col-12 mt-5"><i class="fas fa-info-circle text-secondary"></i> Other information</h5>
+            <div class = "d-flex justify-content-between px-4 mb-5">
               <p class="text-secondary"> <strong>Release date:</strong> <%= @project.release_date.strftime("%B %d, %Y") %></p>
               <p class="text-secondary"> <strong>Distributor:</strong> <%= @project.distributor %></p>
             </div>
           </div>
-
-
         </div>
       </div>
-
     </div>
   </div>
-
-  <!-- link to index -->
-  <i class="fas fa-backward text-primary mt-5"></i> <%= link_to "Return to projects", projects_path, class: "text-decoration-none" %>
 </div>
