@@ -51,7 +51,8 @@
         <div class="artist-project-info-financial mb-15 align-items d-flex justify-content-between ">
           <div class="d-flex flex-column justify-content-evenly text-center bg-secondary border border-secondary rounded p-2 w-25">
             <p class="m-0 text-white h4 fw-bold">
-            <% if (@project.unit_price.to_i) >= 1000 %>
+            <span data-counter-target="price" class='d-none'><%= @project.unit_price.to_i %></span>
+            <% if (@project.unit_price.to_i) >= 1000  %>
               <small>$</small><%=(@project.unit_price.to_i)/1000%>K</p>
             <% else  %>
               <small>$</small><%=(@project.unit_price.to_i) %>
@@ -79,7 +80,7 @@
               <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-action="click->counter#increment" data-counter-target="plus" data-action="click->counter#quantity">
             </div>
             <p class='border-top text-center text-secondary pt-2'>Total $<span data-counter-target='subtotal' class='fw-bold fs-5'></span> </p>
-            <%= submit_tag 'Buy token', class: 'btn btn-secondary btn-token w-100' %>
+            <%= submit_tag 'Buy token', class: 'btn btn-secondary btn-token w-100 border-0' %>
           <% end %>
           </p>
         </div>
