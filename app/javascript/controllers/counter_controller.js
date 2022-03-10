@@ -6,14 +6,14 @@ export default class extends Controller {
 
   connect() {
     this.quantity = 0;
-    this.subtotalTarget.innerText = 1 * this.priceTarget.innerText;
+    this.subtotalTarget.innerText = (1 * this.priceTarget.innerText).toLocaleString('en-US');
   }
 
   increment() {
     var max = quantity.max;
     if (this.quantity++ < max) {
       this.quantityTarget.value = this.quantity;
-      this.subtotalTarget.innerText = this.quantity * this.priceTarget.innerText;
+      this.subtotalTarget.innerText = (this.quantity * this.priceTarget.innerText).toLocaleString('en-US');
     } else {
       this.quantity = max;
     }
@@ -23,7 +23,7 @@ export default class extends Controller {
     var min = 0;
     if (this.quantity-- > 0) {
       this.quantityTarget.value = this.quantity;
-      this.subtotalTarget.innerText = this.quantity * this.priceTarget.innerText;
+      this.subtotalTarget.innerText = (this.quantity * this.priceTarget.innerText).toLocaleString('en-US');
     } else {
       this.quantity = min;
     }
