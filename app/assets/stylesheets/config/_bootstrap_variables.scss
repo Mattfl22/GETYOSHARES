@@ -23,3 +23,6 @@ $border-radius-lg: 8px;
 $border-radius-sm: 8px;
 
 // Override other variables below!
+.btn:active:focus {
+  outline: none !important;
+}
