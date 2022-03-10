@@ -1,8 +1,6 @@
 <div class="container">
-<%= link_to "Add new project 😉", new_project_path, class:"btn btn-primary mb-5" %>
-  <% if current_user.projects.empty? %>
-    <p>No projects yet !</p>
-  <% else %>
+<%= link_to "Add new project 😉", new_project_path, class:"btn btn-primary my-5" %>
+  <% if current_user.projects.present? %>
     <div class="container">
     <div class="financial-info justify-content-center mb-5">
     <% current_user.projects.each do |project|  %>
@@ -78,6 +76,7 @@
                 <p class="m-0 fw-bold fs-5" style="color:#f9bc0b"><%= project.number_of_transactions(project) %></p>
                 <p class="m-0" style="font-size:12px">tokens purchased</p>
               </div>
+    
             </div>
             <%# tokens info-end %>
           </div>
@@ -88,5 +87,8 @@
         </div>
       <% end %>
     </div>
+  <% else %>
+    <p>No projects yet !</p>
+    <div class="height-100"></div>
   <% end %>
 </div>

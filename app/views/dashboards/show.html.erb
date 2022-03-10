@@ -1,14 +1,14 @@
 <div class="container-gys">
   <div>
-    <h1 class="mt-5 text-primary">Welcome to your dashboard, <span class="banner-highlight-primary"><%=@user.first_name%></span>.</h1>
+    <h1 class="my-5 text-primary">Welcome to your dashboard, <span class="banner-highlight-primary"><%=@user.first_name%></span>.</h1>
     <%# better to have partials so that several developers can work on the same page without conflicts %>
-    <p>Your dashboard was last updated on <%= Time.current.to_formatted_s(:short)   %> </p>
+    <p>Your dashboard was last updated on <%= Time.current.to_formatted_s(:short)%> </p>
     <%# user: is from the partial, it's linked with current urrent in dashboard controller, all thanks to devise %>
     <%# <%= render "info", user: @user %>
   </div>
 
-  <nav>
-    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+  <nav class="mt-4">
+    <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
       <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="true">My portfolio</button>
       <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false">My projects</button>
     </div>
@@ -22,5 +22,4 @@
       <%= render 'project' %>
     </div>
   </div>
-    <div class="height-100"></div>
 </div>
