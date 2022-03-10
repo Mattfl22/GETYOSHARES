@@ -1,11 +1,15 @@
 class Project < ApplicationRecord
+  include Abyme::Model
   belongs_to :user
-  has_many :products
+  has_many :products, dependent: :destroy, inverse_of: :project
   has_many :revenues
-  has_many :tokens
+  has_many :tokens, dependent: :destroy, inverse_of: :project
   has_one_attached :photo
   has_many :transactions, through: :tokens
   has_many :tracks, through: :products
+  abymize :products
+  abymize :tokens
+
 
   def unit_price
     tokens.first.price
@@ -33,6 +37,10 @@ class Project < ApplicationRecord
   end
 
   def project_revenue(project)
-    revenues.find_by(project_id: project).revenue
+    if revenues.find_by(project_id: project) != nil
+      revenues.find_by(project_id: project).revenue
+    else
+      0
+    end
   end
 end

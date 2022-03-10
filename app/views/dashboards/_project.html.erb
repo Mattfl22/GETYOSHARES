@@ -1,7 +1,7 @@
 <div class="container">
+<%= link_to "Add new project 😉", new_project_path, class:"btn btn-primary mb-5" %>
   <% if current_user.projects.empty? %>
     <p>No projects yet !</p>
-    <%= link_to "Add a project 😉", projects_path, class:"btn btn-primary mb-5" %>
   <% else %>
     <div class="container">
     <div class="financial-info justify-content-center mb-5">
@@ -24,7 +24,7 @@
           <div class="dashboard-artist-project-high-part-left">
             <%# project photo %>
             <div class="photo-project-info-financial mb-2">
-              <%= cl_image_tag project.photo.key, height: 200, width: 200, crop: :fill  %>
+                <%= cl_image_tag project.photo.key, height: 200, width: 200, crop: :fill  %>
             </div>
 
             <div class="dashboard-artist-project-info">

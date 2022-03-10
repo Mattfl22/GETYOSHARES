@@ -86,3 +86,6 @@ gem 'pundit'
 
 # admin
 gem 'rails_admin', '~> 2.0'
+
+# abyme
+gem 'abyme'

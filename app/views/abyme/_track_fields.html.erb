@@ -1,0 +1,7 @@
+<%= f.input :title %>
+<%= f.input :youtube_id %>
+<%= f.hidden_field :_destroy %>
+
+<%= remove_associated_record(tag: :div) do %>
+  <i class="fas fa-trash"></i>
+<% end %>
