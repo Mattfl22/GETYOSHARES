@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     this.quantity = 0;
-    this.subtotalTarget.innerText = (1 * this.priceTarget.innerText).toLocaleString('en-US');
+    this.subtotalTarget.innerText = 0;
   }
 
   increment() {
