@@ -10,4 +10,8 @@ class DashboardPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def create_playlist?
+    true
+  end
 end

@@ -47,10 +47,16 @@
         </div>
       </div>
 
-      <div class="col-4 project-show-tokens-sticky p-4 border">
+      <div class="col-4 project-show-tokens-sticky p-4 border mt-3" data-controller="counter">
         <div class="artist-project-info-financial mb-15 align-items d-flex justify-content-between ">
           <div class="d-flex flex-column justify-content-evenly text-center bg-secondary border border-secondary rounded p-2 w-25">
-            <p class="m-0 text-white h4 fw-bold"><small>$</small><%= (@project.unit_price.to_i)/1000%>K</p>
+            <p class="m-0 text-white h4 fw-bold">
+            <span data-counter-target="price" class='d-none'><%= @project.unit_price.to_i %></span>
+            <% if (@project.unit_price.to_i) >= 1000  %>
+              <small>$</small><%=(@project.unit_price.to_i)/1000%>K</p>
+            <% else  %>
+              <small>$</small><%=(@project.unit_price.to_i) %>
+            <% end %>
             <p class="m-0 text-white" style="font-size:12px">per token</p>
           </div>
           <div class="d-flex flex-column justify-content-evenly text-center border border-primary rounded p-2 ms-3 w-25">
@@ -68,12 +74,16 @@
           <%= form_tag carts_path(@cart), method: :post, class: "w-100" do %>
             <%#= hidden_field_tag 'token_id', @project.tokens.find { |token| token if !token.bought? }.id %>
             <%= hidden_field_tag 'project_id', @project.id %>
-            <div class="input-group w-auto justify-content-center align-items-center my-4" data-controller="counter">
+            <div class="input-group w-auto justify-content-center align-items-center my-4" >
               <input type="button" value="-" class="button-minus border rounded-circle icon-shape icon-sm mx-1 " data-action="click->counter#decrement" data-counter-target="minus">
               <input type="number" step="1" max="<%= @project.number_of_tokens - @project.number_of_transactions(@project)%>" min='0' value="1" class="quantity-field border-0 text-center w-25" data-counter-target="quantity" id="quantity" name="quantity">
-              <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-action="click->counter#increment" data-counter-target="plus">
+              <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-action="click->counter#increment" data-counter-target="plus" data-action="click->counter#quantity">
             </div>
-            <%= submit_tag 'Buy token', class: 'btn btn-secondary btn-token w-100' %>
+            <p class='border-top text-center text-secondary pt-2'>Total $<span data-counter-target='subtotal' class='fw-bold fs-5'></span> </p>
+            <%= button_tag(type: "submit", class: 'btn btn-secondary btn-token w-100 border-0') do %>
+              Pay now <i class="fas fa-credit-card ms-2"></i>
+            <% end %>
+            <%# <%= submit_tag 'Pay now', class: 'btn btn-secondary btn-token w-100 border-0' class:"fas fa-credit-card"%>
           <% end %>
           </p>
         </div>
@@ -115,7 +125,7 @@
             </div>
 
             <!-- previsional information -->
-            <div class="project-show-invest-right">
+            <div class="project-show-invest-right mt-5">
               <h5 class="text-primary my-4 border-bottom"><i class="fas fa-chart-line text-secondary"></i> Previsional information per year</h5>
               <div class="artist-project-info-financial justify-content-around">
                 <div class="text-center p-2">
@@ -133,20 +143,14 @@
               </div>
             </div>
           <!-- other information -->
-            <h5 class="text-primary my-4 border-bottom col-12"><i class="fas fa-info-circle text-secondary"></i> Other information</h5>
-            <div class = "d-flex justify-content-between px-4">
+            <h5 class="text-primary my-4 border-bottom col-12 mt-5"><i class="fas fa-info-circle text-secondary"></i> Other information</h5>
+            <div class = "d-flex justify-content-between px-4 mb-5">
               <p class="text-secondary"> <strong>Release date:</strong> <%= @project.release_date.strftime("%B %d, %Y") %></p>
               <p class="text-secondary"> <strong>Distributor:</strong> <%= @project.distributor %></p>
             </div>
           </div>
-
-
         </div>
       </div>
-
     </div>
   </div>
-
-  <!-- link to index -->
-  <i class="fas fa-backward text-primary mt-5"></i> <%= link_to "Return to projects", projects_path, class: "text-decoration-none" %>
 </div>
