@@ -76,7 +76,7 @@
             <%= hidden_field_tag 'project_id', @project.id %>
             <div class="input-group w-auto justify-content-center align-items-center my-4" >
               <input type="button" value="-" class="button-minus border rounded-circle icon-shape icon-sm mx-1 " data-action="click->counter#decrement" data-counter-target="minus">
-              <input type="number" step="1" max="<%= @project.number_of_tokens - @project.number_of_transactions(@project)%>" min='0' value="1" class="quantity-field border-0 text-center w-25" data-counter-target="quantity" id="quantity" name="quantity">
+              <input type="number" step="1" max="<%= @project.number_of_tokens - @project.number_of_transactions(@project)%>" min='0' value="0" class="quantity-field border-0 text-center w-25" data-counter-target="quantity" id="quantity" name="quantity">
               <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-action="click->counter#increment" data-counter-target="plus" data-action="click->counter#quantity">
             </div>
             <p class='border-top text-center text-secondary pt-2'>Total $<span data-counter-target='subtotal' class='fw-bold fs-5'></span> </p>
